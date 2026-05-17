@@ -1,0 +1,1843 @@
+<!DOCTYPE html>
+
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Runababy</title>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Runababy 韓國童裝代購" />
+  <meta property="og:description" content="韓國童裝｜女裝｜韓國選品代購" />
+  <meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/runababy-ee77d.firebasestorage.app/o/%E9%A6%96%E9%A0%81.png?alt=media&token=57964453-9ffd-47a7-b764-31c8223a0aa7" />
+  <meta property="og:url" content="https://runababy-ee77d.web.app" />
+  <meta property="og:type" content="website" />
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Runababy 韓國童裝代購" />
+  <meta name="twitter:description" content="韓國童裝｜女裝｜韓國選品代購" />
+  <meta name="twitter:image" content="https://firebasestorage.googleapis.com/v0/b/runababy-ee77d.firebasestorage.app/o/%E9%A6%96%E9%A0%81.png?alt=media&token=57964453-9ffd-47a7-b764-31c8223a0aa7" />
+<link id="favicon" rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAKMWlDQ1BJQ0MgUHJvZmlsZQAAeJydlndUU9kWh8+9N71QkhCKlNBraFICSA29SJEuKjEJEErAkAAiNkRUcERRkaYIMijggKNDkbEiioUBUbHrBBlE1HFwFBuWSWStGd+8ee/Nm98f935rn73P3Wfvfda6AJD8gwXCTFgJgAyhWBTh58WIjYtnYAcBDPAAA2wA4HCzs0IW+EYCmQJ82IxsmRP4F726DiD5+yrTP4zBAP+flLlZIjEAUJiM5/L42VwZF8k4PVecJbdPyZi2NE3OMErOIlmCMlaTc/IsW3z2mWUPOfMyhDwZy3PO4mXw5Nwn4405Er6MkWAZF+cI+LkyviZjg3RJhkDGb+SxGXxONgAoktwu5nNTZGwtY5IoMoIt43kA4EjJX/DSL1jMzxPLD8XOzFouEiSniBkmXFOGjZMTi+HPz03ni8XMMA43jSPiMdiZGVkc4XIAZs/8WRR5bRmyIjvYODk4MG0tbb4o1H9d/JuS93aWXoR/7hlEH/jD9ld+mQ0AsKZltdn6h21pFQBd6wFQu/2HzWAvAIqyvnUOfXEeunxeUsTiLGcrq9zcXEsBn2spL+jv+p8Of0NffM9Svt3v5WF485M4knQxQ143bmZ6pkTEyM7icPkM5p+H+B8H/nUeFhH8JL6IL5RFRMumTCBMlrVbyBOIBZlChkD4n5r4D8P+pNm5lona+BHQllgCpSEaQH4eACgqESAJe2Qr0O99C8ZHA/nNi9GZmJ37z4L+fVe4TP7IFiR/jmNHRDK4ElHO7Jr8WgI0IABFQAPqQBvoAxPABLbAEbgAD+ADAkEoiARxYDHgghSQAUQgFxSAtaAYlIKtYCeoBnWgETSDNnAYdIFj4DQ4By6By2AE3AFSMA6egCnwCsxAEISFyBAVUod0IEPIHLKFWJAb5AMFQxFQHJQIJUNCSAIVQOugUqgcqobqoWboW+godBq6AA1Dt6BRaBL6FXoHIzAJpsFasBFsBbNgTzgIjoQXwcnwMjgfLoK3wJVwA3wQ7oRPw5fgEVgKP4GnEYAQETqiizARFsJGQpF4JAkRIauQEqQCaUDakB6kH7mKSJGnyFsUBkVFMVBMlAvKHxWF4qKWoVahNqOqUQdQnag+1FXUKGoK9RFNRmuizdHO6AB0LDoZnYsuRlegm9Ad6LPoEfQ4+hUGg6FjjDGOGH9MHCYVswKzGbMb0445hRnGjGGmsVisOtYc64oNxXKwYmwxtgp7EHsSewU7jn2DI+J0cLY4X1w8TogrxFXgWnAncFdwE7gZvBLeEO+MD8Xz8MvxZfhGfA9+CD+OnyEoE4wJroRIQiphLaGS0EY4S7hLeEEkEvWITsRwooC4hlhJPEQ8TxwlviVRSGYkNimBJCFtIe0nnSLdIr0gk8lGZA9yPFlM3kJuJp8h3ye/UaAqWCoEKPAUVivUKHQqXFF4pohXNFT0VFysmK9YoXhEcUjxqRJeyUiJrcRRWqVUo3RU6YbStDJV2UY5VDlDebNyi/IF5UcULMWI4kPhUYoo+yhnKGNUhKpPZVO51HXURupZ6jgNQzOmBdBSaaW0b2iDtCkVioqdSrRKnkqNynEVKR2hG9ED6On0Mvph+nX6O1UtVU9Vvuom1TbVK6qv1eaoeajx1UrU2tVG1N6pM9R91NPUt6l3qd/TQGmYaYRr5Grs0Tir8XQObY7LHO6ckjmH59zWhDXNNCM0V2ju0xzQnNbS1vLTytKq0jqj9VSbru2hnaq9Q/uE9qQOVcdNR6CzQ+ekzmOGCsOTkc6oZPQxpnQ1df11Jbr1uoO6M3rGelF6hXrtevf0Cfos/ST9Hfq9+lMGOgYhBgUGrQa3DfGGLMMUw12G/YavjYyNYow2GHUZPTJWMw4wzjduNb5rQjZxN1lm0mByzRRjyjJNM91tetkMNrM3SzGrMRsyh80dzAXmu82HLdAWThZCiwaLG0wS05OZw2xljlrSLYMtCy27LJ9ZGVjFW22z6rf6aG1vnW7daH3HhmITaFNo02Pzq62ZLde2xvbaXPJc37mr53bPfW5nbse322N3055qH2K/wb7X/oODo4PIoc1h0tHAMdGx1vEGi8YKY21mnXdCO3k5rXY65vTW2cFZ7HzY+RcXpkuaS4vLo3nG8/jzGueNueq5clzrXaVuDLdEt71uUnddd457g/sDD30PnkeTx4SnqWeq50HPZ17WXiKvDq/XbGf2SvYpb8Tbz7vEe9CH4hPlU+1z31fPN9m31XfKz95vhd8pf7R/kP82/xsBWgHcgOaAqUDHwJWBfUGkoAVB1UEPgs2CRcE9IXBIYMj2kLvzDecL53eFgtCA0O2h98KMw5aFfR+OCQ8Lrwl/GGETURDRv4C6YMmClgWvIr0iyyLvRJlESaJ6oxWjE6Kbo1/HeMeUx0hjrWJXxl6K04gTxHXHY+Oj45vipxf6LNy5cDzBPqE44foi40V5iy4s1licvvj4EsUlnCVHEtGJMYktie85oZwGzvTSgKW1S6e4bO4u7hOeB28Hb5Lvyi/nTyS5JpUnPUp2Td6ePJninlKR8lTAFlQLnqf6p9alvk4LTduf9ik9Jr09A5eRmHFUSBGmCfsytTPzMoezzLOKs6TLnJftXDYlChI1ZUPZi7K7xTTZz9SAxESyXjKa45ZTk/MmNzr3SJ5ynjBvYLnZ8k3LJ/J9879egVrBXdFboFuwtmB0pefK+lXQqqWrelfrry5aPb7Gb82BtYS1aWt/KLQuLC98uS5mXU+RVtGaorH1futbixWKRcU3NrhsqNuI2ijYOLhp7qaqTR9LeCUXS61LK0rfb+ZuvviVzVeVX33akrRlsMyhbM9WzFbh1uvb3LcdKFcuzy8f2x6yvXMHY0fJjpc7l+y8UGFXUbeLsEuyS1oZXNldZVC1tep9dUr1SI1XTXutZu2m2te7ebuv7PHY01anVVda926vYO/Ner/6zgajhop9mH05+x42Rjf2f836urlJo6m06cN+4X7pgYgDfc2Ozc0tmi1lrXCrpHXyYMLBy994f9Pdxmyrb6e3lx4ChySHHn+b+O31w0GHe4+wjrR9Z/hdbQe1o6QT6lzeOdWV0iXtjusePhp4tLfHpafje8vv9x/TPVZzXOV42QnCiaITn07mn5w+lXXq6enk02O9S3rvnIk9c60vvG/wbNDZ8+d8z53p9+w/ed71/LELzheOXmRd7LrkcKlzwH6g4wf7HzoGHQY7hxyHui87Xe4Znjd84or7ldNXva+euxZw7dLI/JHh61HXb95IuCG9ybv56Fb6ree3c27P3FlzF3235J7SvYr7mvcbfjT9sV3qID0+6j068GDBgztj3LEnP2X/9H686CH5YcWEzkTzI9tHxyZ9Jy8/Xvh4/EnWk5mnxT8r/1z7zOTZd794/DIwFTs1/lz0/NOvm1+ov9j/0u5l73TY9P1XGa9mXpe8UX9z4C3rbf+7mHcTM7nvse8rP5h+6PkY9PHup4xPn34D94Tz+6TMXDkAAAx1SURBVHicvZp/jFzVdcc/5973Zt7M/vLa2F7bbGwakAUmQUVpgijgtdrErRQ1/QM7bUPStMhVkAilP/xHlZbdJakqIRIVahWCQxSqVIl3I0JEG6S6cpyEpqkgTSFaV00phsZee816F+Od2Zn3457+cd/s/Fz/iKFHmp2Z+97ce77n9zlvRelBAvS6MDXVuWKZmREmJrJVfvGOU7DySQQ050F7rIm0/s4yM6NA9v/A4wVJVsQm+R9tEaTkqmgs+WsGcIDhySdvI8tuJYn/DmWWe+9dTXfvGHkAjWN7Hd9cE6amDJAxP78bkXGi6AMMDRnOnPkKwu8xe6oB7vJoYuIKAXStdmgChPFxARwbN05qqfQZKRQsS0vHca6OSMCpU9cDKQ8+KKhenhYu8/ZWCnqaTqvdqzaZ37z5s5RKfy61WgxYVJ/DmA9i7SlGR1MGB2ljvlMQnRoeH/+5GW8CONQVWTrJm83Zsw/R37+fSiXBuZB6XRH5CGG4hSz7k/xey9RUb8eemWn/Pjl5hax7CrpW2qVmgUzPnt0nUbRfl5YyUQ0QEVXNpFzeQrV6BHiW2VkYGmpnvpPpd4C6AXQwz5kzt0mx+ChpiqgapCWeOoc693UAgYCZmfQd57iDAvbubX5rSF8QlIydOwM+/vHPEYaRLi9nImIBUFUJAqvLywuSZc8C5MmsSVcQWS4PQG9HskDK5s33E0U7WVpKRWRFWwpOgsBKlv2YMDzN8HC+nNNqzHdHtyumoMdhAqQcOLAZYz5NrQYekHrtiAgoQQD1+rH8N5bp6V7Oa/J3nxveZuZXA+Clv2XLJymV3sXSUooxAaoxIucRWaeqIkkCzr0IwMxM0y8mJmDPHvCCcPn+7UDeVgCTk60lg5f++HgA3EmS+MNFUNWqOKcEAWKMJY4TrP1RF2NGGvsoDz98FZs3l5mdPdHFfFtpdSUA2itMH/MXF8cw5heJYxARVBGREsaEONdMcE3JNumBcV9ObNr0PgYHn6FS2cSmTYcx5h7gOCdP+utvkzUFHbHay+Xqq3cTRbC0lCJiCAIhjv8BkVuwdksOIsa5BQAmJlrZ8Z+//OXPYO0WoM7w8G7eeutzqH6s4yxvZlcEoN0HvCM+8cQ2nENBUFWxFuDfUB0hCLZQrwOEGgSDwEmZmPAmMznp3w8eBBimUoE0zVheBmO8tkRgfFzyc92qQBrF5UUBeJslv131kUeKEkU3kqaIz7gN6ZZRLa7sr2rEuVLbblNTSiMBLi5+g76+nQRBARG0UpkGfDKcmEiBMhs3jjA3dwKIL87qagAeWMkDAqiUy6OoXkOarqz5q2KBq6nXj6B6gxSLI8TxRgB27GiVVaZnzwIc4Ny5tYjsEtWvijFP86lPCZDqxMQg1133LUnTMR0ZeVlEPg18j1OXX453lxJxPIy1ISsaF8UYcM5iTAWYV5GalEoQx+8BnmP9+iaAN95A7rkHAH3ssQeBBwE4fRomJiyQysjIH1AqjbG4mMjAwHs1jp+S11+/HqitmOGlkEDAjh0tX0EXFkYlDA1JonnRJuIcGLMN1Qh4CZH3k2Xg3C7gISBlbCzfZQWLyJEjhqkpx/S0Yd26jPXr/ZXjrw5TraJJkopzoagW6e9vlCmXxHuDujQgECICIpqzY4hjcO4OFRkRuAPVQWo1CILbgI288socY2Necj5bk0uxkZ2zPNp589iw4RmQP5VSqUipBOfO/T1DQxXWrFkto3dTrqduEzJmdiWBNVRpDBhzXlTXEEW7JY6VJFHCsJ8suxX4JtPTZoXhqSnaikSgI+q8wMGDH1Pn/kJqtZe0r++zALJnz4Xtv7NqkPY84JnduBF82MxvEiHLAH4BkZBaTfOS2mGt4Nz9wDfZu9fl9/c+vLneCJDfkPHxpwEn3u7hrrtWt5/p6e417eEDzM8Xc6dtHubNothiHiBiqNWUMLwD536XgwefYmjIh9AG+ZrI0949ra7pw+2xYxk33GAuu4duoW4NrFv3Bsb4As65GCg2yomepArGPMLS0vNUq//DwkIApG0AOs3JU0bDkicnu/voqSnf0V2kr2jNxH6TAwdOYEyVQmGQen0GuBZjhnKNtJOIkKaOQmFIo+hpSdMPs2HDzzhzpgmilb7zHTh6tLUf7pbKAw90n3MB/RiMsPISgULhLKov+x/qdpwrXzC0iRiN40yi6L2E4bPAKBs2pPgAcek15/j46lOKC+wS8PgXG58VCIEE1X8mDG+jXi/Q8IELkIhYrVYzKZdvQvW7pOldbNjwA8Bw9KhFpPfs9G0Zq/h2sEHeTubnj1Gvg2/iY0SCjrlRIxKRMyZijNXl5UyCYBvW/gtJsh/4PGNjaW4WhsZY0ueYy3HcRumudJQaou1S8AeMjm4lTX+CtQOopvghluSNTSZBYEhTAZI8lAY4l+cMURAoFAzV6vcw5ivUat8G5vij+wVF8x7EtnVyrQIEX1/56w5w7NgBx2Y8hBbHFu01MoeMhYUn6O/fR7WyhFMF+glD0SR5QVRfpVz+KLVagnMvATcRhr5+8k2Ql3AU+YKqWp3HmH9E9YcEwfNk2X8BCbOzq8t8xw746F7f3R040Ifq+4BZ4KetQ2QPoL188gDefPMTRNFTWq0uI1LD+8K/ijG/jurnUf0ExeJ66vX/xJjrce4IEFIs3k69rhhJNXOphGFEEAjGgKpqreZE9T+AF1GtA28RhsfJsvMkyRwiKWGwQOa2I3IzqjeqyJgUi2tJkn/n8OH3AxnT07567pFDPJyHHhpg7dqXsPYaskzJMlXVn0mhsFVFXpd6/TTF4gc0yzIxxmqSvC4ibxKGN5EkDhBVdaL6Ikb6EHMjzvn8EoYQBM2Y75x/+RLGoZoSBCGFgg8g9To454giQxz/FnCIoSGLkPWaSig+BJ5nzZoniKK/IklSREIJgq15ozOKtZtJEgQMWYaE4VZEtuYmZIBYBgYKLC1di+qi77vEZ904VuLY4Ys/ybN7DESAIFIgSZQ0TVVVBIyKqKSp7/BaOO2lgaYWHn10PX19M8B60rTR2HjHKxa9va881VFFxDNUKAj1+tPAcaLojzFGWF72zugzvOYFomc+TRNUXwGuAQJahmj51plERUvmfsjdd99Ky9OMXk7c7guLi/dSLP6N1mp+tOjVnuDc84j8MsYUOvJEo49YFuceBvow5rexdhNZ1hSCc3Pqy4lErN2a10OSc9whTnGEoaFW+xBwmHXrPG+y2gOOpqS9RL/0pR9QKNyilUomIgZrhTR9Vo15j1i7jTRtzQsNEEq5bKhUTqB6HmOuX8kfIuBciuoyMIsx29sAdEk/ssTxw8B+9u1rCzmdeaCTfF646qqbKZX+CZF1miTLQCHf1KHaPRsKAkjTCj6zh6jW8546RLWSgyjnjZMjTcWv4dCWWZNzCQMDIbXaYeBD3H13V7t5MQBNEGvX7qJc/jbWRhrHCyIykDPYSQ7VRYJgGGOMJslrovot+vr+kDRVzTInSfIyIu/G2kHNsrapd0PzquqkXLbUaj8hy34DeI3Tp7ua/gv5QMtdWJSMxcVfUpFnJAw3U6+nuVQ71a449yQiI1j7YayFOP4+IkdV9VdEZAm4BdUIkYLfP/crqAJDQEqpFFCtHsHa3wHmOHGi58SiW/29SMkAy/DwC5JlY9TrP6W/P1ARp6otYU3BWqFc/n1gJ1nmyDLUmBsV/QhwLc69G5ESIk3tiaBQQfU1whCiKGBp6W/Zvn03+/adWY15uFQNNMl7/8mTayiV/owwvI8giKjVHKoun2K/hXOnsPY6rDWkqZdwFHmAWQZp2og0ijcXlTA0RJFw/nyqsB/4a1m7tvFAvZv5PAleig90UnNUvmXL7WTZX1Io3E6hoKSpEMenybKvqsitInKVioyKtSXS9L+BRURuVlURQTE2wFolDIVqdQ7VL+LcU8CrzM2ZfOZ6wap1tUR2MRKmpw1Cxp17hMcf/1WMuRPnfo1S6V2Uy0q1KtTrKUFgEDGapouiaikWBzHGO2ulch7Vkwpfkzh+DHiD++4TJiaEyUlF/Hj2Qv3Izwug0edapqZ8SfCFLwCUKJXGsPY3gTXAdlT7VGSdOHcekRTVV4GzKvJjUT3E6dP/S6Ncbv4Phut4btFLhKvMhS6PsnzcYRkdBVhmfv454Lm8UbJUKqE4N8DAwLl8gBAzMtLcoZ3xZkDoxXzbQ3l//UoBNIHs3euz96FD3kcaDG3blgG1lTvzR05y9Khh1y6vPch6tpedkm/4fcvDwv8DWGEGjbyE38cAAAAASUVORK5CYII=">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --primary:#B87070;
+  --nav-bg:#FFD2D2;
+  --bg:#FFF9F9;
+  --white:#fff;
+  --text:#2d2d2d;
+  --muted:#888;
+  --border:#f0d8d8;
+  --success:#4caf50;
+  --danger:#e53935;
+  --shadow:0 2px 12px rgba(184,112,112,.10);
+  --nav-h:62px;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{background:#f0e0e0;}body{font-family:'Noto Sans TC',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;max-width:500px;margin:0 auto;box-shadow:0 0 40px rgba(0,0,0,.12);}
+a{color:inherit;text-decoration:none;}
+button{font-family:'Noto Sans TC',sans-serif;cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent;}
+.page{display:none;padding-bottom:calc(var(--nav-h) + 40px);}
+.page.active{display:block;}
+/* NAV */
+.bot-nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:500px;height:var(--nav-h);background:var(--nav-bg);border-top:1.5px solid #f0bfbf;display:flex;align-items:center;justify-content:space-around;z-index:100;}
+.nav-btn{display:flex;flex-direction:column;align-items:center;gap:3px;border:none;background:transparent;color:var(--primary);font-size:11px;font-weight:500;padding:6px 20px;border-radius:10px;position:relative;cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent;}
+.nav-btn svg{width:22px;height:22px;stroke:var(--primary);fill:none;stroke-width:2;}
+.nav-btn.active{font-weight:700;color:#8a4a4a;}
+.nav-btn.active svg{stroke:#8a4a4a;}
+.cart-dot{position:absolute;top:2px;right:14px;min-width:16px;height:16px;border-radius:8px;background:var(--primary);color:#fff;font-size:9px;font-weight:700;display:none;align-items:center;justify-content:center;padding:0 3px;}
+.cart-dot.show{display:flex;}
+/* HEADER */
+.store-header{position:sticky;top:0;z-index:50;background:var(--white);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:10px 14px;}
+.store-id{display:flex;align-items:center;gap:10px;}
+.store-logo{width:38px;height:38px;border-radius:50%;background:var(--nav-bg);display:flex;align-items:center;justify-content:center;font-size:18px;overflow:hidden;flex-shrink:0;}
+.store-logo img{width:100%;height:100%;object-fit:cover;}
+.store-name{font-family:'Playfair Display',serif;font-size:16px;color:var(--primary);font-weight:600;}
+.hamburger{width:36px;height:36px;display:flex;flex-direction:column;justify-content:center;gap:5px;background:transparent;border:none;padding:4px;cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent;}
+.hamburger span{display:block;height:2px;background:var(--primary);border-radius:2px;}
+/* CAT TABS */
+.cat-tabs{display:flex;gap:8px;padding:10px 12px;overflow-x:auto;scrollbar-width:none;background:var(--white);border-bottom:1px solid var(--border);}
+.cat-tabs::-webkit-scrollbar{display:none;}
+.cat-tab{white-space:nowrap;padding:6px 15px;border-radius:18px;border:1.5px solid var(--primary);background:transparent;color:var(--primary);font-size:12px;transition:all .2s;flex-shrink:0;}
+.cat-tab.active,.cat-tab:hover{background:var(--primary);color:#fff;}
+/* SEARCH */
+.search-wrap{padding:10px 12px;background:var(--white);}
+.search-box{display:flex;align-items:center;gap:8px;background:var(--bg);border:1.5px solid var(--border);border-radius:22px;padding:8px 14px;}
+.search-box input{border:none;background:transparent;outline:none;flex:1;font-size:16px;font-family:'Noto Sans TC',sans-serif;}
+.search-box svg{width:16px;height:16px;stroke:var(--muted);flex-shrink:0;fill:none;stroke-width:2;}
+/* ANN */
+.ann-box{margin:10px 12px;background:var(--white);border-radius:12px;border:1px solid var(--border);padding:13px;}
+.ann-title{font-size:12px;font-weight:700;color:var(--primary);margin-bottom:5px;}
+.ann-body{font-size:13px;line-height:1.75;white-space:pre-line;}
+/* BANNER */
+.banner{margin:10px 12px;border-radius:12px;overflow:hidden;background:var(--border);min-height:150px;display:flex;align-items:center;justify-content:center;}
+.banner img{width:100%;display:block;}
+.banner-ph{color:var(--muted);font-size:13px;text-align:center;padding:30px;}
+.sec-title{padding:12px 12px 6px;font-size:14px;font-weight:700;}
+/* PRODUCT GRID */
+.prod-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;padding:4px 12px 80px;}
+.prod-card{background:var(--white);border-radius:12px;overflow:hidden;box-shadow:var(--shadow);cursor:pointer;transition:transform .18s;}
+.prod-card:hover{transform:translateY(-2px);}
+.prod-img-wrap{position:relative;aspect-ratio:4/5;background:#fff;}
+.prod-img-wrap img{width:100%;height:100%;object-fit:contain;object-position:center;display:block;}
+.prod-img-ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:12px;}
+.prod-badges{position:absolute;top:7px;left:7px;display:flex;flex-direction:column;gap:3px;}
+.badge{font-size:9px;padding:2px 7px;border-radius:9px;font-weight:700;color:#fff;width:fit-content;}
+.badge.stock{background:#B87070;}
+.badge.preorder{background:#9B7BB0;}
+.badge.newitem{background:#E8A838;}
+.badge.hot{background:#e53935;}
+/* 電腦版商品圖不變形 */
+@media(min-width:600px){
+  .prod-img-wrap{aspect-ratio:4/5;background:#fff;}
+  .prod-img-wrap img{object-fit:contain;object-position:center;background:#fff;}
+}
+.prod-info{padding:8px 10px 10px;}
+.prod-title{font-size:12px;font-weight:500;margin-bottom:4px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;line-height:1.5;}
+.prod-price{font-size:14px;font-weight:700;color:var(--primary);}
+/* 商品頁底部導航（overlay 外） */
+.detail-bot-nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:500px;height:var(--nav-h);background:var(--nav-bg);border-top:1.5px solid #f0bfbf;display:flex;align-items:center;justify-content:space-around;z-index:9999;}
+/* DETAIL */
+.detail-overlay{display:none;position:fixed;inset:0;background:var(--white);z-index:200;overflow-y:auto;}
+.detail-overlay.open{display:block;}
+/* 防止 F5/bfcache 閃爍 */
+.detail-overlay:not(.open){display:none !important;}
+.detail-bar{position:sticky;top:0;background:var(--white);display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid var(--border);z-index:5;}
+.back-btn{width:34px;height:34px;border:none;background:var(--bg);border-radius:50%;display:flex;align-items:center;justify-content:center;}
+.back-btn svg{width:18px;height:18px;stroke:var(--text);fill:none;stroke-width:2;}
+.d-slider{position:relative;overflow:hidden;background:var(--border);touch-action:pan-y;}
+.d-slides{display:flex;transition:transform .3s;}
+.d-slide{min-width:100%;aspect-ratio:4/5;max-height:78vh;display:flex;align-items:center;justify-content:center;background:#fff;}
+.d-slide img{width:100%;height:100%;max-height:78vh;object-fit:contain;display:block;}
+.d-dots{display:flex;justify-content:center;gap:5px;padding:8px 0;}
+.d-dot{width:8px;height:8px;border-radius:50%;background:#f5c6c6;cursor:pointer;transition:all .2s;}
+.d-dot.on{background:var(--primary);width:20px;border-radius:4px;}
+.d-arr{position:absolute;top:50%;transform:translateY(-50%);width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.85);border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:2;}
+.d-arr svg{width:16px;height:16px;stroke:var(--text);fill:none;stroke-width:2;}
+.d-arr.lft{left:8px;}
+.d-arr.rgt{right:8px;}
+.d-info{padding:16px 14px;}
+.d-badges{display:flex;gap:6px;margin-bottom:10px;}
+.d-title{font-size:17px;font-weight:700;margin-bottom:8px;line-height:1.4;}
+.d-price{font-size:22px;font-weight:700;color:var(--primary);margin-bottom:14px;}
+.d-desc-lbl{font-size:12px;font-weight:700;color:var(--muted);margin-bottom:6px;}
+.d-desc{font-size:13px;line-height:1.8;white-space:pre-line;}
+.d-add-btn{position:fixed;bottom:var(--nav-h);left:50%;transform:translateX(-50%);width:100%;max-width:500px;background:var(--primary);color:#fff;border:none;padding:16px;font-size:15px;font-weight:700;box-shadow:0 -2px 16px rgba(184,112,112,.25);z-index:210;}
+.d-info{padding-bottom:calc(var(--nav-h) + 70px);max-width:600px;margin:0 auto;}
+/* 電腦版商品介紹置中，按鈕在最下方 */
+@media(min-width:600px){
+  .d-info{max-width:600px;margin:0 auto;}
+  .d-add-btn{max-width:500px;left:50%;transform:translateX(-50%);}
+}
+/* SPEC MODAL */
+.spec-modal{display:none;position:fixed;inset:0;z-index:300;background:rgba(0,0,0,.4);align-items:flex-end;}
+.spec-modal.open{display:flex;}
+.spec-panel{background:var(--white);width:100%;border-radius:20px 20px 0 0;padding:20px 18px 36px;max-height:78vh;overflow-y:auto;}
+.spec-panel h3{font-size:15px;font-weight:700;margin-bottom:14px;}
+.spec-sec{margin-bottom:14px;}
+.spec-lbl{font-size:12px;color:var(--muted);margin-bottom:7px;}
+.spec-opts{display:flex;flex-wrap:wrap;gap:7px;}
+.spec-opt{padding:6px 15px;border:1.5px solid var(--border);border-radius:18px;font-size:12px;background:transparent;transition:all .2s;}
+.spec-opt.on{border-color:var(--primary);background:var(--primary);color:#fff;}
+.qty-row{display:flex;align-items:center;gap:12px;margin-top:4px;}
+.qty-btn{width:32px;height:32px;border:1.5px solid var(--border);border-radius:50%;background:transparent;font-size:18px;display:flex;align-items:center;justify-content:center;}
+.qty-num{font-size:16px;font-weight:700;min-width:22px;text-align:center;}
+.confirm-btn{width:100%;background:var(--primary);color:#fff;border:none;border-radius:28px;padding:14px;font-size:15px;font-weight:700;margin-top:16px;}
+/* CART */
+.cart-wrap{padding:12px;}
+.cart-empty{text-align:center;padding:70px 20px;color:var(--muted);}
+.cart-item{background:var(--white);border-radius:12px;padding:12px;display:flex;gap:10px;margin-bottom:10px;box-shadow:var(--shadow);}
+.ci-img-box{width:68px;height:68px;border-radius:8px;overflow:hidden;background:var(--border);flex-shrink:0;}
+.ci-img-box img{width:100%;height:100%;object-fit:cover;display:block;}
+.ci-info{flex:1;min-width:0;}
+.ci-title{font-size:13px;font-weight:500;margin-bottom:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.ci-spec{font-size:11px;color:var(--muted);margin-bottom:7px;}
+.ci-bottom{display:flex;align-items:center;justify-content:space-between;}
+.ci-price{font-size:13px;font-weight:700;color:var(--primary);}
+.ci-qty{display:flex;align-items:center;gap:7px;}
+.ci-qbtn{width:24px;height:24px;border:1px solid var(--border);border-radius:50%;background:transparent;font-size:14px;}
+.ci-del{border:none;background:transparent;color:#ccc;font-size:17px;padding:0 4px;}
+.cart-total{background:var(--white);border-radius:12px;padding:14px;margin-bottom:12px;box-shadow:var(--shadow);}
+.total-row{display:flex;justify-content:space-between;font-size:14px;font-weight:700;}
+.btn-main{display:block;width:100%;background:var(--primary);color:#fff;border:none;border-radius:28px;padding:14px;font-size:14px;font-weight:700;text-align:center;margin-bottom:10px;}
+.btn-ghost{display:block;width:100%;background:transparent;color:var(--primary);border:2px solid var(--primary);border-radius:28px;padding:13px;font-size:14px;font-weight:700;text-align:center;}
+/* CHECKOUT */
+.ck-modal{display:none;position:fixed;inset:0;z-index:400;background:rgba(0,0,0,.5);align-items:center;justify-content:center;padding:16px;}
+.ck-modal.open{display:flex;}
+.ck-panel{background:var(--white);width:100%;max-width:460px;border-radius:16px;max-height:92vh;overflow-y:auto;padding:20px;}
+.ck-panel h3{font-size:16px;font-weight:700;margin-bottom:14px;}
+.fg{margin-bottom:12px;}
+.fg label{display:block;font-size:12px;color:var(--muted);margin-bottom:4px;}
+.fg input,.fg select,.fg textarea{width:100%;padding:9px 12px;border:1.5px solid var(--border);border-radius:8px;font-size:16px;font-family:'Noto Sans TC',sans-serif;outline:none;}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--primary);}
+.ship-tabs{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:12px;}
+.ship-tab{padding:7px 13px;border-radius:18px;border:1.5px solid var(--border);background:transparent;font-size:12px;transition:all .2s;}
+.ship-tab.on{border-color:var(--primary);background:var(--primary);color:#fff;}
+.ck-submit{width:100%;background:var(--primary);color:#fff;border:none;border-radius:28px;padding:14px;font-size:14px;font-weight:700;margin-top:6px;}
+.ck-cancel{width:100%;background:transparent;color:var(--primary);border:2px solid var(--primary);border-radius:28px;padding:12px;font-size:14px;font-weight:700;margin-top:8px;}
+/* SUCCESS */
+.ok-modal{display:none;position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.5);align-items:center;justify-content:center;padding:16px;}
+.ok-modal.open{display:flex;}
+.ok-panel{background:var(--white);width:100%;max-width:340px;border-radius:16px;padding:28px 20px;text-align:center;}
+.ok-icon{font-size:46px;margin-bottom:10px;}
+.ok-panel h3{font-size:17px;font-weight:700;margin-bottom:8px;}
+.ok-panel p{font-size:12px;color:var(--muted);}
+.ok-num{font-size:15px;font-weight:700;color:var(--primary);margin:10px 0;}
+.ok-info{font-size:12px;color:var(--muted);text-align:left;margin-top:10px;line-height:1.9;}
+.ok-btn{display:block;width:100%;background:var(--primary);color:#fff;border:none;border-radius:28px;padding:13px;font-size:13px;font-weight:700;margin-top:14px;}
+.ok-ghost{display:block;width:100%;background:transparent;color:var(--primary);border:2px solid var(--primary);border-radius:28px;padding:12px;font-size:13px;font-weight:700;margin-top:8px;}
+/* PROFILE */
+.pf-wrap{padding:12px;}
+.pf-card{background:var(--white);border-radius:14px;padding:18px;margin-bottom:12px;box-shadow:var(--shadow);}
+.pf-card h3{font-size:14px;font-weight:700;margin-bottom:13px;}
+.fb-btn{width:100%;background:#1877F2;color:#fff;border:none;border-radius:28px;padding:12px;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:10px;}
+.fb-user{background:var(--bg);border-radius:8px;padding:9px 12px;margin-bottom:12px;font-size:13px;display:none;}
+.fb-user a{color:#1877F2;font-weight:700;}
+.pf-field{margin-bottom:10px;}
+.pf-field label{display:block;font-size:11px;color:var(--muted);margin-bottom:3px;}
+.pf-field input{width:100%;padding:8px 11px;border:1.5px solid var(--border);border-radius:8px;font-size:16px;font-family:'Noto Sans TC',sans-serif;outline:none;}
+.pf-save{width:100%;background:var(--primary);color:#fff;border:none;border-radius:28px;padding:12px;font-size:13px;font-weight:700;margin-top:12px;transition:background .3s;}
+.pf-save.saved{background:var(--success);}
+.ord-card{background:var(--white);border-radius:12px;padding:13px;margin-bottom:9px;box-shadow:var(--shadow);}
+.ord-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:5px;}
+.ord-num{font-size:12px;font-weight:700;color:var(--primary);}
+.ord-status{font-size:10px;font-weight:700;padding:2px 9px;border-radius:9px;}
+.ord-date{font-size:11px;color:var(--muted);margin-bottom:4px;}
+.ord-items{font-size:12px;color:var(--muted);margin-bottom:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.ord-total{font-size:13px;font-weight:700;}
+/* DRAWER */
+.drawer-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:150;}
+.drawer-overlay.open{display:block;}
+.drawer{position:fixed;top:0;left:-270px;width:270px;height:100%;background:var(--white);z-index:160;transition:left .3s;overflow-y:auto;padding-bottom:40px;}
+.drawer.open{left:0;}
+.drawer-head{background:var(--nav-bg);padding:18px 14px 14px;display:flex;align-items:center;justify-content:space-between;}
+.drawer-logo{font-family:'Playfair Display',serif;font-size:15px;color:var(--primary);font-weight:600;}
+.drawer-close{width:30px;height:30px;border:none;background:transparent;font-size:20px;color:var(--primary);}
+.dm-item{padding:13px 16px;border-bottom:1px solid var(--border);font-size:13px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;transition:background .15s;}
+.dm-item:hover{background:var(--bg);}
+.dm-arrow{display:inline-flex;align-items:center;transition:transform .2s;}
+.dm-arrow.open{transform:rotate(90deg);}
+.dm-sub{display:none;background:var(--bg);}
+.dm-sub.open{display:block;}
+.dm-sub-item{padding:10px 16px 10px 28px;border-bottom:1px solid var(--border);font-size:12px;color:var(--muted);display:flex;align-items:center;justify-content:space-between;cursor:pointer;}
+.dm-sub-item:hover{background:#f5e8e8;}
+.dm-subsub{display:none;background:#f9f0f0;}
+.dm-subsub.open{display:block;}
+.dm-subsub-item{padding:9px 16px 9px 40px;border-bottom:1px solid var(--border);font-size:11px;color:var(--muted);cursor:pointer;}
+.dm-subsub-item:hover{background:#f0e0e0;}
+.dm-ext{padding:13px 16px;border-bottom:1px solid var(--border);font-size:13px;color:var(--primary);font-weight:500;display:flex;align-items:center;gap:8px;cursor:pointer;}
+.dm-ext:hover{background:var(--bg);}
+/* PRIVACY / ABOUT PAGE */
+.policy-overlay{display:none;position:fixed;inset:0;background:var(--white);z-index:200;overflow-y:auto;}
+.policy-overlay.open{display:block;}
+.policy-overlay:not(.open){display:none !important;}
+.policy-bar{position:sticky;top:0;background:var(--white);display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid var(--border);z-index:5;}
+.policy-content{padding:20px 16px 60px;max-width:680px;margin:0 auto;font-size:13px;line-height:1.9;color:var(--text);}
+.policy-content h2{font-size:16px;font-weight:700;margin:20px 0 10px;color:var(--primary);}
+.policy-content h3{font-size:14px;font-weight:700;margin:16px 0 8px;}
+.policy-content p{margin-bottom:12px;}
+.del-form-wrap{background:var(--bg);border-radius:12px;border:1px solid var(--border);padding:16px;margin-top:20px;}
+.del-form-wrap input{width:100%;padding:9px 12px;border:1.5px solid var(--border);border-radius:8px;font-size:16px;outline:none;margin-bottom:10px;font-family:'Noto Sans TC',sans-serif;}
+.del-form-wrap textarea{width:100%;padding:9px 12px;border:1.5px solid var(--border);border-radius:8px;font-size:14px;outline:none;min-height:80px;resize:vertical;font-family:'Noto Sans TC',sans-serif;}
+.del-submit{width:100%;background:var(--danger);color:#fff;border:none;border-radius:28px;padding:13px;font-size:14px;font-weight:700;margin-top:10px;cursor:pointer;}
+.qa-modal{display:none;position:fixed;inset:0;z-index:300;background:rgba(0,0,0,.4);align-items:flex-end;}
+.qa-modal.open{display:flex;}
+.qa-panel{background:var(--white);width:100%;border-radius:20px 20px 0 0;padding:20px 16px calc(var(--nav-h) + 20px);max-height:80vh;overflow-y:auto;}
+.qa-panel h3{font-size:15px;font-weight:700;margin-bottom:14px;}
+.qa-item{border-bottom:1px solid var(--border);padding:12px 0;}
+.qa-q{font-size:13px;font-weight:500;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:8px;}
+.qa-arr{font-size:11px;color:var(--muted);transition:transform .2s;flex-shrink:0;}
+.qa-q.open .qa-arr{transform:rotate(180deg);}
+.qa-a{display:none;font-size:12px;color:var(--muted);margin-top:8px;line-height:1.7;}
+.qa-a.open{display:block;}
+.qa-close{width:100%;background:transparent;color:var(--primary);border:2px solid var(--primary);border-radius:28px;padding:12px;font-size:13px;font-weight:700;margin-top:14px;}
+/* TOAST */
+.toast{position:fixed;top:14px;right:14px;z-index:999;padding:9px 16px;border-radius:10px;font-size:13px;font-weight:700;color:#fff;background:#2d2d2d;transform:translateY(-60px);opacity:0;transition:all .3s;pointer-events:none;}
+.toast.show{transform:translateY(0);opacity:1;}
+.toast.err{background:var(--danger);}
+/* 頁尾 */
+.store-footer{background:var(--white);border-top:1px solid var(--border);padding:14px 16px 10px;text-align:center;}
+.footer-social{display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:8px;}
+.footer-social a{color:var(--primary);opacity:0.75;transition:opacity .2s;display:flex;align-items:center;}
+.footer-social a:hover{opacity:1;}
+.footer-links{font-size:11px;color:var(--muted);}
+.footer-links a{color:var(--primary);text-decoration:none;}
+.footer-links a:hover{text-decoration:underline;}
+
+
+button{touch-action:manipulation;}
+input,select,textarea{font-size:16px;}
+*{-webkit-tap-highlight-color:transparent;}
+body{overflow-x:hidden;}
+
+
+
+@media(min-width:600px){
+  html,body{max-width:100% !important;width:100%;margin:0;padding:0;display:flex;flex-direction:column;}
+  body{background:#fff;}
+  .page{padding-bottom:calc(var(--nav-h)+40px);}
+  .page.active{display:flex;flex-direction:row;min-height:calc(100vh - var(--nav-h));}
+  .dt-side{width:220px;min-width:220px;flex-shrink:0;background:#fff;border-right:1px solid var(--border);position:sticky;top:0;height:calc(100vh - var(--nav-h));overflow-y:auto;}
+  .dt-main{flex:1;min-width:0;overflow-y:auto;height:calc(100vh - var(--nav-h));padding-bottom:120px;}
+  .prod-grid{grid-template-columns:repeat(4,1fr);gap:12px;padding:8px 16px 40px;}
+  .hamburger{display:none;}
+  .store-header{display:none;}
+  .bot-nav{max-width:100%;left:0;right:0;transform:none;z-index:9999;}
+  .detail-bot-nav{max-width:100%;left:0;right:0;transform:none;}
+  .cat-tabs{max-width:100%;}
+  .search-wrap{max-width:100%;}
+  .detail-overlay .d-slider{max-width:min(420px,100%);margin:0 auto;}
+  .detail-overlay .d-slide{max-height:min(58vh,520px);aspect-ratio:3/4;height:auto;}
+  .detail-overlay .d-slide img{width:100%;height:auto;max-height:min(58vh,520px);object-fit:contain;object-position:top center;display:block;}
+
+  /* 電腦版購物車 / 個人檔案 置中 */
+  #pg-cart,#pg-profile{
+    flex-direction:column;
+    align-items:center;
+    justify-content:flex-start;
+    overflow-y:auto;
+    height:calc(100vh - var(--nav-h));
+  }
+  #pg-cart .page-title-bar,
+  #pg-profile .page-title-bar{
+    width:100%;
+    max-width:560px;
+    padding:18px 4px 6px;
+  }
+  #pg-cart .cart-wrap{width:100%;max-width:560px;}
+  #pg-profile .pf-wrap{width:100%;max-width:560px;}
+}
+@media(max-width:599px){
+  .dt-side{display:none;}
+  .dt-main{width:100%;}
+}
+
+</style>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import {
+  getFirestore, doc, getDoc, setDoc, onSnapshot, collection, getDocs, query, where
+} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged,
+  GoogleAuthProvider,
+  signInWithPopup,
+  sendPasswordResetEmail
+} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyALv1y-87xcEktaAyA8Zn6ptVOMKXxOLEA",
+  authDomain: "runababy-ee77d.firebaseapp.com",
+  projectId: "runababy-ee77d",
+  storageBucket: "runababy-ee77d.firebasestorage.app",
+  messagingSenderId: "9233394293",
+  appId: "1:9233394293:web:e1775f0a6c27ed11aae63c"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+const auth = getAuth(app);
+window._db = db;
+window._auth = auth;
+window._sendPasswordReset = async function(email){
+  try{
+    await sendPasswordResetEmail(auth, email);
+    return {ok:true};
+  }catch(e){
+    return {ok:false, code:e.code};
+  }
+};
+
+// ── 產生會員編號 ──────────────────────────────────
+function genMemberId(){
+  // 純數字會員編號，8位，前台後台都可搜尋
+  return String(Math.floor(10000000 + Math.random() * 90000000));
+}
+
+// ── 存會員資料到 Firestore ──────────────────────────
+async function saveMemberToFirestore(uid, data){
+  await setDoc(doc(db, 'members', uid), data, { merge: true });
+}
+
+// ── 讀會員資料 ──────────────────────────────────────
+async function loadMemberFromFirestore(uid){
+  const snap = await getDoc(doc(db, 'members', uid));
+  return snap.exists() ? snap.data() : null;
+}
+
+// ── Auth 狀態監聽 ────────────────────────────────────
+onAuthStateChanged(auth, async (user) => {
+  if(user){
+    // 已登入：讀取 Firestore 會員資料
+    const memberData = await loadMemberFromFirestore(user.uid);
+    if(memberData){
+      profile.uid = user.uid;
+      profile.email = user.email || memberData.email || '';
+      profile.googleName = memberData.displayName || user.displayName || '';
+      profile.memberId = memberData.memberId || '';
+      profile.name = memberData.name || '';
+      profile.phone = memberData.phone || '';
+      profile.ig = memberData.ig || '';
+      profile.securityQuestion = memberData.securityQuestion || '';
+      profile.blacklist = memberData.blacklist || false;
+    } else {
+      // 首次登入（Google），自動建檔
+      const mid = genMemberId();
+      const newMember = {
+        uid: user.uid,
+        email: user.email || '',
+        displayName: user.displayName || '',
+        memberId: mid,
+        name: user.displayName || '',
+        phone: '',
+        ig: '',
+        securityQuestion: '',
+        securityAnswer: '',
+        createdAt: new Date().toISOString()
+      };
+      await saveMemberToFirestore(user.uid, newMember);
+      profile.uid = user.uid;
+      profile.email = user.email || '';
+      profile.googleName = user.displayName || '';
+      profile.memberId = mid;
+      profile.name = user.displayName || '';
+      profile.phone = '';
+      profile.ig = '';
+    }
+    localStorage.setItem('runababyProfile', JSON.stringify(profile));
+    if(typeof loadProfileUI === 'function') loadProfileUI();
+    startOrderListener(user.uid); // 登入後才啟動訂單監聽
+  } else {
+    // 登出
+    profile = { uid:'', email:'', googleName:'', memberId:'', name:'', phone:'', ig:'' };
+    localStorage.setItem('runababyProfile', JSON.stringify(profile));
+    if(typeof loadProfileUI === 'function') loadProfileUI();
+    if(typeof renderOrders === 'function') renderOrders();
+    if(_orderUnsub){ _orderUnsub(); _orderUnsub=null; } // 停止監聽
+  }
+});
+
+// 訂單監聽器（依 uid 過濾，避免 permission-denied）
+var _orderUnsub = null;
+function startOrderListener(uid){
+  if(_orderUnsub){ _orderUnsub(); _orderUnsub=null; }
+  var q = query(collection(db,'runababy','orders','orderList'), where('uid','==',uid));
+  _orderUnsub = onSnapshot(q, function(snap){
+    var idMap = new Map();
+    snap.forEach(function(d){
+      var data = d.data();
+      var key = data.id || d.id;
+      idMap.set(key, data);
+    });
+    orders = Array.from(idMap.values());
+    if(typeof renderOrders==='function') renderOrders();
+  }, function(err){
+    console.warn('訂單監聽失敗:', err.message);
+  });
+}
+
+// ── 一般註冊 ─────────────────────────────────────────
+window._doRegister = async function(){
+  const acc = document.getElementById('reg-acc').value.trim();
+  const pw  = document.getElementById('reg-pw').value;
+  const err = document.getElementById('reg-err');
+  err.textContent = '';
+  if(!acc || !pw){ err.textContent = '請填寫帳號與密碼'; return; }
+  if(pw.length < 6){ err.textContent = '密碼至少需要 6 位數'; return; }
+  try {
+    const cred = await createUserWithEmailAndPassword(auth, acc, pw);
+    const mid = genMemberId();
+    const igVal = document.getElementById('reg-ig') ? document.getElementById('reg-ig').value.trim() : '';
+    const memberData = {
+      uid: cred.user.uid,
+      email: acc,
+      displayName: '',
+      memberId: mid,
+      name: '',
+      phone: '',
+      ig: igVal,
+      createdAt: new Date().toISOString()
+    };
+    await saveMemberToFirestore(cred.user.uid, memberData);
+    if(typeof showToast === 'function') showToast('🎉 註冊成功！歡迎加入 Runababy');
+    if(typeof closeRegister === 'function') closeRegister();
+  } catch(e) {
+    const msg = e.code === 'auth/email-already-in-use' ? '此 Email 已被註冊'
+      : e.code === 'auth/invalid-email' ? 'Email 格式不正確'
+      : e.code === 'auth/weak-password' ? '密碼強度不足，請至少 6 位'
+      : '註冊失敗：' + e.message;
+    err.textContent = msg;
+  }
+};
+
+// ── 一般登入 ─────────────────────────────────────────
+window._doEmailLogin = async function(){
+  const acc = document.getElementById('login-acc').value.trim();
+  const pw  = document.getElementById('login-pw').value;
+  const err = document.getElementById('login-err');
+  err.textContent = '';
+  if(!acc || !pw){ err.textContent = '請填寫帳號與密碼'; return; }
+  try {
+    await signInWithEmailAndPassword(auth, acc, pw);
+    if(typeof showToast === 'function') showToast('✓ 登入成功！');
+  } catch(e) {
+    err.textContent = '帳號或密碼錯誤';
+  }
+};
+
+// ── Google 登入 ───────────────────────────────────────
+window._googleLogin = async function(){
+  const provider = new GoogleAuthProvider();
+  provider.setCustomParameters({client_id:'9233394293-j33d1ne02644lh9fhq7b0nr9shsu877d.apps.googleusercontent.com'});
+  try {
+    await signInWithPopup(auth, provider);
+    if(typeof showToast === 'function') showToast('✓ Google 登入成功！');
+  } catch(e) {
+    console.error('Google login error:', e);
+    if(typeof showToast === 'function') showToast('Google 登入失敗：'+e.code, 'err');
+  }
+};
+
+// ── 登出 ──────────────────────────────────────────────
+window._doLogout = async function(){
+  if(!confirm('確定登出？')) return;
+  await signOut(auth);
+  if(typeof showToast === 'function') showToast('已登出');
+};
+
+// ── 儲存個人資料到 Firestore ─────────────────────────
+window._saveProfileToFirestore = async function(){
+  if(!profile.uid){ if(typeof showToast==='function') showToast('請先登入','err'); return; }
+  const updated = {
+    name: document.getElementById('pf-name').value,
+    phone: document.getElementById('pf-phone').value,
+    ig: document.getElementById('pf-ig').value,
+  };
+  profile.name = updated.name;
+  profile.phone = updated.phone;
+  profile.ig = updated.ig;
+  localStorage.setItem('runababyProfile', JSON.stringify(profile));
+  await saveMemberToFirestore(profile.uid, updated);
+};
+
+// ── 忘記密碼：驗證安全問題 ─────────────────────────────────────────
+window._verifySecurityAnswer = async function(){
+  const emailEl = document.getElementById('login-acc');
+  const ansEl = document.getElementById('forgot-ans');
+  const errEl = document.getElementById('forgot-err');
+  if(!emailEl||!ansEl) return;
+  const email = emailEl.value.trim();
+  const ans = ansEl.value.trim();
+  if(!email){if(errEl){errEl.style.color='var(--danger)';errEl.textContent='請先填寫上方的帳號Email';}return;}
+  if(!ans){if(errEl){errEl.style.color='var(--danger)';errEl.textContent='請填寫安全問題答案';}return;}
+  if(errEl){errEl.style.color='var(--muted)';errEl.textContent='驗證中...';}
+  try {
+    const {collection:col2, query:q2, where:w2, getDocs:gd2} = await import('https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js');
+    const snap = await gd2(q2(col2(db,'members'),w2('email','==',email)));
+    if(snap.empty){if(errEl){errEl.style.color='var(--danger)';errEl.textContent='找不到此帳號，請確認Email是否正確';}return;}
+    const memberData = snap.docs[0].data();
+    if(!memberData.securityAnswer){
+      if(errEl){errEl.style.color='var(--danger)';errEl.textContent='此帳號未設定安全問題，請聯繫客服 service@runababy.com';}
+      return;
+    }
+    if(memberData.securityAnswer.trim().toLowerCase()===ans.toLowerCase()){
+      if(errEl){errEl.style.color='green';errEl.textContent='✓ 驗證成功！請聯繫客服重設密碼至 service@runababy.com 並說明您的Email';}
+    } else {
+      if(errEl){errEl.style.color='var(--danger)';errEl.textContent='答案不正確，請再試一次';}
+    }
+  } catch(e) {
+    if(errEl){errEl.style.color='var(--danger)';errEl.textContent='驗證失敗，請聯繫客服';}
+    console.error(e);
+  }
+};
+
+// ── 訂單寫入 Firestore → 後台即時可見 ────────────────────────────
+window._saveOrderToFirebase = async function(order){
+  try {
+    // ✅ 用訂單業務 id（RBxxxxxxxx）當 Firestore 文件 ID，方便查找與更新
+    await setDoc(doc(db, 'runababy', 'orders', 'orderList', order.id), order);
+  } catch(e) {
+    console.error('訂單寫入 Firestore 失敗:', e);
+    if(typeof showToast === 'function') showToast('訂單傳送失敗，請截圖聯繫客服', 'err');
+  }
+};
+
+// Load store data from Firebase on start
+async function loadFromFirebase(){
+  try{
+    const storeDoc = await getDoc(doc(db,'runababy','store'));
+    if(storeDoc.exists()){
+      const data = storeDoc.data();
+      // 不再使用 store 裡面的 products array
+      delete data.products;
+      if(typeof S !== 'undefined') Object.assign(S, data);
+    }
+
+    // 讀取 store 底下的 products collection
+    const productSnap = await getDocs(collection(db,'runababy','store','products'));
+    if(typeof S !== 'undefined'){
+      S.products = productSnap.docs.map(d => ({
+        id: d.id,
+        slug: d.id,
+        ...d.data()
+      }));
+    }
+
+    if(typeof init === 'function') init();
+
+    // Real-time listener - update frontend when admin saves
+    onSnapshot(doc(db,'runababy','store'), (snap)=>{
+      if(snap.exists()){
+        const data = snap.data();
+        // 不讀舊的 products array
+        delete data.products;
+        if(typeof S !== 'undefined') Object.assign(S, data);
+        window._storeData = S; // 含 coupons 等完整資料
+        if(typeof syncCategoriesFromTree==='function') syncCategoriesFromTree();
+        if(typeof renderCategoryMenus==='function') renderCategoryMenus();
+        if(typeof renderCatTabs==='function') renderCatTabs();
+        if(typeof renderProds==='function') renderProds();
+        if(typeof renderPolicyPages==='function') renderPolicyPages();
+        if(document.getElementById('headerName')) document.getElementById('headerName').textContent = S.storeName||'Runababy韓國選品';
+        if(document.getElementById('annBody')) document.getElementById('annBody').textContent = S.announcement||'';
+        if(S.bannerUrl && document.getElementById('bannerWrap')) document.getElementById('bannerWrap').innerHTML='<img src="'+S.bannerUrl+'" alt="" style="width:100%;display:block;">';
+      }
+    });
+
+    // 訂單監聽改由 startOrderListener() 在 Auth 登入後才啟動
+
+    onSnapshot(collection(db,'runababy','store','products'), (snap)=>{
+      if(typeof S !== 'undefined'){
+        S.products = snap.docs.map(d => ({
+          id: d.id,
+          slug: d.id,
+          ...d.data()
+        }));
+      }
+      if(typeof renderProds === 'function') renderProds();
+      // 商品資料到位後，若網址是商品頁則立即開啟
+      if(typeof window._pendingProductId === 'string' && window._pendingProductId){
+        var _pid = window._pendingProductId;
+        var _p = (S.products||[]).find(function(x){return x.slug===_pid||x.id===_pid;});
+        if(_p){ window._pendingProductId=null; if(typeof openDetail==='function') openDetail(_p.slug||_p.id); }
+      }
+    });
+
+  } catch(e) {
+    console.error('loadFromFirebase error:', e);
+  }
+}
+
+// Load on start
+document.addEventListener('DOMContentLoaded', function(){
+  setTimeout(loadFromFirebase, 300);
+});
+</script>
+</head>
+<body>
+<div class="toast" id="toast"></div>
+
+<!-- DRAWER -->
+
+<div class="drawer-overlay" id="dOverlay" onclick="closeDrawer()"></div>
+<div class="drawer" id="drawer">
+  <div class="drawer-head">
+    <span class="drawer-logo" id="drawerName">Runababy韓國選品</span>
+    <button class="drawer-close" onclick="closeDrawer()">✕</button>
+  </div>
+  <div class="dm-item" onclick="catFilter('all');closeDrawer();"><span style="display:flex;align-items:center;gap:8px;"><svg viewBox="0 0 24 24" style="width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;flex-shrink:0;"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>全部商品</span></div>
+  <div class="dm-item" onclick="catFilter('new');closeDrawer();"><span style="display:flex;align-items:center;gap:8px;"><svg viewBox="0 0 24 24" style="width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;flex-shrink:0;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>新品上市</span></div>
+  <div class="dm-item" onclick="toggleDM('dm-women',this)"><span style="display:flex;align-items:center;gap:8px;"><svg viewBox="0 0 24 24" style="width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;flex-shrink:0;"><circle cx="12" cy="8" r="4"/><path d="M12 12v8m-3-3h6"/></svg>女裝</span><span class="dm-arrow"><svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:var(--muted);fill:none;stroke-width:2.5;"><polyline points="9 18 15 12 9 6"/></svg></span></div>
+  <div class="dm-sub" id="dm-women">
+    <div class="dm-sub-item" onclick="toggleDMsub('dm-w-pre',this)"><span>預購</span><span class="dm-arrow"><svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:var(--muted);fill:none;stroke-width:2.5;"><polyline points="9 18 15 12 9 6"/></svg></span></div>
+    <div class="dm-subsub" id="dm-w-pre">
+      <div class="dm-subsub-item" onclick="catFilter('w-pre-jan');closeDrawer();">1月預購</div>
+      <div class="dm-subsub-item" onclick="catFilter('w-pre-feb');closeDrawer();">2月預購</div>
+    </div>
+    <div class="dm-sub-item" onclick="toggleDMsub('dm-w-stk',this)"><span>現貨</span><span class="dm-arrow"><svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:var(--muted);fill:none;stroke-width:2.5;"><polyline points="9 18 15 12 9 6"/></svg></span></div>
+    <div class="dm-subsub" id="dm-w-stk">
+      <div class="dm-subsub-item" onclick="catFilter('w-stk-jan');closeDrawer();">1月現貨</div>
+      <div class="dm-subsub-item" onclick="catFilter('w-stk-feb');closeDrawer();">2月現貨</div>
+    </div>
+  </div>
+  <div class="dm-item" onclick="toggleDM('dm-kids',this)"><span style="display:flex;align-items:center;gap:8px;"><svg viewBox="0 0 24 24" style="width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;flex-shrink:0;"><circle cx="12" cy="7" r="4"/><path d="M5.5 21a8.38 8.38 0 0 1 13 0"/></svg>童裝</span><span class="dm-arrow"><svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:var(--muted);fill:none;stroke-width:2.5;"><polyline points="9 18 15 12 9 6"/></svg></span></div>
+  <div class="dm-sub" id="dm-kids">
+    <div class="dm-sub-item" onclick="toggleDMsub('dm-k-pre',this)"><span>預購</span><span class="dm-arrow"><svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:var(--muted);fill:none;stroke-width:2.5;"><polyline points="9 18 15 12 9 6"/></svg></span></div>
+    <div class="dm-subsub" id="dm-k-pre">
+      <div class="dm-subsub-item" onclick="catFilter('k-pre-jan');closeDrawer();">1月預購</div>
+      <div class="dm-subsub-item" onclick="catFilter('k-pre-feb');closeDrawer();">2月預購</div>
+    </div>
+    <div class="dm-sub-item" onclick="toggleDMsub('dm-k-stk',this)"><span>現貨</span><span class="dm-arrow"><svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:var(--muted);fill:none;stroke-width:2.5;"><polyline points="9 18 15 12 9 6"/></svg></span></div>
+    <div class="dm-subsub" id="dm-k-stk">
+      <div class="dm-subsub-item" onclick="catFilter('k-stk-jan');closeDrawer();">1月現貨</div>
+      <div class="dm-subsub-item" onclick="catFilter('k-stk-feb');closeDrawer();">2月現貨</div>
+    </div>
+  </div>
+  <div class="dm-item" onclick="toggleDM('dm-baby',this)"><span style="display:flex;align-items:center;gap:8px;"><svg viewBox="0 0 24 24" style="width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;flex-shrink:0;"><path d="M9 12h6m-3-3v6m8-3a8 8 0 1 1-16 0 8 8 0 0 1 16 0z"/></svg>母嬰商品</span><span class="dm-arrow"><svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:var(--muted);fill:none;stroke-width:2.5;"><polyline points="9 18 15 12 9 6"/></svg></span></div>
+  <div class="dm-sub" id="dm-baby">
+    <div class="dm-sub-item" onclick="catFilter('baby');closeDrawer();">母嬰品牌</div>
+  </div>
+  <div style="height:1px;background:var(--border);margin:4px 0;"></div>
+  <div class="dm-ext" onclick="openExt('yeestore')"><svg viewBox="0 0 24 24" style="width:15px;height:15px;stroke:var(--primary);fill:none;stroke-width:2;flex-shrink:0;"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>賣貨便賣場</div>
+  <div class="dm-ext" onclick="openExt('group')"><svg viewBox="0 0 24 24" style="width:15px;height:15px;stroke:var(--primary);fill:none;stroke-width:2;flex-shrink:0;"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>加入我們的社團</div>
+  <div class="dm-ext" onclick="openQAModal()"><svg viewBox="0 0 24 24" style="width:15px;height:15px;stroke:var(--primary);fill:none;stroke-width:2;flex-shrink:0;"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>常見問題 Q&amp;A</div>
+</div>
+
+<!-- 隱私條款頁面 -->
+<div class="policy-overlay" id="privacyOverlay">
+  <div class="policy-bar">
+    <button class="back-btn" onclick="closePolicy('privacyOverlay')">
+      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <span style="font-size:14px;font-weight:700;">隱私權及服務條款</span>
+  </div>
+  <div class="policy-content">
+    <div id="privacyContent">
+      <h2 style="font-size:16px;font-weight:700;margin:16px 0 10px;color:var(--primary);">隱私權及服務條款</h2>
+      <p style="margin-bottom:12px;"><b>1、個人資料之保護：</b>本網頁係基於個人資料保護法第19條之規定蒐集消費者之個人資料，蒐集之目的僅為管理會員資料使用，本網頁當基於個人資料保護法第5條「個人資料之蒐集、處理或利用，應尊重當事人之權益，依誠實及信用方法為之，不得逾越特定目的之必要範圍，並應與蒐集之目的具有正當合理之關聯。」之規定，除個人資料保護法規定外，絕不無故向任何第三人洩露相關之個人資料。</p>
+      <p style="margin-bottom:12px;"><b>2、</b>本網頁上之照片、影像、影片及所提供之服務，均擁有全部之著作權，會員使用本網頁所提供之服務，請恪遵著作權法之相關規定，切勿有重製、公開播送、公開上映、公開傳輸及散布本網頁所提供之服務，若有違反，必依法著作權法第91條、第92條等相關規定主張權利。</p>
+      <p style="margin-bottom:12px;"><b>3、</b>本網頁對所公布之服務及課表，均保有最後修改之權利。</p>
+      <p style="margin-bottom:12px;"><b>4、</b>消費者或網路使用者於本網頁留言請遵守網路規範，並請留意散布不實消息或妨害名譽之行為可能有觸法之可能，本網頁對於消費者或網路使用者之留言，保有最後刪除之權利。</p>
+      <p style="margin-bottom:12px;"><b>5、關於Cookie的使用：</b>為便於日後的辨識，當您使用本網頁服務時，本網頁可能會在您的電腦上設定與存取Cookie。您可以透過設定您的個人電腦或上網設備，決定是否允許Cookie技術的使用，若您關閉Cookie時，可能會造成您使用本網頁服務時之不便利或部分功能限制。</p>
+      <p style="margin-bottom:12px;"><b>6、服務條款與隱私政策之修改：</b>本網頁有權隨時修改本隱私政策及本網頁各項內容之權利，將於網頁同一位置更改聲明外，不會再對會員進行個別通知。</p>
+      <p style="margin-bottom:8px;"><b>7、關於使用者資料保護：</b>使用第三方登入服務（例如：Facebook）時，我們可能會處理以下資料：</p>
+      <ul style="margin-left:18px;margin-bottom:10px;line-height:2;">
+        <li>姓名</li>
+        <li>電子郵件地址</li>
+      </ul>
+      <p style="margin-bottom:8px;">我們蒐集這些資料的目的包括：</p>
+      <ul style="margin-left:18px;margin-bottom:10px;line-height:2;">
+        <li>驗證身份，確保登入安全</li>
+        <li>協助完成訂單流程，並提供個人化服務</li>
+      </ul>
+      <p style="margin-bottom:12px;">我們不會長期儲存您的第三方個人資料，亦不會將其提供給其他第三方。若您希望刪除與第三方登入相關的資料，請參考我們的資料刪除頁面，或透過以下方式與我們聯繫：<a href="mailto:runababy0813@outlook.com" style="color:var(--primary);">runababy0813@outlook.com</a></p>
+    </div>
+
+  </div>
+</div>
+
+<!-- 資料刪除頁面 -->
+<div class="policy-overlay" id="deleteOverlay">
+  <div class="policy-bar">
+    <button class="back-btn" onclick="closePolicy('deleteOverlay')">
+      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <span style="font-size:14px;font-weight:700;">資料刪除指示</span>
+  </div>
+  <div class="policy-content">
+    <div id="deleteInfoContent" style="white-space:pre-line;"></div>
+  </div>
+</div>
+
+<!-- QA MODAL -->
+
+<div class="qa-modal" id="qaModal">
+  <div class="qa-panel">
+    <h3>常見問題 Q&A</h3>
+    <div id="qaList"></div>
+    <button class="qa-close" onclick="closeQAModal()">關閉</button>
+  </div>
+</div>
+
+<!-- DETAIL OVERLAY -->
+
+<div class="detail-overlay" id="detailOverlay">
+  <div class="detail-bar">
+    <button class="back-btn" onclick="closeDetail()">
+      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <span style="font-size:14px;font-weight:700;">商品詳情</span>
+  </div>
+  <div class="d-slider">
+    <div class="d-slides" id="dSlides"></div>
+    <button class="d-arr lft" onclick="slideGo(-1)"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
+    <button class="d-arr rgt" onclick="slideGo(1)"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>
+    <div class="d-dots" id="dDots"></div>
+  </div>
+  <div class="d-info">
+    <div class="d-badges" id="dBadges"></div>
+    <div class="d-title" id="dTitle"></div>
+    <div class="d-price" id="dPrice"></div>
+    <div class="d-desc-lbl">商品介紹</div>
+    <div class="d-desc" id="dDesc"></div>
+  </div>
+</div>
+
+<!-- 商品頁底部（overlay 外，不受 overflow 影響） -->
+<div id="detailNav" style="display:none;">
+  <button class="d-add-btn" onclick="openSpec()">加入購物車</button>
+  <nav class="detail-bot-nav">
+    <button onclick="closeDetail();goPage('home')" style="display:flex;flex-direction:column;align-items:center;gap:3px;border:none;background:transparent;color:var(--primary);font-size:11px;font-weight:500;padding:6px 20px;cursor:pointer;touch-action:manipulation;">
+      <svg viewBox="0 0 24 24" style="width:22px;height:22px;stroke:var(--primary);fill:none;stroke-width:2;"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>賣場首頁
+    </button>
+    <button onclick="closeDetail();goPage('cart')" style="display:flex;flex-direction:column;align-items:center;gap:3px;border:none;background:transparent;color:var(--primary);font-size:11px;font-weight:500;padding:6px 20px;cursor:pointer;touch-action:manipulation;position:relative;">
+      <svg viewBox="0 0 24 24" style="width:22px;height:22px;stroke:var(--primary);fill:none;stroke-width:2;"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>購物車
+    </button>
+    <button onclick="closeDetail();goPage('profile')" style="display:flex;flex-direction:column;align-items:center;gap:3px;border:none;background:transparent;color:var(--primary);font-size:11px;font-weight:500;padding:6px 20px;cursor:pointer;touch-action:manipulation;">
+      <svg viewBox="0 0 24 24" style="width:22px;height:22px;stroke:var(--primary);fill:none;stroke-width:2;"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>個人檔案
+    </button>
+  </nav>
+</div>
+
+<!-- SPEC MODAL -->
+
+<div class="spec-modal" id="specModal" onclick="if(event.target===this)closeSpec()">
+  <div class="spec-panel">
+    <h3>選擇規格</h3>
+    <div id="specBody"></div>
+    <div class="spec-sec">
+      <div class="spec-lbl">數量</div>
+      <div class="qty-row">
+        <button class="qty-btn" onclick="chgQty(-1)">−</button>
+        <span class="qty-num" id="qtyNum">1</span>
+        <button class="qty-btn" onclick="chgQty(1)">+</button>
+      </div>
+    </div>
+    <button class="confirm-btn" id="confirmBtn" onclick="addToCart()">確認加入購物車</button>
+    <button style="width:100%;background:transparent;border:none;color:var(--muted);padding:10px;margin-top:4px;font-size:13px;" onclick="closeSpec()">取消</button>
+  </div>
+</div>
+
+<!-- CHECKOUT MODAL -->
+
+<div class="ck-modal" id="ckModal">
+  <div class="ck-panel">
+    <h3>填寫收件資料</h3>
+    <div class="fg"><label>收件人姓名 *</label><input id="ck-name" placeholder="請輸入真實姓名"></div>
+    <div class="fg"><label>手機號碼 *</label><input id="ck-phone" type="tel" placeholder="09xx-xxx-xxx"></div>
+    <div class="fg"><label>電子郵件 *</label><input id="ck-email" type="email" placeholder="your@email.com"></div>
+    <div class="fg">
+      <label>收件方式 *</label>
+      <div class="ship-tabs">
+        <button class="ship-tab on" onclick="setShip('711',this)">7-11 賣貨便</button>
+        <button class="ship-tab" onclick="setShip('post',this)">郵局宅配</button>
+        <button class="ship-tab" onclick="setShip('family',this)">全家貨到付款</button>
+      </div>
+    </div>
+    <div id="shipFields"></div>
+    <div class="fg"><label>備註（選填）</label><textarea id="ck-note" rows="2" style="resize:none;"></textarea></div>
+    <div class="fg"><label>優惠券代碼</label><div style="display:flex;gap:8px;"><input id="ck-coupon" placeholder="輸入優惠碼（選填）" style="flex:1;"><button type="button" onclick="applyCoupon()" style="padding:10px 16px;background:var(--primary);color:#fff;border:none;border-radius:10px;font-size:13px;font-weight:700;white-space:nowrap;cursor:pointer;">套用</button></div><div id="coupon-result" style="font-size:12px;margin-top:4px;min-height:16px;"></div></div>
+    <button class="ck-submit" onclick="submitOrder()">確認送出訂單</button>
+    <button class="ck-cancel" onclick="closeCK()">返回購物車</button>
+  </div>
+</div>
+
+<!-- SUCCESS MODAL -->
+
+<div class="ok-modal" id="okModal">
+  <div class="ok-panel">
+    <div class="ok-icon"><svg viewBox="0 0 24 24" style="width:52px;height:52px;stroke:var(--success);fill:none;stroke-width:2;"><circle cx="12" cy="12" r="10"/><polyline points="9 12 11 14 15 10"/></svg></div>
+    <h3>訂單送出成功！</h3>
+    <p>訂單編號</p>
+    <div class="ok-num" id="okNum"></div>
+    <div class="ok-info" id="okInfo"></div>
+    <button class="ok-btn" onclick="goOrders()">查看訂單狀態</button>
+    <button class="ok-ghost" onclick="closeOK()">繼續購物</button>
+  </div>
+</div>
+
+<!-- PAGES -->
+
+<div class="page active" id="pg-home"><div class="dt-side" id="DT_SIDE">
+  <div style="padding:14px 16px;border-bottom:1px solid var(--border);margin-bottom:8px;">
+    <div style="display:flex;align-items:center;gap:10px;">
+      <div class="store-logo" id="sideLogoD"><svg viewBox="0 0 24 24" style="width:20px;height:20px;stroke:var(--primary);fill:none;stroke-width:2;"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div>
+      <div class="store-name" id="sideNameD">Runababy韓國選品</div>
+    </div>
+  </div>
+  <div class="dm-item" onclick="catFilter('all');"><span style="display:flex;align-items:center;gap:8px;"><svg viewBox="0 0 24 24" style="width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>全部商品</span></div>
+  <div class="dm-item" onclick="catFilter('new');"><span style="display:flex;align-items:center;gap:8px;"><svg viewBox="0 0 24 24" style="width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>新品上市</span></div>
+  <div class="dm-item" onclick="toggleDM('dt-women',this)"><span style="display:flex;align-items:center;gap:8px;"><svg viewBox="0 0 24 24" style="width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;"><circle cx="12" cy="8" r="4"/><path d="M12 12v8m-3-3h6"/></svg>女裝</span><span class="dm-arrow"><svg viewBox="0 0 24 24" style="width:12px;height:12px;stroke:var(--muted);fill:none;stroke-width:2.5;"><polyline points="9 18 15 12 9 6"/></svg></span></div>
+  <div class="dm-sub" id="dt-women">
+    <div class="dm-sub-item" onclick="toggleDM('dt-w-pre',this)"><span>預購</span><span class="dm-arrow"><svg viewBox="0 0 24 24" style="width:12px;height:12px;stroke:var(--muted);fill:none;stroke-width:2.5;"><polyline points="9 18 15 12 9 6"/></svg></span></div>
+    <div class="dm-subsub" id="dt-w-pre">
+      <div class="dm-subsub-item" onclick="catFilter('w-pre-jan')">1月預購</div>
+      <div class="dm-subsub-item" onclick="catFilter('w-pre-feb')">2月預購</div>
+    </div>
+    <div class="dm-sub-item" onclick="toggleDM('dt-w-stk',this)"><span>現貨</span><span class="dm-arrow"><svg viewBox="0 0 24 24" style="width:12px;height:12px;stroke:var(--muted);fill:none;stroke-width:2.5;"><polyline points="9 18 15 12 9 6"/></svg></span></div>
+    <div class="dm-subsub" id="dt-w-stk">
+      <div class="dm-subsub-item" onclick="catFilter('w-stk-jan')">1月現貨</div>
+      <div class="dm-subsub-item" onclick="catFilter('w-stk-feb')">2月現貨</div>
+    </div>
+  </div>
+  <div class="dm-item" onclick="toggleDM('dt-kids',this)"><span style="display:flex;align-items:center;gap:8px;"><svg viewBox="0 0 24 24" style="width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;"><circle cx="12" cy="7" r="4"/><path d="M5.5 21a8.38 8.38 0 0 1 13 0"/></svg>童裝</span><span class="dm-arrow"><svg viewBox="0 0 24 24" style="width:12px;height:12px;stroke:var(--muted);fill:none;stroke-width:2.5;"><polyline points="9 18 15 12 9 6"/></svg></span></div>
+  <div class="dm-sub" id="dt-kids">
+    <div class="dm-sub-item" onclick="toggleDM('dt-k-pre',this)"><span>預購</span><span class="dm-arrow"><svg viewBox="0 0 24 24" style="width:12px;height:12px;stroke:var(--muted);fill:none;stroke-width:2.5;"><polyline points="9 18 15 12 9 6"/></svg></span></div>
+    <div class="dm-subsub" id="dt-k-pre">
+      <div class="dm-subsub-item" onclick="catFilter('k-pre-jan')">1月預購</div>
+      <div class="dm-subsub-item" onclick="catFilter('k-pre-feb')">2月預購</div>
+    </div>
+    <div class="dm-sub-item" onclick="toggleDM('dt-k-stk',this)"><span>現貨</span><span class="dm-arrow"><svg viewBox="0 0 24 24" style="width:12px;height:12px;stroke:var(--muted);fill:none;stroke-width:2.5;"><polyline points="9 18 15 12 9 6"/></svg></span></div>
+    <div class="dm-subsub" id="dt-k-stk">
+      <div class="dm-subsub-item" onclick="catFilter('k-stk-jan')">1月現貨</div>
+      <div class="dm-subsub-item" onclick="catFilter('k-stk-feb')">2月現貨</div>
+    </div>
+  </div>
+  <div class="dm-item" onclick="toggleDM('dt-baby',this)"><span style="display:flex;align-items:center;gap:8px;"><svg viewBox="0 0 24 24" style="width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;"><path d="M9 12h6m-3-3v6m8-3a8 8 0 1 1-16 0 8 8 0 0 1 16 0z"/></svg>母嬰商品</span><span class="dm-arrow"><svg viewBox="0 0 24 24" style="width:12px;height:12px;stroke:var(--muted);fill:none;stroke-width:2.5;"><polyline points="9 18 15 12 9 6"/></svg></span></div>
+  <div class="dm-sub" id="dt-baby">
+    <div class="dm-sub-item" onclick="catFilter('baby')">母嬰品牌</div>
+  </div>
+  <div style="height:1px;background:var(--border);margin:4px 0;"></div>
+  <div class="dm-ext" onclick="openExt('yeestore')"><svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:var(--primary);fill:none;stroke-width:2;"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>賣貨便賣場</div>
+  <div class="dm-ext" onclick="openExt('group')"><svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:var(--primary);fill:none;stroke-width:2;"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>加入社團</div>
+  <div class="dm-ext" onclick="openQAModal()"><svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:var(--primary);fill:none;stroke-width:2;"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>常見問題</div>
+</div><div class="dt-main">
+  <div class="store-header">
+    <button class="hamburger" onclick="openDrawer()"><span></span><span></span><span></span></button>
+    <a class="store-id" href="/" onclick="event.preventDefault();goPage('home');" style="cursor:pointer;text-decoration:none;color:inherit;">
+      <div class="store-logo" id="headerLogo"><svg viewBox="0 0 24 24" style="width:20px;height:20px;stroke:var(--primary);fill:none;stroke-width:2;"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div>
+      <div class="store-name" id="headerName">Runababy韓國選品</div>
+    </a>
+    <div style="width:36px;flex-shrink:0;"></div>
+  </div>
+  <div class="cat-tabs" id="catTabs"></div>
+  <div class="search-wrap">
+    <div class="search-box">
+      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="text" id="searchInput" placeholder="搜尋商品名稱或編號…" oninput="doSearch()">
+    </div>
+  </div>
+  <div class="ann-box">
+    <div class="ann-title"><svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:var(--primary);fill:none;stroke-width:2;vertical-align:middle;margin-right:4px;"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>官網公告</div>
+    <div class="ann-body" id="annBody"></div>
+  </div>
+  <div class="banner" id="bannerWrap">
+    <div class="banner-ph" id="bannerPH"><svg viewBox="0 0 24 24" style="width:32px;height:32px;stroke:var(--muted);fill:none;stroke-width:1.5;display:block;margin:0 auto 8px;"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>請至後台上傳主圖</div>
+  </div>
+  <div class="sec-title">商品列表</div>
+  <div class="prod-grid" id="prodGrid"></div>
+  <!-- 頁尾 -->
+  <footer class="store-footer" id="storeFooter">
+    <div class="footer-social">
+      <a href="https://www.instagram.com/runababy_kr?igsh=MXhlZ2o4dTBsNWk3cw%3D%3D&utm_source=qr" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      </a>
+      <a href="https://www.facebook.com/groups/runababy" target="_blank" rel="noopener" aria-label="Facebook">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+      </a>
+      <a href="https://lin.ee/QPmeyRd" target="_blank" rel="noopener" aria-label="LINE">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><path d="M21 11.5C21 6.8 17 3 12 3S3 6.8 3 11.5c0 4.2 3.3 7.7 7.8 8.4.3.1.7.2.8.5.1.2.1.5 0 .8l-.1.8c0 .2-.2.9.8.5 1-.4 5.4-3.2 7.4-5.4A7.6 7.6 0 0 0 21 11.5z"/></svg>
+      </a>
+    </div>
+    <div class="footer-links">
+      <a href="/privacy">隱私政策</a>
+    </div>
+  </footer>
+</div></div>
+
+<div class="page" id="pg-cart">
+  <div class="page-title-bar" style="padding:14px 12px 4px;font-size:16px;font-weight:700;display:flex;align-items:center;gap:8px;"><svg viewBox="0 0 24 24" style="width:20px;height:20px;stroke:var(--primary);fill:none;stroke-width:2;flex-shrink:0;"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>購物車</div>
+  <div class="cart-wrap" id="cartWrap"></div>
+</div>
+
+<div class="page" id="pg-profile">
+  <div class="page-title-bar" style="padding:14px 12px 4px;font-size:16px;font-weight:700;display:flex;align-items:center;gap:8px;"><svg viewBox="0 0 24 24" style="width:20px;height:20px;stroke:var(--primary);fill:none;stroke-width:2;flex-shrink:0;"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>個人檔案</div>
+  <div class="pf-wrap">
+    <!-- 未登入 -->
+    <div id="pf-guest">
+      <!-- 登入面板 -->
+      <div class="pf-card" id="pf-login-panel">
+        <h3 style="margin-bottom:4px;">登入帳號</h3>
+        <p style="font-size:12px;color:var(--muted);margin-bottom:16px;">登入後可查看訂單紀錄，並填寫個人資料。</p>
+
+        <!-- Google 快速登入 -->
+        <button onclick="googleLogin()" style="width:100%;display:flex;align-items:center;justify-content:center;gap:10px;padding:12px;border:1.5px solid #dadce0;border-radius:28px;background:#fff;font-size:14px;font-weight:600;color:#3c4043;cursor:pointer;margin-bottom:14px;font-family:'Noto Sans TC',sans-serif;">
+          <svg width="18" height="18" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.18 1.48-4.97 2.34-8.16 2.34-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
+          使用 Google 快速登入
+        </button>
+
+        <div style="display:flex;align-items:center;gap:10px;margin:12px 0;color:#ccc;font-size:12px;">
+          <div style="flex:1;height:1px;background:#f0d8d8;"></div>或<div style="flex:1;height:1px;background:#f0d8d8;"></div>
+        </div>
+
+        <!-- 一般帳號登入 -->
+        <div id="login-err" style="color:var(--danger);font-size:12px;margin-bottom:8px;"></div>
+        <div class="pf-field"><label>帳號（電子信箱）</label><input id="login-acc" type="email" placeholder="your@email.com" onblur="if(document.getElementById('forgot-panel')&&document.getElementById('forgot-panel').style.display==='block')_fetchSecurityQuestion(this.value.trim())"></div>
+        <div class="pf-field"><label>密碼</label><div style="position:relative;"><input id="login-pw" type="password" placeholder="請輸入密碼" style="width:100%;padding-right:42px;box-sizing:border-box;"><button type="button" onclick="var i=document.getElementById('login-pw');i.type=i.type==='password'?'text':'password';" style="position:absolute;right:10px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;font-size:16px;">👁</button></div></div>
+        <button onclick="doEmailLogin()" style="width:100%;background:var(--primary);color:#fff;border:none;border-radius:28px;padding:12px;font-size:14px;font-weight:700;margin-bottom:10px;font-family:'Noto Sans TC',sans-serif;">登入</button>
+
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+          <button onclick="toggleForgot()" style="background:none;border:none;color:var(--primary);font-size:12px;cursor:pointer;text-decoration:underline;padding:0;">忘記密碼？</button>
+        </div>
+
+        <!-- 忘記密碼面板 -->
+        <div id="forgot-panel" style="display:none;background:var(--bg);border-radius:10px;padding:14px;margin-bottom:12px;border:1px solid var(--border);">
+          <div style="font-size:12px;font-weight:700;margin-bottom:6px;">🔑 重設密碼</div>
+          <div style="font-size:11px;color:var(--muted);margin-bottom:10px;">系統將寄送重設密碼連結到您的信箱，請確認上方已填寫正確的 Email。</div>
+          <div id="forgot-err" style="font-size:11px;margin-bottom:8px;min-height:16px;"></div>
+          <button onclick="doSendPasswordReset()" style="width:100%;background:var(--primary);color:#fff;border:none;border-radius:28px;padding:10px;font-size:13px;font-weight:700;font-family:'Noto Sans TC',sans-serif;">寄送重設密碼信</button>
+        </div>
+
+        <div style="text-align:center;">
+          <span style="font-size:12px;color:var(--muted);">還沒有帳號？</span>
+          <button onclick="openRegister()" style="background:none;border:none;color:var(--primary);font-size:12px;font-weight:700;cursor:pointer;text-decoration:underline;">立即註冊</button>
+        </div>
+      </div>
+
+      <!-- 註冊面板 -->
+      <div class="pf-card" id="pf-register-panel" style="display:none;">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;">
+          <button onclick="closeRegister()" style="background:var(--bg);border:none;border-radius:50%;width:30px;height:30px;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;">←</button>
+          <h3 style="margin-bottom:0;">新會員註冊</h3>
+        </div>
+
+        <!-- Google 快速註冊 -->
+        <button onclick="googleLogin()" style="width:100%;display:flex;align-items:center;justify-content:center;gap:10px;padding:12px;border:1.5px solid #dadce0;border-radius:28px;background:#fff;font-size:14px;font-weight:600;color:#3c4043;cursor:pointer;margin-bottom:14px;font-family:'Noto Sans TC',sans-serif;">
+          <svg width="18" height="18" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.18 1.48-4.97 2.34-8.16 2.34-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
+          使用 Google 快速註冊
+        </button>
+
+        <div style="display:flex;align-items:center;gap:10px;margin:12px 0;color:#ccc;font-size:12px;">
+          <div style="flex:1;height:1px;background:#f0d8d8;"></div>或填寫資料註冊<div style="flex:1;height:1px;background:#f0d8d8;"></div>
+        </div>
+
+        <div id="reg-err" style="color:var(--danger);font-size:12px;margin-bottom:8px;"></div>
+        <div class="pf-field"><label>帳號（電子信箱）</label><input id="reg-acc" type="email" placeholder="your@email.com"></div>
+        <div class="pf-field">
+          <label>設定密碼</label>
+          <div style="position:relative;"><input id="reg-pw" type="password" placeholder="請設定密碼" style="width:100%;padding-right:42px;box-sizing:border-box;"><button type="button" onclick="var i=document.getElementById('reg-pw');i.type=i.type==='password'?'text':'password';" style="position:absolute;right:10px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;font-size:16px;">👁</button></div>
+          <p style="font-size:11px;color:var(--muted);margin-top:4px;">⚠️ 請不要與其他網站密碼相同</p>
+        </div>
+
+        <div class="pf-field">
+          <label>IG 帳號</label>
+          <input id="reg-ig" placeholder="@your_ig">
+          <p style="font-size:11px;color:var(--muted);margin-top:4px;">📦 供到貨通知使用，請確實填寫。<br>如未填寫，請主動私訊小幫手以利出貨通知。</p>
+        </div>
+
+        <div style="background:#fff8f8;border-radius:10px;padding:10px 12px;margin-bottom:14px;border:1px solid var(--border);font-size:12px;color:var(--muted);">
+          🎫 <b style="color:var(--primary);">會員編號</b>將於註冊完成後自動產生<br>
+          <span style="font-size:11px;">為純數字格式，可在個人頁面查看</span>
+        </div>
+
+        <button onclick="doRegister()" style="width:100%;background:var(--primary);color:#fff;border:none;border-radius:28px;padding:13px;font-size:14px;font-weight:700;font-family:'Noto Sans TC',sans-serif;">完成註冊</button>
+      </div>
+    </div>
+    <!-- 已登入 -->
+    <div id="pf-logged" style="display:none;">
+      <div class="pf-card">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:13px;">
+          <h3 style="margin-bottom:0;">帳號資料</h3>
+          <button onclick="googleLogout()" style="font-size:11px;color:var(--muted);background:transparent;border:1px solid var(--border);border-radius:12px;padding:3px 10px;cursor:pointer;">登出</button>
+        </div>
+        <div id="fbUser" style="background:var(--bg);border-radius:8px;padding:9px 12px;margin-bottom:8px;font-size:13px;display:block;">已登入為 <span id="fbLink" style="color:var(--primary);font-weight:700;"></span></div>
+        <div id="memberBadge" style="background:#fff8f8;border:1px solid var(--border);border-radius:8px;padding:7px 12px;margin-bottom:12px;font-size:11px;color:var(--muted);">🎫 會員編號：－</div>
+        <div class="pf-field"><label>姓名</label><input id="pf-name" placeholder="請輸入姓名"></div>
+        <div class="pf-field"><label>電話</label><input id="pf-phone" type="tel" placeholder="09xx-xxx-xxx"></div>
+        <div class="pf-field">
+          <label>IG 帳號</label>
+          <input id="pf-ig" placeholder="@your_ig">
+          <p style="font-size:11px;color:var(--muted);margin-top:4px;">📦 供到貨通知使用，請確實填寫。<br>如未填寫，請主動私訊小幫手以利出貨通知。</p>
+        </div>
+        <button class="pf-save" id="pfSave" onclick="saveProfile()">儲存資料</button>
+      </div>
+      <div class="pf-card">
+        <h3>訂單紀錄</h3>
+        <div id="orderList"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<nav class="bot-nav">
+  <button class="nav-btn active" id="nb-home" onclick="goPage('home')">
+    <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    賣場首頁
+  </button>
+  <button class="nav-btn" id="nb-cart" onclick="goPage('cart')">
+    <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+    <span class="cart-dot" id="cartDot"></span>
+    購物車
+  </button>
+  <button class="nav-btn" id="nb-profile" onclick="goPage('profile')">
+    <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+    個人檔案
+  </button>
+</nav>
+
+<script>
+var S={storeName:'Runababy韓國選品',logoUrl:'',announcement:'歡迎來到 Runababy 韓國選品！最新韓國直送商品持續更新中，歡迎加入社群！',bannerUrl:'',categories:[{id:'all',label:'全部商品'},{id:'preorder',label:'預購商品'},{id:'stock',label:'現貨商品'},{id:'new',label:'新品上市'}],categoryTree:[],products:[],extLinks:{yeestore:'',group:''},qaList:[{q:'如何下單？',a:'將商品加入購物車後，填寫收件資料送出即可。'},{q:'預購商品何時到貨？',a:'到貨時間請參考各商品頁面說明或公告。'},{q:'可以退換貨嗎？',a:'韓國代購商品原則不退換，如有瑕疵請24小時內聯繫我們。'}]};
+var cart=[];var profile={};var orders=[];var currentProd=null;var slideIdx=0;var specQty=1;var specSel={};var shipType='711';var activeFilter='all';
+
+function defaultCategoryTree(){
+  return [
+    {id:'women',label:'女裝',children:[
+      {id:'women-pre',label:'預購',children:[{id:'w-pre-jan',label:'1月預購',children:[]},{id:'w-pre-feb',label:'2月預購',children:[]}]},
+      {id:'women-stock',label:'現貨',children:[{id:'w-stk-jan',label:'1月現貨',children:[]},{id:'w-stk-feb',label:'2月現貨',children:[]}]}
+    ]},
+    {id:'kids',label:'童裝',children:[
+      {id:'kids-pre',label:'預購',children:[{id:'k-pre-jan',label:'1月預購',children:[]},{id:'k-pre-feb',label:'2月預購',children:[]}]},
+      {id:'kids-stock',label:'現貨',children:[{id:'k-stk-jan',label:'1月現貨',children:[]},{id:'k-stk-feb',label:'2月現貨',children:[]}]}
+    ]},
+    {id:'baby',label:'母嬰商品',children:[{id:'baby',label:'母嬰品牌',children:[]}]}
+  ];
+}
+function ensureTreeNode(node){
+  if(!node.id)node.id='cat-'+Math.random().toString(36).slice(2,9);
+  if(!node.label)node.label='未命名分類';
+  if(!Array.isArray(node.children))node.children=[];
+  node.children.forEach(ensureTreeNode);
+}
+function collectLeaves(tree,acc,path){
+  (tree||[]).forEach(function(node){
+    var p=(path||[]).concat(node.label||'未命名');
+    if(node.children&&node.children.length)collectLeaves(node.children,acc,p);
+    else acc.push({id:node.id,label:p.join(' / ')});
+  });
+}
+function syncCategoriesFromTree(){
+  if(!Array.isArray(S.categoryTree)||!S.categoryTree.length)S.categoryTree=defaultCategoryTree();
+  S.categoryTree.forEach(ensureTreeNode);
+  var leaves=[];
+  collectLeaves(S.categoryTree,leaves,[]);
+  var base=[{id:'all',label:'全部商品'},{id:'preorder',label:'預購商品'},{id:'stock',label:'現貨商品'},{id:'new',label:'新品上市'}];
+  S.categories=base.concat(leaves);
+}
+
+function loadLS(){
+  try{var s=localStorage.getItem('runababyStore');if(s)S=JSON.parse(s);}catch(e){}
+  try{var c=localStorage.getItem('runababyCart');if(c)cart=JSON.parse(c);}catch(e){}
+  try{var p=localStorage.getItem('runababyProfile');if(p)profile=JSON.parse(p);}catch(e){}
+  // 訂單不從 localStorage 讀取，完全依賴 Firestore onSnapshot 即時同步
+  syncCategoriesFromTree();
+}
+
+function renderPolicyPages(){
+  // 隱私政策內容已直接寫在 HTML 的 privacyContent div 中，不需動態插入
+  var defDel='資料刪除申請說明：\n如需刪除您的個人資料，請填寫下方表單，我們將於7個工作天內完成處理。';
+  var dc=document.getElementById('deleteInfoContent');
+  if(dc)dc.textContent=S.deleteInfoText||defDel;
+}
+
+function init(){
+  loadLS();
+  document.getElementById('headerName').textContent=S.storeName||'Runababy韓國選品';
+  document.getElementById('drawerName').textContent=S.storeName||'Runababy韓國選品';if(document.getElementById('sideNameD'))document.getElementById('sideNameD').textContent=S.storeName||'Runababy韓國選品';if(S.logoUrl&&document.getElementById('sideLogoD'))document.getElementById('sideLogoD').innerHTML='<img src="'+S.logoUrl+'" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">';
+  document.getElementById('annBody').textContent=S.announcement||'';
+  var logoEl=document.getElementById('headerLogo');
+  if(S.logoUrl){
+    logoEl.innerHTML='<img src="'+S.logoUrl+'" alt="logo">';
+  }else{logoEl.innerHTML='<svg viewBox="0 0 24 24" style="width:20px;height:20px;stroke:var(--primary);fill:none;stroke-width:2;"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>';}
+  if(S.bannerUrl){document.getElementById('bannerWrap').innerHTML='<img src="'+S.bannerUrl+'" alt="banner">';}
+  renderCategoryMenus();renderCatTabs();renderProds();renderCart();renderOrders();loadProfileUI();renderQA();updateCartDot();renderPolicyPages();
+}
+
+function goPage(p){
+  document.querySelectorAll('.page').forEach(function(el){el.classList.remove('active');});
+  document.querySelectorAll('.nav-btn').forEach(function(el){el.classList.remove('active');});
+  document.getElementById('pg-'+p).classList.add('active');
+  document.getElementById('nb-'+p).classList.add('active');
+  if(p==='cart')renderCart();
+  if(p==='profile'){renderOrders();loadProfileUI();}
+}
+
+function renderCatTabs(){
+  // 只顯示固定分類（移除新品上市/熱銷商品，保留全部/童裝/女裝）
+  var fixed=[{id:'all',label:'全部商品'},{id:'kids',label:'童裝'},{id:'women',label:'女裝'}];
+  var tabs=document.getElementById('catTabs');
+  tabs.innerHTML=fixed.map(function(c){
+    return '<button class="cat-tab'+(c.id===activeFilter?' active':'')+'" onclick="catFilter(\''+c.id+'\',this)">'+c.label+'</button>';
+  }).join('');
+}
+
+function makeCategoryNodeHtml(node,prefix){
+  var branchId=(prefix||'dm')+'-'+node.id.replace(/[^a-zA-Z0-9_-]/g,'');
+  if(node.children&&node.children.length){
+    var subClass=(prefix&&prefix.indexOf('dt-')===0)?'dm-sub':'dm-sub';
+    var childClass=(prefix&&prefix.indexOf('dt-')===0)?'dm-sub-item':'dm-sub-item';
+    return '<div class="dm-item" onclick="toggleDM(\''+branchId+'\',this)"><span>'+node.label+'</span><span class="dm-arrow"><svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:var(--muted);fill:none;stroke-width:2.5;"><polyline points="9 18 15 12 9 6"/></svg></span></div>'
+      +'<div class="'+subClass+'" id="'+branchId+'">'+node.children.map(function(ch){
+        if(ch.children&&ch.children.length){
+          var childId=branchId+'-'+ch.id.replace(/[^a-zA-Z0-9_-]/g,'');
+          return '<div class="'+childClass+'" onclick="toggleDMsub(\''+childId+'\',this)"><span>'+ch.label+'</span><span class="dm-arrow"><svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:var(--muted);fill:none;stroke-width:2.5;"><polyline points="9 18 15 12 9 6"/></svg></span></div>'
+            +'<div class="dm-subsub" id="'+childId+'">'+ch.children.map(function(ss){return '<div class="dm-subsub-item" onclick="catFilter(\''+ss.id+'\');closeDrawer();">'+ss.label+'</div>';}).join('')+'</div>';
+        }
+        return '<div class="'+childClass+'" onclick="catFilter(\''+ch.id+'\');closeDrawer();"><span>'+ch.label+'</span></div>';
+      }).join('')+'</div>';
+  }
+  return '<div class="dm-item" onclick="catFilter(\''+node.id+'\');closeDrawer();"><span>'+node.label+'</span></div>';
+}
+
+function renderCategoryMenus(){
+  syncCategoriesFromTree();
+  var drawer=document.getElementById('drawer');
+  var side=document.getElementById('DT_SIDE');
+  if(drawer){
+    drawer.innerHTML='<div class="drawer-head"><span class="drawer-logo" id="drawerName">'+(S.storeName||'Runababy韓國選品')+'</span><button class="drawer-close" onclick="closeDrawer()">✕</button></div>'
+      +'<div class="dm-item" onclick="catFilter(\'all\');closeDrawer();">全部商品</div>'
+      +'<div class="dm-item" onclick="catFilter(\'new\');closeDrawer();">新品上市</div>'
+      +'<div class="dm-item" onclick="catFilter(\'hot\');closeDrawer();">熱銷商品</div>'
+      +(S.categoryTree||[]).map(function(node){return makeCategoryNodeHtml(node,'dm');}).join('')
+      +'<div style="height:1px;background:var(--border);margin:4px 0;"></div>'
+      +'<div class="dm-ext" onclick="openExt(\'yeestore\')">賣貨便賣場</div>'
+      +'<div class="dm-ext" onclick="openExt(\'group\')">加入我們的社團</div>'
+      +((S.extLinks&&S.extLinks.custom&&S.extLinks.custom.length)?S.extLinks.custom.map(function(lk){return '<div class="dm-ext" onclick="window.open(\''+lk.url+'\',\'_blank\');closeDrawer();">'+lk.name+'</div>';}).join(''):'')
+      +'<div class="dm-ext" onclick="openQAModal()">常見問題 Q&A</div>'
+      +'<div style="height:1px;background:var(--border);margin:4px 0;"></div>'
+      +'<div class="dm-item" onclick="toggleDM(\'dm-about\',this)"><span>關於我們</span><span class="dm-arrow"><svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:var(--muted);fill:none;stroke-width:2.5;"><polyline points="9 18 15 12 9 6"/></svg></span></div>'
+      +'<div class="dm-sub" id="dm-about">'
+      +'<div class="dm-sub-item" onclick="window.location.href=\'/privacy\';closeDrawer();">隱私權及服務條款</div>'
+      +'</div>';
+  }
+  if(side){
+    side.innerHTML='<div style="padding:14px 16px;border-bottom:1px solid var(--border);margin-bottom:8px;"><div style="display:flex;align-items:center;gap:10px;"><div class="store-logo" id="sideLogoD">'+(S.logoUrl?'<img src="'+S.logoUrl+'" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">':'<svg viewBox="0 0 24 24" style="width:20px;height:20px;stroke:var(--primary);fill:none;stroke-width:2;"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>')+'</div><div class="store-name" id="sideNameD">'+(S.storeName||'Runababy韓國選品')+'</div></div></div>'
+      +'<div class="dm-item" onclick="catFilter(\'all\');">全部商品</div>'
+      +'<div class="dm-item" onclick="catFilter(\'new\');">🌟 新品上市</div>'
+      +'<div class="dm-item" onclick="catFilter(\'hot\');">🔥 熱銷商品</div>'
+      +(S.categoryTree||[]).map(function(node){return makeCategoryNodeHtml(node,'dt');}).join('')
+      +'<div style="height:1px;background:var(--border);margin:4px 0;"></div>'
+      +'<div class="dm-ext" onclick="openExt(\'yeestore\')">賣貨便賣場</div>'
+      +'<div class="dm-ext" onclick="openExt(\'group\')">加入社團</div>'
+      +((S.extLinks&&S.extLinks.custom&&S.extLinks.custom.length)?S.extLinks.custom.map(function(lk){return '<div class="dm-ext" onclick="window.open(\''+lk.url+'\',\'_blank\');">'+lk.name+'</div>';}).join(''):'')
+      +'<div class="dm-ext" onclick="openQAModal()">常見問題</div>'
+      +'<div style="height:1px;background:var(--border);margin:4px 0;"></div>'
+      +'<div class="dm-item" onclick="toggleDM(\'dt-about\',this)"><span>關於我們</span><span class="dm-arrow"><svg viewBox="0 0 24 24" style="width:12px;height:12px;stroke:var(--muted);fill:none;stroke-width:2.5;"><polyline points="9 18 15 12 9 6"/></svg></span></div>'
+      +'<div class="dm-sub" id="dt-about">'
+      +'<div class="dm-sub-item" onclick="window.location.href=\'/privacy\' ;">隱私權及服務條款</div>'
+      +'</div>';
+  }
+}
+
+function catFilter(id,btn){
+  activeFilter=id;prodPage=0;
+  document.querySelectorAll('.cat-tab').forEach(function(b){b.classList.remove('active');});
+  if(btn)btn.classList.add('active');
+  document.getElementById('searchInput').value='';
+  renderProds();goPage('home');
+}
+
+var prodPage=0;var PAGE_SIZE=20;
+function renderProds(search){
+  search=search||'';
+  var prods=(S.products||[]).filter(function(p){return p.active!==false;});
+  if(activeFilter==='preorder')prods=prods.filter(function(p){return p.type==='preorder';});
+  else if(activeFilter==='stock')prods=prods.filter(function(p){return p.type==='stock';});
+  else if(activeFilter==='new')prods=prods.filter(function(p){return p.isNew;});
+  else if(activeFilter==='hot')prods=prods.filter(function(p){return p.isHot;});
+  else if(activeFilter==='kids')prods=prods.filter(function(p){return p.isKids||(p.categoryId&&p.categoryId.indexOf('k-')===0);});
+  else if(activeFilter==='women')prods=prods.filter(function(p){return p.isWomen||(p.categoryId&&p.categoryId.indexOf('w-')===0);});
+  else if(activeFilter!=='all')prods=prods.filter(function(p){return p.categoryId===activeFilter||p.subCat===activeFilter||p.bigCat===activeFilter;});
+  if(search){var s=search.toLowerCase();prods=prods.filter(function(p){return p.title.toLowerCase().indexOf(s)>-1||String(p.id).toLowerCase().indexOf(s)>-1;});}
+  var total=prods.length;
+  var start=prodPage*PAGE_SIZE;
+  var pageProds=prods.slice(start,start+PAGE_SIZE);
+  var grid=document.getElementById('prodGrid');
+  if(!total){grid.innerHTML='<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--muted);">目前沒有商品</div>';return;}
+  grid.innerHTML=pageProds.map(function(p){
+    var saleBadge=p.isSale?'<span class="badge" style="background:#e53e3e;">特價</span>':'';
+    return '<div class="prod-card" data-pid="'+(p.slug||p.id||'')+'" onclick="openDetailByEl(this)">'
+      +'<div class="prod-img-wrap">'
+      +(p.images&&p.images[0]?'<img src="'+p.images[0]+'" alt="'+p.title+'" loading="lazy">'
+        :'<div class="prod-img-ph">無圖片</div>')
+      +'<div class="prod-badges">'
+      +'<span class="badge '+(p.type==='stock'?'stock':'preorder')+'">'+(p.type==='stock'?'現貨':'預購')+'</span>'
+      +(p.isNew?'<span class="badge newitem">新品</span>':'')
+      +(p.isHot?'<span class="badge hot">熱銷</span>':'')
+      +saleBadge
+      +'</div></div>'
+      +'<div class="prod-info">'
+      +'<div class="prod-title">'+p.title+'</div>'
+      +'<div class="prod-price">NT$ '+Number(p.price).toLocaleString()+'</div>'
+      +'</div></div>';
+  }).join('');
+  var pages=Math.ceil(total/PAGE_SIZE);
+  if(pages>1){
+    var pager='<div style="grid-column:1/-1;display:flex;justify-content:center;align-items:center;gap:10px;padding:16px 0;">';
+    if(prodPage>0)pager+='<button onclick="prodPage--;renderProds()" style="padding:8px 18px;border:1.5px solid var(--primary);border-radius:20px;background:#fff;color:var(--primary);font-weight:700;cursor:pointer;">← 上一頁</button>';
+    pager+='<span style="font-size:13px;color:var(--muted);">第 '+(prodPage+1)+' / '+pages+' 頁</span>';
+    if(prodPage<pages-1)pager+='<button onclick="prodPage++;renderProds()" style="padding:8px 18px;border:none;border-radius:20px;background:var(--primary);color:#fff;font-weight:700;cursor:pointer;">下一頁 →</button>';
+    pager+='</div>';
+    grid.innerHTML+=pager;
+  }
+}
+
+function doSearch(){renderProds(document.getElementById('searchInput').value);}
+
+function openDetailByEl(el){
+  var pid=el.getAttribute('data-pid');
+  openDetail(pid);
+}
+
+function openDetail(id){
+  var p=(S.products||[]).find(function(x){return x.slug===id||x.id===id;});
+  if(!p)return;
+  currentProd=p;slideIdx=0;
+  var imgs=(p.images&&p.images.length)?p.images:[''];
+  document.getElementById('dSlides').innerHTML=imgs.map(function(img){
+    return '<div class="d-slide">'+(img?'<img src="'+img+'" alt="" loading="lazy">':'<div style="width:100%;height:100%;background:var(--border);display:flex;align-items:center;justify-content:center;color:var(--muted);">無圖片</div>')+'</div>';
+  }).join('');
+  document.getElementById('dDots').innerHTML=imgs.map(function(_,i){
+    return '<div class="d-dot'+(i===0?' on':'')+'" onclick="slideSet('+i+')"></div>';
+  }).join('');
+  document.getElementById('dBadges').innerHTML='<span class="badge '+(p.type==='stock'?'stock':'preorder')+'">'+(p.type==='stock'?'現貨':'預購')+'</span>'+(p.isNew?'<span class="badge newitem">新品</span>':'')+(p.isHot?'<span class="badge hot">熱銷</span>':'');
+  document.getElementById('dTitle').textContent=p.title;
+  document.getElementById('dPrice').textContent='NT$ '+Number(p.price).toLocaleString();
+  document.getElementById('dDesc').textContent=p.description||'';
+  document.getElementById('detailOverlay').classList.add('open');
+  document.getElementById('detailNav').style.display='block';
+  // 設定子網址
+  history.pushState({page:'product',id:id},'','/products/'+id);
+  // Touch 滑動照片
+  var slider=document.getElementById('dSlides');
+  var touchX=0;
+  slider.ontouchstart=function(e){touchX=e.touches[0].clientX;};
+  slider.ontouchend=function(e){
+    var dx=e.changedTouches[0].clientX-touchX;
+    if(Math.abs(dx)>40)slideGo(dx<0?1:-1);
+  };
+}
+function closeDetail(){
+  document.getElementById('detailOverlay').classList.remove('open');
+  document.getElementById('detailNav').style.display='none';
+  history.pushState({page:'home'},'','/');
+}
+function slideSet(i){
+  slideIdx=i;
+  document.getElementById('dSlides').style.transform='translateX(-'+i*100+'%)';
+  document.querySelectorAll('.d-dot').forEach(function(d,idx){d.classList.toggle('on',idx===i);});
+}
+function slideGo(d){
+  var total=(currentProd&&currentProd.images)?currentProd.images.length:1;
+  slideSet((slideIdx+d+total)%total);
+}
+
+function openSpec(){
+  if(!currentProd)return;
+  specSel={};specQty=1;
+  document.getElementById('qtyNum').textContent=1;
+  var p=currentProd;var html='';
+  if(p.colors&&p.colors.length)html+=makeSpecSec('顏色','color',p.colors);
+  if(p.sizes&&p.sizes.length)html+=makeSpecSec('尺寸','size',p.sizes);
+  if(p.styles&&p.styles.length)html+=makeSpecSec('款式','style',p.styles);
+  document.getElementById('specBody').innerHTML=html;
+  var btn=document.getElementById('confirmBtn');
+  if(btn)btn.textContent='確認加入購物車 — NT$ '+Number(p.price).toLocaleString();
+  document.getElementById('specModal').classList.add('open');
+}
+function makeSpecSec(label,key,opts){
+  return '<div class="spec-sec"><div class="spec-lbl">'+label+'</div><div class="spec-opts">'+opts.map(function(o){return '<button class="spec-opt" onclick="pickSpec(\''+key+'\',\''+o+'\',this)">'+o+'</button>';}).join('')+'</div></div>';
+}
+function pickSpec(key,val,btn){
+  specSel[key]=val;
+  btn.closest('.spec-opts').querySelectorAll('.spec-opt').forEach(function(b){b.classList.remove('on');});
+  btn.classList.add('on');
+  updateSpecPrice();
+}
+function updateSpecPrice(){
+  if(!currentProd)return;
+  var matchedVariant=(currentProd.variants||[]).find(function(v){
+    var specs=v.specs||{};
+    return (!specs.color||specs.color===specSel.color)&&(!specs.size||specs.size===specSel.size)&&(!specs.style||specs.style===specSel.style);
+  });
+  var usePrice=matchedVariant&&matchedVariant.price!=null?matchedVariant.price:currentProd.price;
+  var btn=document.getElementById('confirmBtn');
+  if(btn)btn.textContent='確認加入購物車 — NT$ '+Number(usePrice*specQty).toLocaleString();
+}
+function chgQty(d){specQty=Math.max(1,specQty+d);document.getElementById('qtyNum').textContent=specQty;updateSpecPrice();}
+function closeSpec(){document.getElementById('specModal').classList.remove('open');}
+
+function addToCart(){
+  if(!currentProd)return;
+  var matchedVariant=(currentProd.variants||[]).find(function(v){
+    var specs=v.specs||{};
+    return (!specs.color||specs.color===specSel.color) && (!specs.size||specs.size===specSel.size) && (!specs.style||specs.style===specSel.style);
+  });
+  var usePrice=matchedVariant&&matchedVariant.price!=null?matchedVariant.price:currentProd.price;
+  cart.push({cartId:Date.now(),id:currentProd.id,title:currentProd.title,price:usePrice,image:(currentProd.images&&currentProd.images[0])||'',specs:JSON.parse(JSON.stringify(specSel)),qty:specQty});
+  localStorage.setItem('runababyCart',JSON.stringify(cart));
+  updateCartDot();closeSpec();showToast('✓ 已加入購物車');
+}
+
+function updateCartDot(){
+  var n=cart.reduce(function(s,i){return s+i.qty;},0);
+  var dot=document.getElementById('cartDot');
+  dot.textContent=n;dot.classList.toggle('show',n>0);
+}
+
+function renderCart(){
+  var wrap=document.getElementById('cartWrap');
+  if(!cart.length){wrap.innerHTML='<div class="cart-empty">🛒<br><br>購物車是空的<br><small style="margin-top:6px;display:block;">快去挑選商品吧！</small></div>';return;}
+  var subtotal=cart.reduce(function(s,i){return s+Number(i.price)*i.qty;},0);
+  var disc=0;if(appliedCoupon){disc=appliedCoupon.type==='折扣%'?Math.round(subtotal*(1-appliedCoupon.value/100)):appliedCoupon.value;}
+  var total=Math.max(0,subtotal-disc);
+  var couponUsed=appliedCoupon?appliedCoupon.code:'';
+  var html=cart.map(function(item,idx){
+    var sp=Object.values(item.specs||{}).filter(Boolean).join(' / ')||'';
+    return '<div class="cart-item">'
+      +'<div class="ci-img-box">'+(item.image?'<img src="'+item.image+'">':'')+'</div>'
+      +'<div class="ci-info">'
+      +'<div class="ci-title">'+item.title+'</div>'
+      +'<div class="ci-spec">'+sp+'</div>'
+      +'<div class="ci-bottom">'
+      +'<div class="ci-price">NT$ '+(Number(item.price)*item.qty).toLocaleString()+'</div>'
+      +'<div class="ci-qty">'
+      +'<button class="ci-qbtn" onclick="cartQty('+idx+',-1)">−</button>'
+      +'<span>'+item.qty+'</span>'
+      +'<button class="ci-qbtn" onclick="cartQty('+idx+',1)">+</button>'
+      +'<button class="ci-del" onclick="cartDel('+idx+')">🗑</button>'
+      +'</div></div></div></div>';
+  }).join('');
+  html+='<div class="cart-total"><div class="total-row"><span>商品總計</span><span>NT$ '+total.toLocaleString()+'</span></div></div>';
+  html+='<button class="btn-main" onclick="openCK()">前往填寫收件資料</button>';
+  html+='<button class="btn-ghost" onclick="goPage(\'home\')">繼續購物</button>';
+  wrap.innerHTML=html;
+}
+function cartQty(idx,d){cart[idx].qty=Math.max(1,cart[idx].qty+d);localStorage.setItem('runababyCart',JSON.stringify(cart));updateCartDot();renderCart();}
+function cartDel(idx){cart.splice(idx,1);localStorage.setItem('runababyCart',JSON.stringify(cart));updateCartDot();renderCart();}
+
+var COUNTIES=['台北市','新北市','基隆市','桃園市','新竹市','新竹縣','苗栗縣','台中市','彰化縣','南投縣','雲林縣','嘉義市','嘉義縣','台南市','高雄市','屏東縣','宜蘭縣','花蓮縣','台東縣','澎湖縣','金門縣','連江縣'];
+var COUNTY_OPTS=COUNTIES.map(function(c){return '<option>'+c+'</option>';}).join('');
+
+function openCK(){
+  if(!cart.length){showToast('購物車是空的','err');return;}
+  // 必須登入才能下單
+  if(!profile.uid){
+    showToast('請先登入或註冊會員才能下單 🔒','err');
+    setTimeout(function(){
+      document.getElementById('ckModal').classList.remove('open');
+      goPage('profile');
+      // 自動打開登入面板
+      var loginPanel=document.getElementById('pf-login-panel');
+      var regPanel=document.getElementById('pf-register-panel');
+      if(loginPanel)loginPanel.style.display='block';
+      if(regPanel)regPanel.style.display='none';
+    },800);
+    return;
+  }
+  // 黑名單檢查：即時查詢 Firestore，確保後台設定即時生效
+  (async function(){
+    try{
+      var {doc:docFn,getDoc:getDocFn}=await import('https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js');
+      var memberSnap=await getDocFn(docFn(window._db,'members',profile.uid));
+      if(memberSnap.exists()&&memberSnap.data().blacklist){
+        profile.blacklist=true;
+        localStorage.setItem('runababyProfile',JSON.stringify(profile));
+        showToast('您的帳號已被限制下單，如有疑問請聯繫客服','err');
+        return;
+      }
+      profile.blacklist=false;
+    }catch(e){
+      // Firestore 查詢失敗，退回 localStorage 快取
+      if(profile.blacklist){
+        showToast('您的帳號已被限制下單，如有疑問請聯繫客服','err');
+        return;
+      }
+    }
+    _openCKModal();
+  })();
+}
+function _openCKModal(){
+  shipType='711';
+  document.querySelectorAll('.ship-tab').forEach(function(t,i){t.classList.toggle('on',i===0);});
+  renderShipFields();
+  document.getElementById('ckModal').classList.add('open');
+  // 自動帶入已登入會員的姓名和電話
+  if(profile.name){var nm=document.getElementById('ck-name');if(nm&&!nm.value)nm.value=profile.name;}
+  if(profile.phone){var ph=document.getElementById('ck-phone');if(ph&&!ph.value)ph.value=profile.phone;}
+  if(profile.email){var em=document.getElementById('ck-email');if(em&&!em.value)em.value=profile.email;}
+}
+function closeCK(){document.getElementById('ckModal').classList.remove('open');}
+function setShip(type,btn){shipType=type;document.querySelectorAll('.ship-tab').forEach(function(t){t.classList.remove('on');});btn.classList.add('on');renderShipFields();}
+function renderShipFields(){
+  var f=document.getElementById('shipFields');
+  if(shipType==='post'){f.innerHTML='<div class="fg"><label>縣市 *</label><select id="ck-county"><option value="">請選擇</option>'+COUNTY_OPTS+'</select></div><div class="fg"><label>郵遞區號 *</label><input id="ck-zip" placeholder="000"></div><div class="fg"><label>地址 *</label><input id="ck-addr" placeholder="請輸入完整地址"></div>';}
+  else{f.innerHTML='<div class="fg"><label>縣市 *</label><select id="ck-county"><option value="">請選擇</option>'+COUNTY_OPTS+'</select></div><div class="fg"><label>門市名稱 *</label><input id="ck-store" placeholder="請輸入門市名稱"></div>';}
+}
+var appliedCoupon=null;
+function applyCoupon(){
+  var code=document.getElementById('ck-coupon').value.trim().toUpperCase();
+  var res=document.getElementById('coupon-result');
+  // 從全局 S 讀取，S 由 Firestore onSnapshot 即時更新
+  var coupons=(window._storeData&&window._storeData.coupons)||(S&&S.coupons)||[];
+  var found=coupons.find(function(c){return c.code===code;});
+  if(!found){res.style.color='var(--danger)';res.textContent='找不到此優惠碼';appliedCoupon=null;updateCKTotal();return;}
+  var cart2=cart||[];
+  var subtotal=cart2.reduce(function(s,i){return s+Number(i.price)*i.qty;},0);
+  if(found.minOrder&&subtotal<found.minOrder){res.style.color='var(--danger)';res.textContent='未達最低消費 NT$'+found.minOrder+' 無法使用';appliedCoupon=null;updateCKTotal();return;}
+  appliedCoupon=found;
+  var disc=found.type==='折扣%'?Math.round(subtotal*(1-found.value/100)):found.value;
+  res.style.color='green';res.textContent='✓ 已套用！折扣 NT$ '+disc;
+  updateCKTotal();
+}
+function updateCKTotal(){
+  var totEl=document.getElementById('ck-total');if(!totEl)return;
+  var subtotal=(cart||[]).reduce(function(s,i){return s+Number(i.price)*i.qty;},0);
+  var disc=0;
+  if(appliedCoupon){disc=appliedCoupon.type==='折扣%'?Math.round(subtotal*(1-appliedCoupon.value/100)):appliedCoupon.value;}
+  var final=Math.max(0,subtotal-disc);
+  totEl.innerHTML='小計：NT$ '+subtotal.toLocaleString()+(disc?'<br><span style="color:green;font-size:12px;">折扣：- NT$ '+disc+'</span>':'')+'<br><b>合計：NT$ '+final.toLocaleString()+'</b>';
+}
+
+function submitOrder(){
+  var name=document.getElementById('ck-name').value.trim();
+  var phone=document.getElementById('ck-phone').value.trim();
+  var email=document.getElementById('ck-email').value.trim();
+  var county=(document.getElementById('ck-county')||{}).value||'';
+  if(!name||!phone||!email||!county){showToast('請填寫所有必填欄位','err');return;}
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){showToast('請輸入正確的 Email','err');return;}
+  var SHIP={'711':'7-11 賣貨便','post':'郵局宅配','family':'全家貨到付款'};
+  var shipDetail=county;
+  if(shipType==='post'){var zip=(document.getElementById('ck-zip')||{}).value||'';var addr=(document.getElementById('ck-addr')||{}).value||'';shipDetail=county+' '+zip+' '+addr;}
+  else{var store=(document.getElementById('ck-store')||{}).value||'';shipDetail=county+' '+store+' 門市';}
+  var subtotal=cart.reduce(function(s,i){return s+Number(i.price)*i.qty;},0);
+  var disc=0;
+  if(appliedCoupon){
+    disc=appliedCoupon.type==='折扣%'
+      ?Math.round(subtotal*(1-appliedCoupon.value/100))
+      :Number(appliedCoupon.value)||0;
+  }
+  var total=Math.max(0,subtotal-disc);
+  var couponUsed=appliedCoupon?appliedCoupon.code:'';
+  var ord={id:'RB'+Date.now().toString().slice(-10)+Math.floor(Math.random()*9000+1000),name:name,phone:phone,email:email,
+    ig:profile.ig||'',memberId:profile.memberId||'',uid:profile.uid||'',
+    shipType:SHIP[shipType],shipDetail:shipDetail,
+    note:document.getElementById('ck-note').value,
+    coupon:couponUsed,discount:disc,
+    items:JSON.parse(JSON.stringify(cart)),total:total,
+    status:'尚未接受訂單',time:new Date().toLocaleString('zh-TW')};
+  orders.unshift(ord);
+  // 訂單改由 Firestore onSnapshot 回寫，不存 localStorage
+  // 同步寫入 Firestore（後台即時可見）
+  if(window._saveOrderToFirebase) window._saveOrderToFirebase(ord);
+  cart=[];localStorage.setItem('runababyCart',JSON.stringify(cart));
+  appliedCoupon=null; // 重設優惠券
+  updateCartDot();closeCK();
+  document.getElementById('okNum').textContent=ord.id;
+  document.getElementById('okInfo').innerHTML='收件人：'+name+'<br>收件方式：'+SHIP[shipType]+'<br>收件地址：'+shipDetail+(disc?'<br>折扣：- NT$ '+disc.toLocaleString():'')+'<br>訂單金額：NT$ '+total.toLocaleString()+'<br>下單時間：'+ord.time;
+  document.getElementById('okModal').classList.add('open');
+}
+function goOrders(){document.getElementById('okModal').classList.remove('open');goPage('profile');}
+function closeOK(){document.getElementById('okModal').classList.remove('open');goPage('home');}
+
+function isLoggedIn(){return !!(profile.uid);}
+
+function loadProfileUI(){
+  if(isLoggedIn()){
+    document.getElementById('pf-guest').style.display='none';
+    document.getElementById('pf-logged').style.display='block';
+    var displayName=profile.googleName||profile.fbName||profile.email||'會員';
+    var fbLinkEl=document.getElementById('fbLink');
+    if(fbLinkEl)fbLinkEl.textContent=displayName;
+    if(profile.memberId){var badge=document.getElementById('memberBadge');if(badge)badge.textContent='會員編號：'+profile.memberId;}
+    if(profile.name)document.getElementById('pf-name').value=profile.name;
+    if(profile.phone)document.getElementById('pf-phone').value=profile.phone;
+    if(profile.ig)document.getElementById('pf-ig').value=profile.ig;
+  } else {
+    document.getElementById('pf-guest').style.display='block';
+    document.getElementById('pf-logged').style.display='none';
+  }
+}
+function saveProfile(){
+  profile.name=document.getElementById('pf-name').value;
+  profile.phone=document.getElementById('pf-phone').value;
+  profile.ig=document.getElementById('pf-ig').value;
+  localStorage.setItem('runababyProfile',JSON.stringify(profile));
+  // 同步存到 Firestore
+  if(window._saveProfileToFirestore) window._saveProfileToFirestore();
+  var btn=document.getElementById('pfSave');
+  btn.textContent='✓ 儲存成功！';btn.classList.add('saved');
+  showToast('✓ 資料已儲存！');
+  setTimeout(function(){btn.textContent='儲存資料';btn.classList.remove('saved');},1800);
+}
+
+var SC={'尚未接受訂單':'#f0ad4e','已接受訂單':'#5bc0de','已叫貨':'#9B7BB0','追加中':'#e67e22','已到貨':'#2ecc71','已出貨':'#3498db','取貨完成':'#27ae60','已取消':'#e74c3c','已斷貨':'#c0392b'};
+function toggleOrdDet(idx){
+  var d=document.getElementById('ord-det-'+idx);
+  if(d)d.style.display=d.style.display==='none'?'block':'none';
+}
+function renderOrders(){
+  var el=document.getElementById('orderList');
+  var myOrders=orders.filter(function(o){
+    if(!profile.uid) return false;
+    // 後台幫會員下訂單時 uid 已填入，直接比對
+    if(o.uid && o.uid===profile.uid) return true;
+    // 後台下單若 memberId 相符也算（相容舊資料）
+    if(profile.memberId && o.memberId && String(o.memberId)===String(profile.memberId)) return true;
+    return false;
+  });
+  if(!myOrders.length){el.innerHTML='<div style="color:var(--muted);font-size:13px;">尚無訂單紀錄</div>';return;}
+  el.innerHTML=myOrders.map(function(o,idx){
+    // 根據商品 procStatus 計算前台顯示用的訂單狀態
+    // 優先級：追加中 > 已到貨 > 已叫貨 > 已斷貨/已取消 > 其他
+    // 規則：只要有一項「進行中」的商品狀態，就顯示最高進行中的等級
+    function calcDisplayStatus(order){
+      var items=order.items||[];
+      if(!items.length) return order.status;
+      // 如果訂單本身狀態是已完成類，直接顯示
+      var finalSt=['取貨完成','未取貨','已出貨'];
+      if(finalSt.indexOf(order.status)>=0) return order.status;
+      // 收集所有非斷貨/取消的商品狀態
+      var procs=items.map(function(i){return i.procStatus||'';});
+      var RANK=['缺貨追加中','已到貨','已叫貨','未叫貨','已斷貨','已取消'];
+      // 找出優先級最高（index最小）的非斷貨/取消狀態
+      var best=null;
+      procs.forEach(function(p){
+        var idx=RANK.indexOf(p);
+        if(idx<0) idx=RANK.length;
+        if(best===null||idx<best) best=idx;
+      });
+      if(best===null) return order.status;
+      var bestSt=RANK[best]||'';
+      if(bestSt==='缺貨追加中') return '追加中';
+      if(bestSt==='已到貨') return '已到貨';
+      if(bestSt==='已叫貨') return '已叫貨';
+      if(bestSt==='已斷貨') return '已斷貨';
+      if(bestSt==='已取消') return '已取消';
+      return order.status;
+    }
+    var displayStatus=calcDisplayStatus(o);
+    var c=SC[displayStatus]||SC[o.status]||'#888';
+    var itemsHtml=o.items.map(function(i){
+      var sp=i.specs?Object.values(i.specs).filter(Boolean).join(' / '):'';
+      // 顯示每個商品的到貨狀態
+      var procSt=i.procStatus||'';
+      var procBadge='';
+      if(procSt==='已到貨')procBadge='<span style="font-size:10px;background:#e8f5e9;color:#2ecc71;border-radius:8px;padding:1px 7px;font-weight:700;margin-left:6px;">✓ 已到貨</span>';
+      else if(procSt==='缺貨追加中')procBadge='<span style="font-size:10px;background:#fff3e0;color:#e67e22;border-radius:8px;padding:1px 7px;font-weight:700;margin-left:6px;">追加中</span>';
+      else if(procSt==='已叫貨')procBadge='<span style="font-size:10px;background:#e3f2fd;color:#2196f3;border-radius:8px;padding:1px 7px;font-weight:700;margin-left:6px;">已叫貨</span>';
+      else if(procSt==='已取消')procBadge='<span style="font-size:10px;background:#fdecea;color:#e74c3c;border-radius:8px;padding:1px 7px;font-weight:700;margin-left:6px;">✗ 已取消</span>';
+      else if(procSt==='已斷貨')procBadge='<span style="font-size:10px;background:#fdecea;color:#c0392b;border-radius:8px;padding:1px 7px;font-weight:700;margin-left:6px;">⚠ 已斷貨</span>';
+      return '<div style="display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--border);">'
+        +(i.image?'<img src="'+i.image+'" style="width:36px;height:36px;object-fit:contain;border-radius:5px;background:#f5f5f5;flex-shrink:0;">':'')
+        +'<div style="flex:1;"><div style="font-size:12px;font-weight:500;">'+i.title+procBadge+'</div>'
+        +(sp?'<div style="font-size:11px;color:var(--muted);">'+sp+'</div>':'')
+        +'</div><div style="font-size:12px;font-weight:700;color:var(--primary);">x'+i.qty+' NT$'+Number(i.price*i.qty).toLocaleString()+'</div></div>';
+    }).join('');
+    // 優惠券資訊
+    var couponHtml='';
+    if(o.coupon&&o.discount){
+      // 計算折扣百分比
+      var subtotal=o.total+o.discount;
+      var discPct=subtotal>0?Math.ceil((o.discount/subtotal)*100):0;
+      couponHtml='<div style="font-size:12px;color:green;margin-top:6px;">🎫 使用 '+o.coupon+' 優惠券 — 折扣 NT$ '+Number(o.discount).toLocaleString()+'</div>';
+    }
+    return '<div class="ord-card">'
+      +'<div class="ord-top">'
+      +'<div class="ord-num">'+o.id+'</div>'
+      +'<div class="ord-status" style="background:'+c+'22;color:'+c+';">'+displayStatus+'</div></div>'
+      +'<div class="ord-date">'+o.time+'</div>'
+      +'<div class="ord-items">'+o.items.map(function(i){return i.title;}).join('、')+'</div>'
+      +'<div class="ord-total">NT$ '+Number(o.total).toLocaleString()+'</div>'
+      +couponHtml
+      +'<button onclick="toggleOrdDet('+idx+')" style="margin-top:8px;width:100%;background:var(--bg);border:1.5px solid var(--border);border-radius:18px;padding:7px;font-size:12px;font-weight:700;color:var(--primary);cursor:pointer;">📋 詳細內容</button>'
+      +'<div id="ord-det-'+idx+'" style="display:none;margin-top:10px;padding-top:8px;border-top:1px solid var(--border);">'
+      +'<div style="font-size:12px;font-weight:700;margin-bottom:6px;">▼ 訂單詳情</div>'
+      +itemsHtml
+      +'<div style="margin-top:8px;font-size:12px;line-height:1.8;"><div>收件人：'+o.name+'</div><div>電話：'+o.phone+'</div><div>收件方式：'+(o.shipType||'-')+'</div><div>地址：'+(o.shipDetail||'-')+'</div>'+(o.note?'<div>備註：'+o.note+'</div>':'')+'</div>'
+      +'</div>'
+      +'</div>';
+  }).join('');
+}
+
+function openPolicy(id){
+  var el=document.getElementById(id);
+  if(el)el.classList.add('open');
+  // 設定子網址
+  var slug=(id==='privacyOverlay')?'privacy':'data-deletion';
+  history.pushState({page:'policy',id:id},'','/'+slug);
+}
+function closePolicy(id){
+  var el=document.getElementById(id);
+  if(el)el.classList.remove('open');
+  history.pushState({page:'home'},'','/');
+}
+function submitDelRequest(){
+  var name=document.getElementById('delName').value.trim();
+  var phone=document.getElementById('delPhone').value.trim();
+  var email=document.getElementById('delEmail').value.trim();
+  if(!name||!phone||!email){showToast('請填寫必填欄位','err');return;}
+  // 清除本機資料
+  localStorage.removeItem('runababyCart');
+  localStorage.removeItem('runababyProfile');
+  localStorage.removeItem('runababyOrders');
+  showToast('✓ 申請已送出，我們將於7個工作天內處理');
+  setTimeout(function(){closePolicy('deleteOverlay');},1800);
+}
+
+function openDrawer(){document.getElementById('drawer').classList.add('open');document.getElementById('dOverlay').classList.add('open');}
+function closeDrawer(){document.getElementById('drawer').classList.remove('open');document.getElementById('dOverlay').classList.remove('open');}
+function toggleDM(id,btn){var el=document.getElementById(id);var isOpen=el.classList.toggle('open');var arr=btn.querySelector('.dm-arrow');if(arr)arr.classList.toggle('open',isOpen);}
+function toggleDMsub(id,btn){var el=document.getElementById(id);var isOpen=el.classList.toggle('open');var arr=btn.querySelector('.dm-arrow');if(arr)arr.classList.toggle('open',isOpen);}
+function openExt(key){var url=S.extLinks&&S.extLinks[key];if(url)window.open(url,'_blank');else showToast('連結尚未設定，請至後台新增','err');closeDrawer();}
+
+function renderQA(){
+  document.getElementById('qaList').innerHTML=(S.qaList||[]).map(function(item,i){
+    return '<div class="qa-item"><div class="qa-q" onclick="toggleQA('+i+',this)"><span>Q：'+item.q+'</span><span class="qa-arr">▼</span></div><div class="qa-a" id="qa-a-'+i+'">A：'+item.a+'</div></div>';
+  }).join('');
+}
+function toggleQA(i,btn){btn.classList.toggle('open');document.getElementById('qa-a-'+i).classList.toggle('open');}
+function openQAModal(){renderQA();document.getElementById('qaModal').classList.add('open');closeDrawer();}
+function closeQAModal(){document.getElementById('qaModal').classList.remove('open');}
+
+function showToast(msg,type){
+  var t=document.getElementById('toast');
+  t.textContent=msg;t.className='toast show'+(type?' '+type:'');
+  clearTimeout(t._t);t._t=setTimeout(function(){t.className='toast';},2400);
+}
+
+// ── 前台 Auth 功能（呼叫 Firebase module 的實作）──
+function googleLogin(){
+  if(window._googleLogin){ window._googleLogin(); return; }
+  showToast('請稍候，系統初始化中...','');
+  var tries=0;var t=setInterval(function(){
+    if(window._googleLogin){clearInterval(t);window._googleLogin();}
+    else if(++tries>20){clearInterval(t);showToast('載入失敗，請重新整理頁面','err');}
+  },300);
+}
+function googleLogout(){ if(window._doLogout) window._doLogout(); }
+function doRegister(){
+  if(window._doRegister){ window._doRegister(); return; }
+  showToast('請稍候，系統初始化中...','');
+  var tries=0;var t=setInterval(function(){
+    if(window._doRegister){clearInterval(t);window._doRegister();}
+    else if(++tries>20){clearInterval(t);showToast('載入失敗，請重新整理頁面','err');}
+  },300);
+}
+function doEmailLogin(){
+  if(window._doEmailLogin){ window._doEmailLogin(); return; }
+  showToast('請稍候，系統初始化中...','');
+  var tries=0;var t=setInterval(function(){
+    if(window._doEmailLogin){clearInterval(t);window._doEmailLogin();}
+    else if(++tries>20){clearInterval(t);showToast('載入失敗，請重新整理頁面','err');}
+  },300);
+}
+function openRegister(){
+  document.getElementById('pf-login-panel').style.display='none';
+  document.getElementById('pf-register-panel').style.display='block';
+}
+function closeRegister(){
+  document.getElementById('pf-register-panel').style.display='none';
+  document.getElementById('pf-login-panel').style.display='block';
+  var e=document.getElementById('reg-err');if(e)e.textContent='';
+}
+function toggleForgot(){
+  var f=document.getElementById('forgot-panel');
+  var isOpen=f.style.display==='block';
+  f.style.display=isOpen?'none':'block';
+  var err=document.getElementById('forgot-err');
+  if(err)err.textContent='';
+}
+
+async function doSendPasswordReset(){
+  var emailEl=document.getElementById('login-acc');
+  var errEl=document.getElementById('forgot-err');
+  var email=emailEl&&emailEl.value.trim();
+  if(!email){
+    if(errEl){errEl.style.color='var(--danger)';errEl.textContent='請先在上方填寫帳號 Email';}
+    return;
+  }
+  if(errEl){errEl.style.color='var(--muted)';errEl.textContent='寄送中...';}
+  if(!window._sendPasswordReset){
+    if(errEl){errEl.style.color='var(--danger)';errEl.textContent='系統尚未初始化，請稍後再試';}
+    return;
+  }
+  var result=await window._sendPasswordReset(email);
+  if(result.ok){
+    if(errEl){errEl.style.color='green';errEl.textContent='✓ 已寄出！請至信箱查收重設密碼連結（記得檢查垃圾信件）';}
+  }else{
+    var msg='寄送失敗，請確認 Email 是否正確';
+    if(result.code==='auth/user-not-found')msg='找不到此帳號，請確認 Email 是否正確';
+    if(result.code==='auth/invalid-email')msg='Email 格式不正確';
+    if(result.code==='auth/too-many-requests')msg='操作太頻繁，請稍後再試';
+    if(errEl){errEl.style.color='var(--danger)';errEl.textContent=msg;}
+  }
+}
+
+async function _fetchSecurityQuestion(email){
+  if(!email)return;
+  var qd=document.getElementById('FORGOT_Q_DISPLAY');
+  if(!qd)return;
+  qd.textContent='查詢中...';qd.style.color='var(--muted)';
+  try{
+    var db2=window._db;
+    if(!db2){qd.textContent='資料庫尚未初始化，請稍後再試';return;}
+    var {collection:col2,query:q2,where:w2,getDocs:gd2}=await import('https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js');
+    var snap=await gd2(q2(col2(db2,'members'),w2('email','==',email)));
+    if(snap.empty){qd.textContent='找不到此帳號，請確認Email是否正確';qd.style.color='var(--danger)';return;}
+    var data=snap.docs[0].data();
+    if(data.securityQuestion){
+      qd.textContent='您的安全問題：'+data.securityQuestion;
+      qd.style.color='var(--text)';
+      qd.style.fontWeight='600';
+    }else{
+      qd.textContent='此帳號未設定安全問題，請聯繫客服 service@runababy.com';
+      qd.style.color='var(--danger)';
+    }
+  }catch(e){
+    qd.textContent='查詢失敗，請確認Email後再試';
+    qd.style.color='var(--danger)';
+    console.error(e);
+  }
+}
+function verifySecurityAnswer(){
+  if(window._verifySecurityAnswer){window._verifySecurityAnswer();return;}
+  // Fallback
+  showToast('請聯繫客服：service@runababy.com','err');
+}
+
+window.addEventListener('storage',function(e){
+  if(e.key==='runababyStore'||e.key==='_sync'){
+    try{var s=localStorage.getItem('runababyStore');if(s)S=JSON.parse(s);}catch(x){}
+    document.getElementById('annBody').textContent=S.announcement||'';
+    if(S.bannerUrl){document.getElementById('bannerWrap').innerHTML='<img src="'+S.bannerUrl+'" alt="banner">';}
+    renderCatTabs();renderProds();
+  }
+  // 訂單改由 Firestore onSnapshot 同步，不再監聽 localStorage
+});
+
+/* 修復 iPhone / LINE / FB 內建瀏覽器按鈕失效 */
+document.addEventListener('touchstart', function(){}, true);
+
+/* 等 DOM 完成後再初始化 */
+window.onload = function(){
+  // 先確保 detailOverlay 關閉（防 bfcache 殘留）
+  var ov=document.getElementById('detailOverlay');
+  if(ov)ov.classList.remove('open');
+  var dn=document.getElementById('detailNav');
+  if(dn)dn.style.display='none';
+  init();
+  // 處理網址路由（F5 進入 /products/xxx）
+  var path=window.location.pathname;
+  var m=path.match(/\/products?\/(.+)/);
+  if(m){
+    var pid=m[1];
+    // 登記待開商品，onSnapshot 資料一到立刻觸發
+    window._pendingProductId=pid;
+    // 同時輪詢（資料已在快取時用）
+    var tryOpen=function(attempt){
+      var p=(S.products||[]).find(function(x){return x.slug===pid||x.id===pid;});
+      if(p){
+        window._pendingProductId=null;
+        openDetail(p.slug||p.id);
+        history.replaceState({page:'product',id:p.slug||p.id},'',path);
+      } else if(attempt<40){
+        setTimeout(function(){tryOpen(attempt+1);},500);
+      }
+    };
+    setTimeout(function(){tryOpen(0);},300);
+  }
+};
+// 按瀏覽器上一頁/下一頁
+window.addEventListener('popstate',function(e){
+  var ov=document.getElementById('detailOverlay');
+  // 關閉所有 policy overlay
+  ['privacyOverlay','deleteOverlay'].forEach(function(id){
+    var el=document.getElementById(id);if(el)el.classList.remove('open');
+  });
+  if(e.state&&e.state.page==='product'){
+    openDetail(e.state.id);
+  } else if(e.state&&e.state.page==='policy'){
+    var el=document.getElementById(e.state.id);if(el)el.classList.add('open');
+  } else {
+    if(ov)ov.classList.remove('open');
+  }
+});</script>
+
+</body>
+</html>

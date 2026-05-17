@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>隱私權及服務條款 — Runababy 韓國選品</title>
+<meta name="description" content="Runababy 韓國選品隱私權及服務條款，說明個人資料保護、著作權及Cookie使用政策。">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 36 36'><circle cx='18' cy='18' r='16' fill='%23FFD2D2'/><circle cx='18' cy='14' r='5' fill='%23B87070'/><path d='M8 30c0-6 4.5-10 10-10s10 4 10 10' fill='%23B87070'/></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary: #B87070;
+    --primary-light: #FFD2D2;
+    --primary-dark: #8a4a4a;
+    --bg: #FFF9F9;
+    --white: #fff;
+    --text: #2d2d2d;
+    --muted: #888;
+    --border: #f0d8d8;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { background: #f0e0e0; }
+
+  body {
+    font-family: 'Noto Sans TC', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    max-width: 680px;
+    margin: 0 auto;
+    box-shadow: 0 0 40px rgba(0,0,0,.12);
+  }
+
+  /* HEADER */
+  .site-header {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .brand-logo {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: var(--primary-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .brand-logo svg {
+    width: 20px;
+    height: 20px;
+    stroke: var(--primary);
+    fill: none;
+    stroke-width: 2;
+  }
+
+  .brand-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    color: var(--primary);
+    font-weight: 600;
+  }
+
+  .back-link {
+    font-size: 12px;
+    color: var(--primary);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 6px 12px;
+    border: 1.5px solid var(--border);
+    border-radius: 20px;
+    transition: all .2s;
+  }
+
+  .back-link:hover {
+    background: var(--primary-light);
+    border-color: var(--primary-light);
+  }
+
+  .back-link svg {
+    width: 14px;
+    height: 14px;
+    stroke: var(--primary);
+    fill: none;
+    stroke-width: 2.5;
+  }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, var(--primary-light) 0%, #fff0f0 60%, var(--bg) 100%);
+    padding: 40px 24px 32px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .hero-tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--primary);
+    background: rgba(184,112,112,.1);
+    border-radius: 20px;
+    padding: 4px 12px;
+    margin-bottom: 14px;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 600;
+    color: var(--primary-dark);
+    line-height: 1.35;
+    margin-bottom: 10px;
+  }
+
+  .hero-meta {
+    font-size: 12px;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .hero-meta svg {
+    width: 13px;
+    height: 13px;
+    stroke: var(--muted);
+    fill: none;
+    stroke-width: 2;
+    flex-shrink: 0;
+  }
+
+  /* CONTENT */
+  .content {
+    padding: 28px 24px 60px;
+  }
+
+  .section {
+    margin-bottom: 28px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+  }
+
+  .section-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: var(--primary);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-right: 10px;
+    vertical-align: middle;
+  }
+
+  .section-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--primary-dark);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    line-height: 1.5;
+  }
+
+  .section-title-text {
+    flex: 1;
+    padding-top: 3px;
+  }
+
+  .section-body {
+    font-size: 13px;
+    line-height: 1.9;
+    color: #444;
+    padding-left: 36px;
+  }
+
+  .section-body ul {
+    margin: 10px 0;
+    padding-left: 4px;
+    list-style: none;
+  }
+
+  .section-body ul li {
+    position: relative;
+    padding-left: 16px;
+    margin-bottom: 6px;
+  }
+
+  .section-body ul li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--primary);
+    font-weight: 700;
+  }
+
+  .section-body a {
+    color: var(--primary);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .highlight-box {
+    background: linear-gradient(135deg, rgba(184,112,112,.06), rgba(255,210,210,.15));
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--primary);
+    border-radius: 0 8px 8px 0;
+    padding: 12px 14px;
+    margin-top: 12px;
+    font-size: 12px;
+    line-height: 1.8;
+    color: #555;
+  }
+
+  /* FOOTER */
+  .site-footer {
+    background: var(--white);
+    border-top: 1px solid var(--border);
+    padding: 20px 24px;
+    text-align: center;
+  }
+
+  .footer-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    color: var(--primary);
+    margin-bottom: 6px;
+  }
+
+  .footer-text {
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  .footer-text a {
+    color: var(--primary);
+    text-decoration: none;
+  }
+
+  .footer-back {
+    display: inline-block;
+    margin-top: 14px;
+    padding: 10px 24px;
+    background: var(--primary);
+    color: #fff;
+    border-radius: 28px;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background .2s;
+  }
+
+  .footer-back:hover {
+    background: var(--primary-dark);
+  }
+
+  /* mobile */
+  @media(max-width:480px){
+    .hero h1 { font-size: 22px; }
+    .content { padding: 22px 16px 60px; }
+    .hero { padding: 30px 16px 24px; }
+    .site-header { padding: 12px 16px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <a class="brand" href="/">
+    <div class="brand-logo">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+    </div>
+    <span class="brand-name">Runababy</span>
+  </a>
+  <a class="back-link" href="/">
+    <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+    返回賣場
+  </a>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-tag">Legal · 法律資訊</div>
+  <h1>隱私權及<br>服務條款</h1>
+  <div class="hero-meta">
+    <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+    Runababy 韓國選品 · 繁體中文版
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="content">
+
+  <div class="section">
+    <div class="section-title">
+      <span class="section-num">1</span>
+      <span class="section-title-text">個人資料之保護</span>
+    </div>
+    <div class="section-body">
+      本網頁係基於個人資料保護法第19條之規定蒐集消費者之個人資料，蒐集之目的僅為管理會員資料使用。
+      <div class="highlight-box">
+        本網頁依個人資料保護法第5條規定：「個人資料之蒐集、處理或利用，應尊重當事人之權益，依誠實及信用方法為之，不得逾越特定目的之必要範圍，並應與蒐集之目的具有正當合理之關聯。」除個人資料保護法規定外，絕不無故向任何第三人洩露相關之個人資料。
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">
+      <span class="section-num">2</span>
+      <span class="section-title-text">著作權聲明</span>
+    </div>
+    <div class="section-body">
+      本網頁上之照片、影像、影片及所提供之服務，均擁有全部之著作權。會員使用本網頁所提供之服務，請恪遵著作權法之相關規定，切勿有重製、公開播送、公開上映、公開傳輸及散布本網頁所提供之服務。若有違反，必依著作權法第91條、第92條等相關規定主張權利。
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">
+      <span class="section-num">3</span>
+      <span class="section-title-text">服務修改權利</span>
+    </div>
+    <div class="section-body">
+      本網頁對所公布之服務及課表，均保有最後修改之權利。
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">
+      <span class="section-num">4</span>
+      <span class="section-title-text">留言規範</span>
+    </div>
+    <div class="section-body">
+      消費者或網路使用者於本網頁留言請遵守網路規範，並請留意散布不實消息或妨害名譽之行為可能有觸法之可能。本網頁對於消費者或網路使用者之留言，保有最後刪除之權利。
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">
+      <span class="section-num">5</span>
+      <span class="section-title-text">關於 Cookie 的使用</span>
+    </div>
+    <div class="section-body">
+      為便於日後的辨識，當您使用本網頁服務時，本網頁可能會在您的電腦上設定與存取 Cookie。您可以透過設定您的個人電腦或上網設備，決定是否允許 Cookie 技術的使用。若您關閉 Cookie 時，可能會造成您使用本網頁服務時之不便利或部分功能限制。
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">
+      <span class="section-num">6</span>
+      <span class="section-title-text">服務條款與隱私政策之修改</span>
+    </div>
+    <div class="section-body">
+      本網頁有權隨時修改本隱私政策及本網頁各項內容之權利，將於網頁同一位置更改聲明外，不會再對會員進行個別通知。
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">
+      <span class="section-num">7</span>
+      <span class="section-title-text">使用者資料保護（第三方登入）</span>
+    </div>
+    <div class="section-body">
+      使用第三方登入服務（例如：Google）時，我們可能會處理以下資料：
+      <ul>
+        <li>姓名</li>
+        <li>電子郵件地址</li>
+      </ul>
+      我們蒐集這些資料的目的包括：
+      <ul>
+        <li>驗證身份，確保登入安全</li>
+        <li>協助完成訂單流程，並提供個人化服務</li>
+      </ul>
+      <div class="highlight-box">
+        我們不會長期儲存您的第三方個人資料，亦不會將其提供給其他第三方。<br>
+        若您希望刪除與第三方登入相關的資料，請透過以下方式與我們聯繫：<br>
+        <a href="mailto:runababy0813@outlook.com">runababy0813@outlook.com</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-brand">Runababy 韓國選品</div>
+  <div class="footer-text">
+    如有任何疑問，請聯繫 <a href="mailto:runababy0813@outlook.com">runababy0813@outlook.com</a><br>
+    本條款適用於 runababy.com 及相關服務
+  </div>
+  <a class="footer-back" href="/">← 返回賣場首頁</a>
+</footer>
+
+</body>
+</html>
