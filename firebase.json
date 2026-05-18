@@ -3,39 +3,17 @@
     "public": "public",
     "ignore": [
       "firebase.json",
-      "**/.*",
+      "**/.* ",
       "**/node_modules/**"
     ],
     "rewrites": [
       {
         "source": "/products/**",
-        "function": "ssrHandler",
-        "rewrites": [
-  {
-    "source": "/products/**",
-    "function": "ssrHandler"
-  },
-  {
-    "source": "/product/**",
-    "function": "ssrHandler"
-  }
-],
-
+        "function": "ssrHandler"
       },
       {
         "source": "/product/**",
-        "function": "ssrHandler",
-        "rewrites": [
-  {
-    "source": "/products/**",
-    "function": "ssrHandler"
-  },
-  {
-    "source": "/product/**",
-    "function": "ssrHandler"
-  }
-],
-
+        "function": "ssrHandler"
       }
     ],
     "headers": [
