@@ -10,12 +10,32 @@
       {
         "source": "/products/**",
         "function": "ssrHandler",
-        "region": "asia-east1"
+        "rewrites": [
+  {
+    "source": "/products/**",
+    "function": "ssrHandler"
+  },
+  {
+    "source": "/product/**",
+    "function": "ssrHandler"
+  }
+],
+
       },
       {
         "source": "/product/**",
         "function": "ssrHandler",
-        "region": "asia-east1"
+        "rewrites": [
+  {
+    "source": "/products/**",
+    "function": "ssrHandler"
+  },
+  {
+    "source": "/product/**",
+    "function": "ssrHandler"
+  }
+],
+
       }
     ],
     "headers": [
