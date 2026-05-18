@@ -67,7 +67,6 @@ function injectMeta(html, { title, description, image, url }) {
 
 // ── 主 Function ───────────────────────────────────────────────────────
 exports.ssrHandler = functions
-  .region("asia-east1") // 台灣最近的節點（東京也可改 asia-northeast1）
   .https.onRequest(async (req, res) => {
 
     // 讀取原始 index.html
