@@ -9,10 +9,10 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: '20'
 
@@ -22,5 +22,10 @@ jobs:
       - name: Install Functions dependencies
         run: cd functions && npm install
 
+      - name: Write service account key
+        run: echo '${{ secrets.GOOGLE_APPLICATION_CREDENTIALS_JSON }}' > /tmp/sa-key.json
+
       - name: Deploy to Firebase
-        run: firebase deploy --token "${{ secrets.FIREBASE_TOKEN }}" --non-interactive
+        run: firebase deploy --non-interactive
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: /tmp/sa-key.json
