@@ -1263,9 +1263,10 @@ async function publishProduct(){
       toast('商品已更新');
     }else{
       npD.id=npD.id||(npD.slug||('P'+Date.now().toString().slice(-6)));
-      npD.slug=npD.slug||npD.id;
-      npD.active=true;
-      S.products.unshift(JSON.parse(JSON.stringify(npD)));
+npD.slug=npD.slug||npD.id;
+npD.active=true;
+npD.createdAt=new Date().toISOString(); 
+S.products.unshift(JSON.parse(JSON.stringify(npD)));
       toast('商品已新增：'+npD.title);
     }
     G('MO_PROD').classList.remove('on');
