@@ -1192,7 +1192,7 @@ function renderPS(){
     renderTh();
 
   } else if(pStep===3){
-    var SIZES=['XS','S','M','L','XL','2XL'],COLORS=['黑','白','燕麥','粉','紅','藍','綠','深藍','紫','灰','咖','卡其'];
+    var SIZES=['XS','S','M','L','XL','2XL'],COLORS=['黑','白','粉','紅','藍','綠','深藍','紫','灰','咖','卡其','黃','奶油,'米'];
     c.innerHTML=mkSE('尺寸','sizes',SIZES)+mkSE('顏色','colors',COLORS)+mkSE('款式','styles',[])
       +'<div style="display:flex;justify-content:space-between;margin-top:12px;"><button class="btn bo" id="PS_B3">← 上一步</button><button class="btn bp" id="PS_N3">下一步 →</button></div>';
     c.querySelectorAll('.stag[data-k]').forEach(function(b){b.addEventListener('click',function(){var k=this.dataset.k,v=this.dataset.v;if(!npD[k])npD[k]=[];var i=npD[k].indexOf(v);if(i>-1){npD[k].splice(i,1);this.classList.remove('on');}else{npD[k].push(v);this.classList.add('on');}});});
