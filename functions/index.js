@@ -143,3 +143,24 @@ exports.ssrHandler = functions
     res.set("Cache-Control", "no-cache");
     res.send(baseHtml);
   });
+exports.sitemap = functions.https.onRequest(async (req, res) => {
+  const snapshot = await admin.firestore().collection("products").get();
+  const urls = snapshot.docs.map(doc => {
+    const p = doc.data();
+    return `
+  <url>
+    <loc>https://runababy.com/products/${p.slug}</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>${new Date().toISOString().split("T")[0]}</lastmod>
+  </url>`;
+  }).join("");
+
+  const xml = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${urls}
+</urlset>`;
+
+  res.set("Content-Type", "application/xml");
+  res.send(xml);
+});
