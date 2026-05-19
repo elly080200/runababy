@@ -1814,8 +1814,8 @@ window.onload = function(){
       var p=(S.products||[]).find(function(x){return x.slug===pid||x.id===pid;});
       if(p){
         window._pendingProductId=null;
-        openDetail(p.slug||p.id);
-        history.replaceState({page:'product',id:p.slug||p.id},'',path);
+        openDetail(p.id);
+        history.replaceState({page:'product',id:p.id},'','/products/'+p.id);
       } else if(attempt<40){
         setTimeout(function(){tryOpen(attempt+1);},500);
       }
