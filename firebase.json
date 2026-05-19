@@ -8,16 +8,8 @@
     ],
     "rewrites": [
       {
-        "source": "/products/**",
-        "function": "ssrHandler"
-      },
-      {
-        "source": "/product/**",
-        "function": "ssrHandler"
-      },
-      {
         "source": "**",
-        "function": "ssrHandler"
+        "destination": "/index.html"
       }
     ],
     "headers": [
@@ -33,9 +25,5 @@
     ],
     "cleanUrls": true,
     "trailingSlash": false
-  },
-  "functions": {
-    "source": "functions",
-    "runtime": "nodejs20"
   }
 }
