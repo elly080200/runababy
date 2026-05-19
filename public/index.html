@@ -580,7 +580,12 @@ async function loadFromFirebase(){
     }
 
     // 讀取 store 底下的 products collection
-    const productSnap = await getDocs(collection(db,'runababy','store','products'));
+    const productSnap = await getDocs(
+  query(
+    collection(db,'runababy','store','products'),
+    orderBy('createdAt','desc')
+  )
+);
     if(typeof S !== 'undefined'){
       S.products = productSnap.docs.map(d => ({
         id: d.id,
@@ -612,7 +617,7 @@ async function loadFromFirebase(){
 
     // 訂單監聽改由 startOrderListener() 在 Auth 登入後才啟動
 
-    onSnapshot(collection(db,'runababy','store','products'), (snap)=>{
+    onSnapshot(query(collection(db,'runababy','store','products'), orderBy('createdAt','desc')), (snap)=>{
       if(typeof S !== 'undefined'){
         S.products = snap.docs.map(d => ({
           id: d.id,
@@ -1216,6 +1221,11 @@ var prodPage=0;var PAGE_SIZE=20;
 function renderProds(search){
   search=search||'';
   var prods=(S.products||[]).filter(function(p){return p.active!==false;});
+  prods.sort(function(a,b){
+  var ta=a.createdAt?(a.createdAt.seconds||new Date(a.createdAt).getTime()/1000):0;
+  var tb=b.createdAt?(b.createdAt.seconds||new Date(b.createdAt).getTime()/1000):0;
+  return tb-ta;
+});
   if(activeFilter==='preorder')prods=prods.filter(function(p){return p.type==='preorder';});
   else if(activeFilter==='stock')prods=prods.filter(function(p){return p.type==='stock';});
   else if(activeFilter==='new')prods=prods.filter(function(p){return p.isNew;});
