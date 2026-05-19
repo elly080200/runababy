@@ -1,0 +1,87 @@
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<!--  首頁  -->
+<url>
+<loc>https://runababy.com/</loc>
+<changefreq>daily</changefreq>
+<priority>1.0</priority>
+<lastmod>2026-05-19</lastmod>
+</url>
+<!--  新品上市  -->
+<url>
+<loc>https://runababy.com/new</loc>
+<changefreq>daily</changefreq>
+<priority>0.9</priority>
+<lastmod>2026-05-19</lastmod>
+</url>
+<!--  女裝  -->
+<url>
+<loc>https://runababy.com/women</loc>
+<changefreq>weekly</changefreq>
+<priority>0.8</priority>
+<lastmod>2026-05-19</lastmod>
+</url>
+<!--  童裝  -->
+<url>
+<loc>https://runababy.com/kids</loc>
+<changefreq>weekly</changefreq>
+<priority>0.8</priority>
+<lastmod>2026-05-19</lastmod>
+</url>
+<!--  母嬰商品  -->
+<url>
+<loc>https://runababy.com/baby</loc>
+<changefreq>weekly</changefreq>
+<priority>0.8</priority>
+<lastmod>2026-05-19</lastmod>
+</url>
+<!--  常見問題  -->
+<url>
+<loc>https://runababy.com/faq</loc>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+<lastmod>2026-05-19</lastmod>
+</url>
+<!--  隱私權及服務條款  -->
+<url>
+<loc>https://runababy.com/privacy</loc>
+<changefreq>yearly</changefreq>
+<priority>0.3</priority>
+<lastmod>2026-05-19</lastmod>
+</url>
+<!--  商品：百搭蕾絲翻領上衣  -->
+<!--  title: 百搭蕾絲翻領上衣 AS997339 | Runababy 韓國童裝代購  -->
+<!--  meta-description: 韓國精選童裝！百搭蕾絲翻領上衣，搭配洋裝、吊帶裙都超可愛。Runababy 韓國童裝代購，嚴選韓國品牌童裝，款式新穎、質感細膩，讓寶貝每天穿出最甜美的造型。  -->
+<url>
+<loc>https://runababy.com/products/as997339</loc>
+<changefreq>weekly</changefreq>
+<priority>0.8</priority>
+<lastmod>2026-05-19</lastmod>
+</url>
+<!--  商品：素色套裝  -->
+<!--  title: 素色套裝 AR66420 | Runababy 韓國童裝代購  -->
+<!--  meta-description: 韓國精選童裝素色套裝，彈性極佳、版型舒適，尺寸照平常穿的拿就對了！整套搭配超划算，Runababy 韓國童裝代購嚴選高CP值韓國品牌，讓寶貝每天穿得舒適又可愛。  -->
+<url>
+<loc>https://runababy.com/products/ar66420</loc>
+<changefreq>weekly</changefreq>
+<priority>0.8</priority>
+<lastmod>2026-05-19</lastmod>
+</url>
+<!--  商品：泡泡紗格紋套裝  -->
+<!--  title: 泡泡紗格紋套裝 BE661053 | Runababy 韓國童裝代購  -->
+<!--  meta-description: 韓國貝拉家泡泡紗格紋套裝，材質輕盈透氣，尺寸偏大建議照尺寸或小一號購入。XS~XL 多尺寸可選（80~130cm）。Runababy 韓國童裝代購，嚴選韓國品牌，輕鬆穿出韓系童裝風格。  -->
+<url>
+<loc>https://runababy.com/products/be661053</loc>
+<changefreq>weekly</changefreq>
+<priority>0.8</priority>
+<lastmod>2026-05-19</lastmod>
+</url>
+<!--  商品：縫線造型牛仔寬褲  -->
+<!--  title: 縫線造型牛仔寬褲 BE049200 | Runababy 韓國童裝代購  -->
+<!--  meta-description: 韓國貝拉家縫線造型牛仔寬褲，布料超軟又透氣，夏天穿牛仔不悶熱！XS~XL 多尺寸可選（80~130cm），尺寸偏大建議照尺寸或小一號。Runababy 韓國童裝代購嚴選好物。  -->
+<url>
+<loc>https://runababy.com/products/prod-mp95seud-seud</loc>
+<changefreq>weekly</changefreq>
+<priority>0.8</priority>
+<lastmod>2026-05-19</lastmod>
+</url>
+</urlset>
