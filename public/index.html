@@ -581,7 +581,7 @@ async function loadFromFirebase(){
 
     // 讀取 store 底下的 products collection
     const productSnap = await getDocs(
-  query(
+  (
     collection(db,'runababy','store','products'),
     orderBy('createdAt','desc')
   )
@@ -617,7 +617,7 @@ async function loadFromFirebase(){
 
     // 訂單監聽改由 startOrderListener() 在 Auth 登入後才啟動
 
-    onSnapshot(query(collection(db,'runababy','store','products'), orderBy('createdAt','desc')), (snap)=>{
+    onSnapshot(collection(db,'runababy','store','products'), (snap)=>{ 
       if(typeof S !== 'undefined'){
         S.products = snap.docs.map(d => ({
           id: d.id,
