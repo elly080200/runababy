@@ -1050,7 +1050,13 @@ function renderProds(){
   else if(f==='stock')list=list.filter(function(p){return p.type==='stock';});
   var g=G('PROD_G');g.innerHTML='';
   if(!list.length){g.innerHTML='<div style="color:var(--M);padding:30px;">無商品</div>';return;}
-  list.forEach(function(p){
+  list.sort(function(a, b){
+
+  return (b.createdAt || 0) - (a.createdAt || 0);
+
+});
+
+ list.forEach(function(p){
     var off=p.active===false;
     var d=document.createElement('div');d.className='pc';d.style.opacity=off?'.6':'1';
     var img=p.images&&p.images[0]?'<img src="'+p.images[0]+'" alt="" loading="lazy">':'<div class="pci-ph">無圖片</div>';
