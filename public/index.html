@@ -1231,7 +1231,7 @@ function renderProds(search){
   if(!total){grid.innerHTML='<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--muted);">目前沒有商品</div>';return;}
   grid.innerHTML=pageProds.map(function(p){
     var saleBadge=p.isSale?'<span class="badge" style="background:#e53e3e;">特價</span>':'';
-    return '<div class="prod-card" data-pid="'+(p.slug||p.id||'')+'" onclick="openDetailByEl(this)">'
+    return '<div class="prod-card" data-pid="'+(p.id||'')+'" onclick="openDetailByEl(this)">'
       +'<div class="prod-img-wrap">'
       +(p.images&&p.images[0]?'<img src="'+p.images[0]+'" alt="'+p.title+'" loading="lazy">'
         :'<div class="prod-img-ph">無圖片</div>')
