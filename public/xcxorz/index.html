@@ -423,11 +423,7 @@ window._saveProductToFirebase = async function(prod) {
   if (!user || !prod || !prod.id) return;
   try {
     const prodToSave = JSON.parse(JSON.stringify(prod));
-    if(!prodToSave.createdAt){
-
-  prodToSave.createdAt = Date.now();
-
-}
+    
     prodToSave.images = (prodToSave.images || []).filter(u => u && u.startsWith('http'));
     await setDoc(doc(db, 'runababy', 'store', 'products', prod.id), prodToSave);
   } catch(e) { console.warn('商品儲存到子集合失敗:', e); }
