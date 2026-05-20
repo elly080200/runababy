@@ -581,7 +581,6 @@ async function loadFromFirebase(){
 
     // 讀取 store 底下的 products collection
     const productSnap = await getDocs(
-  query(
     collection(db,'runababy','store','products'),
   )
 );
