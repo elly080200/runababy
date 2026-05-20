@@ -736,6 +736,11 @@ document.addEventListener('DOMContentLoaded', function() {
       <select id="PS_F" style="padding:7px 13px;border:1.5px solid var(--BD);border-radius:18px;font-size:12px;">
         <option value="">全部</option><option value="active">上架中</option><option value="off">已下架</option><option value="preorder">預購</option><option value="stock">現貨</option>
       </select>
+      <select id="PS_SORT" style="padding:7px 13px;border:1.5px solid var(--BD);border-radius:18px;font-size:12px;">
+  <option value="newest">最新上架</option>
+  <option value="price_asc">價格低→高</option>
+  <option value="price_desc">價格高→低</option>
+</select>
       <button class="btn bp" id="ADD_P">＋ 新增商品</button>
     </div>
   </div>
@@ -1039,6 +1044,10 @@ function renderRevT(data){
 // PRODUCTS
 G('PS_Q').addEventListener('input',renderProds);
 G('PS_F').addEventListener('change',renderProds);
+  document.addEventListener('DOMContentLoaded', function(){
+  var psSort = G('PS_SORT');
+  if(psSort) psSort.addEventListener('change', renderProds);
+});
 G('ADD_P').addEventListener('click',function(){editPId=null;npD={type:'stock'};npImgs=[];pStep=1;G('MO_PROD_T').textContent='新增商品';renderPS();G('MO_PROD').classList.add('on');});
 
 function renderProds(){
@@ -1049,6 +1058,20 @@ function renderProds(){
   else if(f==='off')list=list.filter(function(p){return p.active===false;});
   else if(f==='preorder')list=list.filter(function(p){return p.type==='preorder';});
   else if(f==='stock')list=list.filter(function(p){return p.type==='stock';});
+  var sort = G('PS_SORT') ? G('PS_SORT').value : 'newest';
+list = list.slice(); // 複製陣列，不動原始資料
+if(sort === 'price_asc') {
+  list.sort(function(a,b){ return Number(a.price) - Number(b.price); });
+} else if(sort === 'price_desc') {
+  list.sort(function(a,b){ return Number(b.price) - Number(a.price); });
+} else {
+  // 最新上架：依 createdAt 排序
+  list.sort(function(a,b){
+    var ta = a.createdAt || a.id || '';
+    var tb = b.createdAt || b.id || '';
+    return ta > tb ? -1 : ta < tb ? 1 : 0;
+  });
+}
   var g=G('PROD_G');g.innerHTML='';
      if(!list.length){g.innerHTML='<div style="color:var(--M);padding:30px;">無商品</div>';return;}
   list.forEach(function(p){
