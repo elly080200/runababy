@@ -1133,7 +1133,11 @@ function init(){
   if(S.logoUrl){
     logoEl.innerHTML='<img src="'+S.logoUrl+'" alt="logo">';
   }else{logoEl.innerHTML='<svg viewBox="0 0 24 24" style="width:20px;height:20px;stroke:var(--primary);fill:none;stroke-width:2;"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>';}
-  if(S.bannerUrl){document.getElementById('bannerWrap').innerHTML='<img src="'+S.bannerUrl+'" alt="banner">';}
+  if(S.bannerUrl){
+  document.getElementById('bannerWrap').innerHTML='<img src="'+S.bannerUrl+'" alt="banner">';
+} else {
+  document.getElementById('bannerWrap').innerHTML='<img src="https://firebasestorage.googleapis.com/v0/b/runababy-ee77d.firebasestorage.app/o/%E9%A6%96%E9%A0%81.png?alt=media&token=57964453-9ffd-47a7-b764-31c8223a0aa7" alt="banner">';
+}
   renderCategoryMenus();renderCatTabs();renderProds();renderCart();renderOrders();loadProfileUI();renderQA();updateCartDot();renderPolicyPages();
 }
 
