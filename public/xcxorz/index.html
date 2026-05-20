@@ -73,6 +73,10 @@ tr:hover td{background:#fdf5f5;}
 .stag.on{border-color:var(--P);background:var(--P);color:#fff;}
 .upl{border:2px dashed var(--BD);border-radius:9px;padding:16px;text-align:center;color:var(--M);font-size:12px;cursor:pointer;}
 .upl:hover{border-color:var(--P);}
+.upl.dragover{border-color:var(--P);background:var(--BG);color:var(--P);}
+.upl .upl-ico{font-size:26px;margin-bottom:5px;}
+.upl .upl-main{font-weight:700;color:var(--T);}
+.upl .upl-sub{font-size:11px;margin-top:5px;color:var(--M);line-height:1.6;}
 .thumbs{display:flex;flex-wrap:wrap;gap:7px;margin-top:9px;}
 .thumb{position:relative;width:72px;height:72px;border-radius:7px;overflow:hidden;background:var(--BD);}
 .thumb img{width:100%;height:100%;object-fit:cover;}
@@ -501,6 +505,55 @@ window._startRealtimeListeners = function() {
 };
 
 // ── Firebase Storage 圖片上傳 ─────────────────────────
+
+/**
+ * 將圖片壓縮成 WebP（商品圖片拖曳上傳元件使用）
+ * @param {File} file
+ * @param {object} opts {maxWidth,maxHeight,quality}
+ * @returns {Promise<File>}
+ */
+window.compressImageToWebP = function(file, opts) {
+  opts = opts || {};
+  const maxWidth = opts.maxWidth || 1600;
+  const maxHeight = opts.maxHeight || 2000;
+  const quality = opts.quality || 0.82;
+  return new Promise((resolve, reject) => {
+    if (!file || !file.type || !file.type.startsWith('image/')) return reject(new Error('請選擇圖片檔'));
+    const img = new Image();
+    const objectUrl = URL.createObjectURL(file);
+    img.onload = function() {
+      try {
+        let w = img.naturalWidth || img.width;
+        let h = img.naturalHeight || img.height;
+        const ratio = Math.min(1, maxWidth / w, maxHeight / h);
+        w = Math.round(w * ratio);
+        h = Math.round(h * ratio);
+        const canvas = document.createElement('canvas');
+        canvas.width = w;
+        canvas.height = h;
+        const ctx = canvas.getContext('2d', { alpha: false });
+        ctx.fillStyle = '#fff';
+        ctx.fillRect(0, 0, w, h);
+        ctx.drawImage(img, 0, 0, w, h);
+        canvas.toBlob(function(blob) {
+          URL.revokeObjectURL(objectUrl);
+          if (!blob) return reject(new Error('圖片壓縮失敗'));
+          const baseName = (file.name || 'image').replace(/\.[^.]+$/, '');
+          resolve(new File([blob], baseName + '.webp', { type: 'image/webp', lastModified: Date.now() }));
+        }, 'image/webp', quality);
+      } catch (e) {
+        URL.revokeObjectURL(objectUrl);
+        reject(e);
+      }
+    };
+    img.onerror = function() {
+      URL.revokeObjectURL(objectUrl);
+      reject(new Error('圖片讀取失敗'));
+    };
+    img.src = objectUrl;
+  });
+};
+
 /**
  * 上傳單張圖片到 Firebase Storage
  * @param {File} file
@@ -1191,26 +1244,21 @@ function renderPS(){
     });
 
   } else if(pStep===2){
-    // 圖片上傳步驟
-    c.innerHTML='<div class="upl" id="IMG_UPL"><input type="file" id="IMG_F" accept="image/*" multiple style="display:none;"><div>📷 點擊上傳圖片（最多 10 張）</div><div style="font-size:11px;margin-top:4px;color:var(--M);">圖片會直接上傳到 Firebase Storage</div></div>'
-      +'<div class="upload-progress" id="UP_PROG" style="display:none;"><span id="UP_TEXT">上傳中...</span><div class="upload-bar"><div class="upload-bar-fill" id="UP_BAR" style="width:0%"></div></div></div>'
-      +'<div style="font-size:11px;color:var(--M);margin-top:8px;">可拖曳縮圖排序，第一張為封面。</div>'
+    // 圖片上傳步驟：獨立拖曳元件，選圖後先壓縮 WebP，再直接上傳 Firebase Storage
+    c.innerHTML='<div class="upl" id="IMG_UPL"><input type="file" id="IMG_F" accept="image/*" multiple style="display:none;"><div class="upl-ico">📷</div><div class="upl-main">拖曳圖片到這裡，或點擊選圖</div><div class="upl-sub">最多 10 張｜會先壓縮成 WebP｜完成後直接上傳 Firebase Storage</div></div>'
+      +'<div class="upload-progress" id="UP_PROG" style="display:none;"><span id="UP_TEXT">準備上傳...</span><div class="upload-bar"><div class="upload-bar-fill" id="UP_BAR" style="width:0%"></div></div></div>'
+      +'<div style="font-size:11px;color:var(--M);margin-top:8px;">可拖曳縮圖排序，第一張為封面。綠框代表已上傳完成。</div>'
       +'<div class="thumbs" id="NP_TH"></div>'
       +'<div style="display:flex;justify-content:space-between;margin-top:16px;"><button class="btn bo" id="PS_B2">← 上一步</button><button class="btn bp" id="PS_N2">下一步 →</button></div>';
     G('IMG_UPL').addEventListener('click',function(){G('IMG_F').click();});
-    G('IMG_F').addEventListener('change',function(){
-      var files=Array.from(this.files);
-      files.forEach(function(f){
-        if(npImgs.length>=10)return;
-        var reader=new FileReader();
-        reader.onload=function(e){
-          npImgs.push({preview:e.target.result,file:f,uploaded:false});
-          renderTh();
-        };
-        reader.readAsDataURL(f);
-      });
-      this.value='';
+    G('IMG_F').addEventListener('change',function(){handleProductImageFiles(Array.from(this.files));this.value='';});
+    ['dragenter','dragover'].forEach(function(evt){
+      G('IMG_UPL').addEventListener(evt,function(e){e.preventDefault();e.stopPropagation();this.classList.add('dragover');});
     });
+    ['dragleave','drop'].forEach(function(evt){
+      G('IMG_UPL').addEventListener(evt,function(e){e.preventDefault();e.stopPropagation();this.classList.remove('dragover');});
+    });
+    G('IMG_UPL').addEventListener('drop',function(e){handleProductImageFiles(Array.from(e.dataTransfer.files||[]));});
     G('PS_B2').addEventListener('click',function(){pStep=1;renderPS();});
     G('PS_N2').addEventListener('click',function(){pStep=3;renderPS();});
     renderTh();
@@ -1322,6 +1370,37 @@ function buildVariantRows(data){
   }
   walk(0,{});
   return rows.length?rows:[{key:'',label:'單一規格',specs:{},price:Number(data.price||0),cost:Number(data.cost||0),stock:0}];
+}
+async function handleProductImageFiles(files){
+  files=(files||[]).filter(function(f){return f&&f.type&&f.type.indexOf('image/')===0;});
+  if(!files.length)return;
+  var progEl=G('UP_PROG'),barEl=G('UP_BAR'),txtEl=G('UP_TEXT');
+  if(progEl)progEl.style.display='block';
+  var prodId=editPId||(npD.id||npD.slug||('P'+Date.now().toString().slice(-6)));
+  npD.id=prodId;
+  var remain=Math.max(0,10-npImgs.length);
+  if(files.length>remain)toast('最多只能上傳 10 張，已自動略過多的圖片',true);
+  files=files.slice(0,remain);
+  for(var i=0;i<files.length;i++){
+    try{
+      var f=files[i];
+      if(txtEl)txtEl.textContent='壓縮圖片 '+(i+1)+'/'+files.length+'...';
+      if(barEl)barEl.style.width='8%';
+      var webp=await window.compressImageToWebP(f,{maxWidth:1600,maxHeight:2000,quality:0.82});
+      if(txtEl)txtEl.textContent='上傳圖片 '+(i+1)+'/'+files.length+'...';
+      var url=await window.uploadImageToStorage(webp,prodId,Date.now()+'_'+i,function(pct){
+        if(barEl)barEl.style.width=pct+'%';
+      });
+      npImgs.push({preview:url,file:null,uploaded:true});
+      renderTh();
+      if(barEl)barEl.style.width='100%';
+    }catch(e){
+      console.error(e);
+      toast('圖片處理失敗：'+(e.message||e),true);
+    }
+  }
+  if(txtEl)txtEl.textContent='上傳完成';
+  setTimeout(function(){if(progEl)progEl.style.display='none';if(barEl)barEl.style.width='0%';},900);
 }
 function moveImage(from,to){if(from===to||from<0||to<0||from>=npImgs.length||to>=npImgs.length)return;var item=npImgs.splice(from,1)[0];npImgs.splice(to,0,item);}
 function renderTh(){
