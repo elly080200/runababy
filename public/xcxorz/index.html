@@ -141,6 +141,31 @@ tr:hover td{background:#fdf5f5;}
 .lbtn{display:block;width:100%;background:var(--P);color:#fff;border:none;border-radius:28px;padding:14px;font-size:15px;font-weight:700;cursor:pointer;touch-action:manipulation;font-family:sans-serif;}
 #LOGIN{position:fixed;top:0;left:0;right:0;bottom:0;width:100%;height:100%;background:linear-gradient(135deg,#FFD2D2,#FFF9F9);z-index:99999;display:flex;align-items:center;justify-content:center;}
 @media(max-width:700px){.stats{grid-template-columns:repeat(2,1fr);}}
+.img-drop-zone{
+  border:2px dashed var(--BD);
+  background:#fff8f8;
+  border-radius:16px;
+  padding:32px 20px;
+  text-align:center;
+  color:#9b6b6b;
+  font-size:14px;
+  transition:.2s;
+  cursor:pointer;
+  user-select:none;
+}
+.img-drop-zone:hover{border-color:var(--P);background:var(--BG);}
+.img-drop-zone.drag{
+  background:#ffecec;
+  border-color:#c98f8f;
+  transform:scale(1.01);
+  box-shadow:0 4px 16px rgba(184,112,112,.15);
+}
+.thumb-label{
+  position:absolute;bottom:0;left:0;right:0;
+  background:rgba(0,0,0,.55);
+  color:#fff;font-size:8px;
+  text-align:center;padding:2px;line-height:1.3;
+}
 </style>
 
 <!-- Firebase SDKs -->
@@ -845,7 +870,50 @@ document.addEventListener('DOMContentLoaded', function() {
 </main>
 
 <script>
-var S={storeName:'Runababy韓國選品',logoUrl:'',announcement:'',bannerUrl:'',categories:[{id:'all',label:'全部商品'},{id:'preorder',label:'預購商品'},{id:'stock',label:'現貨商品'},{id:'new',label:'新品上市'}],categoryTree:[],products:[],extLinks:{yeestore:'',group:''},qaList:[{q:'如何下單？',a:'加入購物車後填寫收件資料送出即可。'},{q:'預購何時到貨？',a:'請參考各商品說明。'},{q:'可以退換貨嗎？',a:'韓國代購原則不退換，瑕疵請24小時內聯繫。'}]};
+function compressImage(file){
+  return new Promise(function(resolve,reject){
+    var img=new Image();
+    var objectUrl=URL.createObjectURL(file);
+    img.src=objectUrl;
+    img.onload=function(){
+      var canvas=document.createElement('canvas');
+      var ctx=canvas.getContext('2d');
+      var MAX=1200,w=img.width,h=img.height;
+      if(w>MAX||h>MAX){var ratio=Math.min(MAX/w,MAX/h);w=Math.round(w*ratio);h=Math.round(h*ratio);}
+      canvas.width=w;canvas.height=h;
+      ctx.drawImage(img,0,0,w,h);
+      URL.revokeObjectURL(objectUrl);
+      canvas.toBlob(function(blob){
+        if(!blob){reject(new Error('壓縮失敗'));return;}
+        resolve(new File([blob],file.name.replace(/\.\w+$/,'.webp'),{type:'image/webp'}));
+      },'image/webp',0.75);
+    };
+    img.onerror=function(){URL.revokeObjectURL(objectUrl);reject(new Error('圖片讀取失敗'));};
+  });
+}
+
+async function handleImageFiles(files){
+  var progEl=G('UP_PROG'),barEl=G('UP_BAR'),txtEl=G('UP_TEXT');
+  var imgFiles=files.filter(function(f){return f.type.startsWith('image/');});
+  if(!imgFiles.length)return;
+  if(progEl)progEl.style.display='block';
+  for(var i=0;i<imgFiles.length;i++){
+    if(npImgs.length>=10){toast('最多只能上傳 10 張圖片',true);break;}
+    var file=imgFiles[i];
+    if(txtEl)txtEl.textContent='壓縮中 '+(i+1)+'/'+imgFiles.length+'…';
+    if(barEl)barEl.style.width=Math.round((i/imgFiles.length)*60)+'%';
+    try{
+      var compressed=await compressImage(file);
+      var preview=await new Promise(function(res,rej){var r=new FileReader();r.onload=function(e){res(e.target.result);};r.onerror=rej;r.readAsDataURL(compressed);});
+      npImgs.push({preview:preview,file:compressed,uploaded:false});
+      renderTh();
+    }catch(e){toast('壓縮失敗：'+file.name,true);}
+  }
+  if(barEl)barEl.style.width='100%';
+  if(txtEl)txtEl.textContent='✓ 壓縮完成，上架時自動上傳';
+  setTimeout(function(){if(progEl)progEl.style.display='none';},2000);
+}
+  var S={storeName:'Runababy韓國選品',logoUrl:'',announcement:'',bannerUrl:'',categories:[{id:'all',label:'全部商品'},{id:'preorder',label:'預購商品'},{id:'stock',label:'現貨商品'},{id:'new',label:'新品上市'}],categoryTree:[],products:[],extLinks:{yeestore:'',group:''},qaList:[{q:'如何下單？',a:'加入購物車後填寫收件資料送出即可。'},{q:'預購何時到貨？',a:'請參考各商品說明。'},{q:'可以退換貨嗎？',a:'韓國代購原則不退換，瑕疵請24小時內聯繫。'}]};
 var orders=[],customers=[],members=[],pStep=1,editPId=null,npD={},npImgs=[],revView='monthly',curOId=null,dragImgIdx=null;
 // npImgs 元素：{ preview: string(URL/base64), file: File|null, uploaded: bool }
 
@@ -1191,31 +1259,28 @@ function renderPS(){
     });
 
   } else if(pStep===2){
-    // 圖片上傳步驟
-    c.innerHTML='<div class="upl" id="IMG_UPL"><input type="file" id="IMG_F" accept="image/*" multiple style="display:none;"><div>📷 點擊上傳圖片（最多 10 張）</div><div style="font-size:11px;margin-top:4px;color:var(--M);">圖片會直接上傳到 Firebase Storage</div></div>'
-      +'<div class="upload-progress" id="UP_PROG" style="display:none;"><span id="UP_TEXT">上傳中...</span><div class="upload-bar"><div class="upload-bar-fill" id="UP_BAR" style="width:0%"></div></div></div>'
-      +'<div style="font-size:11px;color:var(--M);margin-top:8px;">可拖曳縮圖排序，第一張為封面。</div>'
-      +'<div class="thumbs" id="NP_TH"></div>'
-      +'<div style="display:flex;justify-content:space-between;margin-top:16px;"><button class="btn bo" id="PS_B2">← 上一步</button><button class="btn bp" id="PS_N2">下一步 →</button></div>';
-    G('IMG_UPL').addEventListener('click',function(){G('IMG_F').click();});
-    G('IMG_F').addEventListener('change',function(){
-      var files=Array.from(this.files);
-      files.forEach(function(f){
-        if(npImgs.length>=10)return;
-        var reader=new FileReader();
-        reader.onload=function(e){
-          npImgs.push({preview:e.target.result,file:f,uploaded:false});
-          renderTh();
-        };
-        reader.readAsDataURL(f);
-      });
-      this.value='';
-    });
-    G('PS_B2').addEventListener('click',function(){pStep=1;renderPS();});
-    G('PS_N2').addEventListener('click',function(){pStep=3;renderPS();});
-    renderTh();
+    c.innerHTML=
+    '<div class="img-drop-zone" id="IMG_DROP">'
+      +'<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>'
+      +'<div style="margin-top:6px;font-weight:600;">拖曳圖片到這裡</div>'
+      +'<div style="font-size:11px;margin-top:4px;color:#b87070;">或點一下選擇圖片（最多 10 張）</div>'
+      +'<div style="font-size:10px;margin-top:4px;opacity:.7;">自動壓縮為 WebP · 最長邊 1200px · 品質 75%</div>'
+    +'</div>'
+    +'<input type="file" id="IMG_F" accept="image/*" multiple style="display:none;">'
+    +'<div class="upload-progress" id="UP_PROG" style="display:none;"><span id="UP_TEXT">處理中...</span><div class="upload-bar"><div class="upload-bar-fill" id="UP_BAR" style="width:0%"></div></div></div>'
+    +'<div style="font-size:11px;color:var(--M);margin-top:8px;">可拖曳縮圖排序，第一張為封面。🟢已上傳 🟠待上傳</div>'
+    +'<div class="thumbs" id="NP_TH"></div>'
+    +'<div style="display:flex;justify-content:space-between;margin-top:16px;"><button class="btn bo" id="PS_B2">← 上一步</button><button class="btn bp" id="PS_N2">下一步 →</button></div>';
 
-  } else if(pStep===3){
+  var dropZone=G('IMG_DROP'), fileInput=G('IMG_F');
+  dropZone.addEventListener('click',function(){fileInput.click();});
+  dropZone.addEventListener('dragover',function(e){e.preventDefault();dropZone.classList.add('drag');});
+  dropZone.addEventListener('dragleave',function(e){if(!dropZone.contains(e.relatedTarget))dropZone.classList.remove('drag');});
+  dropZone.addEventListener('drop',function(e){e.preventDefault();dropZone.classList.remove('drag');handleImageFiles(Array.from(e.dataTransfer.files));});
+  fileInput.addEventListener('change',function(){handleImageFiles(Array.from(this.files));this.value='';});
+  G('PS_B2').addEventListener('click',function(){pStep=1;renderPS();});
+  G('PS_N2').addEventListener('click',function(){pStep=3;renderPS();});
+  renderTh();
     var SIZES=['XS','S','M','L','XL','2XL'],COLORS=['黑','白','粉','紅','藍','綠','深藍','紫','灰','咖','卡其','黃','奶油','米'];
     c.innerHTML=mkSE('尺寸','sizes',SIZES)+mkSE('顏色','colors',COLORS)+mkSE('款式','styles',[])
       +'<div style="display:flex;justify-content:space-between;margin-top:12px;"><button class="btn bo" id="PS_B3">← 上一步</button><button class="btn bp" id="PS_N3">下一步 →</button></div>';
@@ -1328,13 +1393,12 @@ function renderTh(){
   var el=G('NP_TH');if(!el)return;el.innerHTML='';
   npImgs.forEach(function(img,i){
     var d=document.createElement('div');d.className='thumb';d.draggable=true;
-    d.style.border=img.uploaded?'2px solid #4caf50':'2px solid #f0d8d8';
+    d.style.border=img.uploaded?'2px solid #4caf50':'2px solid #FF9800';
     d.innerHTML='<img src="'+img.preview+'"><button class="tdel">✕</button>';
-    if(!img.uploaded){
-      var lbl=document.createElement('div');
-      lbl.style.cssText='position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.5);color:#fff;font-size:8px;text-align:center;padding:2px;';
-      lbl.textContent='待上傳';d.appendChild(lbl);
-    }
+    var lbl=document.createElement('div');
+    lbl.className='thumb-label';
+    lbl.textContent=img.uploaded?'✓ 已上傳':'待上傳';
+    d.appendChild(lbl);
     d.querySelector('.tdel').addEventListener('click',function(e){e.stopPropagation();npImgs.splice(i,1);renderTh();});
     d.addEventListener('dragstart',function(){dragImgIdx=i;});
     d.addEventListener('dragover',function(e){e.preventDefault();});
