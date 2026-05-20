@@ -903,6 +903,13 @@ document.addEventListener('DOMContentLoaded', function(){
   </div>
   <div class="cat-tabs" id="catTabs"></div>
   <div class="search-wrap">
+    <div style="display:flex;gap:8px;align-items:center;padding:0 0 8px;">
+      <select id="prodSort" onchange="renderProds(document.getElementById('searchInput').value)" style="flex:1;padding:8px 12px;border:1.5px solid var(--border);border-radius:18px;font-size:13px;background:#fff;color:var(--text);outline:none;">
+        <option value="newest">最新上架</option>
+        <option value="price_asc">價格低→高</option>
+        <option value="price_desc">價格高→低</option>
+      </select>
+    </div>
     <div class="search-box">
       <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
       <input type="text" id="searchInput" placeholder="搜尋商品名稱或編號…" oninput="doSearch()">
@@ -1221,11 +1228,19 @@ var prodPage=0;var PAGE_SIZE=20;
 function renderProds(search){
   search=search||'';
   var prods=(S.products||[]).filter(function(p){return p.active!==false;});
-  prods.sort(function(a,b){
-  var ta=a.createdAt?(a.createdAt.seconds||new Date(a.createdAt).getTime()/1000):0;
-  var tb=b.createdAt?(b.createdAt.seconds||new Date(b.createdAt).getTime()/1000):0;
-  return tb-ta;
-});
+  var sortVal = document.getElementById('prodSort') ? document.getElementById('prodSort').value : 'newest';
+  prods = prods.slice();
+  if(sortVal === 'price_asc'){
+    prods.sort(function(a,b){ return Number(a.price) - Number(b.price); });
+  } else if(sortVal === 'price_desc'){
+    prods.sort(function(a,b){ return Number(b.price) - Number(a.price); });
+  } else {
+    prods.sort(function(a,b){
+      var ta=a.createdAt?(a.createdAt.seconds?a.createdAt.seconds:new Date(a.createdAt).getTime()/1000):0;
+      var tb=b.createdAt?(b.createdAt.seconds?b.createdAt.seconds:new Date(b.createdAt).getTime()/1000):0;
+      return tb-ta;
+    });
+  }
   if(activeFilter==='preorder')prods=prods.filter(function(p){return p.type==='preorder';});
   else if(activeFilter==='stock')prods=prods.filter(function(p){return p.type==='stock';});
   else if(activeFilter==='new')prods=prods.filter(function(p){return p.isNew;});
