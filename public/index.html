@@ -1261,6 +1261,11 @@ function renderProds(search){
   return;
 }
 
+if(!window._productsLoaded){
+  grid.innerHTML='<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--muted);">商品載入中...</div>';
+  return;
+}
+
 if(!total){
   grid.innerHTML='<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--muted);">目前沒有商品</div>';
   return;
@@ -1838,7 +1843,7 @@ window.onload = function(){
   if(ov)ov.classList.remove('open');
   var dn=document.getElementById('detailNav');
   if(dn)dn.style.display='none';
-  init();
+  // init();
   // 處理網址路由（F5 進入 /products/xxx）
   var path=window.location.pathname;
   var m=path.match(/\/products?\/(.+)/);
