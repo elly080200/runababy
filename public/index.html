@@ -583,7 +583,6 @@ async function loadFromFirebase(){
     const productSnap = await getDocs(
   query(
     collection(db,'runababy','store','products'),
-    orderBy('createdAt','desc')
   )
 );
     if(typeof S !== 'undefined'){
