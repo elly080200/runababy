@@ -363,6 +363,11 @@ body{overflow-x:hidden;}
   max-height:none !important;
   object-fit:contain !important;
 }
+  .drawer-logo{
+  text-decoration:none;
+  color:inherit;
+}
+  
 </style>
 
 <script type="module">
@@ -702,7 +707,8 @@ document.addEventListener('DOMContentLoaded', function(){
 <div class="drawer-overlay" id="dOverlay" onclick="closeDrawer()"></div>
 <div class="drawer" id="drawer">
   <div class="drawer-head">
-    <span class="drawer-logo" id="drawerName">Runababy韓國選品</span>
+    <span class="drawer-logo" id="drawerName">Runababy韓國選品
+    </a>
     <button class="drawer-close" onclick="closeDrawer()">✕</button>
   </div>
   <div class="dm-item" onclick="catFilter('all');closeDrawer();"><span style="display:flex;align-items:center;gap:8px;"><svg viewBox="0 0 24 24" style="width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;flex-shrink:0;"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>全部商品</span></div>
@@ -1938,7 +1944,20 @@ window.addEventListener('popstate',function(e){
   } else {
     if(ov)ov.classList.remove('open');
   }
-});</script>
+});
+function goHome(e){
+  e.preventDefault();
+
+  closeDrawer();
+
+  var ov=document.getElementById('detailOverlay');
+  if(ov) ov.classList.remove('open');
+
+  window.scrollTo({top:0,behavior:'smooth'});
+
+  history.pushState({},'', '/');
+}
+</script>
 
 </body>
 </html>
