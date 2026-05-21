@@ -6,18 +6,15 @@
       "**/.* ",
       "**/node_modules/**"
     ],
-   "rewrites": [
+  "rewrites": [
   {
     "source": "/sitemap.xml",
     "function": "sitemap"
   },
   {
-  "source": "/products/**",
-  "function": {
-    "functionId": "ssrHandler",
-    "region": "us-central1"
-  }
-},
+    "source": "/products/**",
+    "function": "ssrHandler"
+  },
   {
     "source": "**",
     "destination": "/index.html"
