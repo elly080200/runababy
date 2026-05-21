@@ -1,25 +1,28 @@
 {
+  "functions": {
+    "source": "functions"
+  },
   "hosting": {
     "public": "public",
     "ignore": [
       "firebase.json",
-      "**/.* ",
+      "**/.*",
       "**/node_modules/**"
     ],
- "rewrites": [
-  {
-    "source": "/sitemap.xml",
-    "function": "sitemap"
-  },
-  {
-    "source": "/products/**",
-    "destination": "/index.html"
-  },
-  {
-    "source": "**",
-    "destination": "/index.html"
-  }
-],
+    "rewrites": [
+      {
+        "source": "/sitemap.xml",
+        "function": "sitemap"
+      },
+      {
+        "source": "/products/**",
+        "function": "ssrHandler"
+      },
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ],
     "headers": [
       {
         "source": "**/*.@(js|css|png|jpg|jpeg|gif|webp|svg|ico|woff|woff2)",
