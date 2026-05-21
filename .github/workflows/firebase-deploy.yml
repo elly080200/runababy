@@ -26,6 +26,6 @@ jobs:
         run: echo '${{ secrets.GOOGLE_APPLICATION_CREDENTIALS_JSON }}' > /tmp/sa-key.json
 
       - name: Deploy to Firebase
-        run: firebase deploy --only hosting,functions --non-interactive
+        run: firebase deploy --only hosting,functions --non-interactive --force
         env:
           GOOGLE_APPLICATION_CREDENTIALS: /tmp/sa-key.json
