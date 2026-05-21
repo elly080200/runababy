@@ -12,9 +12,12 @@
     "function": "sitemap"
   },
   {
-    "source": "/products/**",
-    "function": "ssrHandler"
-  },
+  "source": "/products/**",
+  "function": {
+    "functionId": "ssrHandler",
+    "region": "us-central1"
+  }
+},
   {
     "source": "**",
     "destination": "/index.html"
