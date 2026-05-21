@@ -145,6 +145,13 @@ tr:hover td{background:#fdf5f5;}
 .lbtn{display:block;width:100%;background:var(--P);color:#fff;border:none;border-radius:28px;padding:14px;font-size:15px;font-weight:700;cursor:pointer;touch-action:manipulation;font-family:sans-serif;}
 #LOGIN{position:fixed;top:0;left:0;right:0;bottom:0;width:100%;height:100%;background:linear-gradient(135deg,#FFD2D2,#FFF9F9);z-index:99999;display:flex;align-items:center;justify-content:center;}
 @media(max-width:700px){.stats{grid-template-columns:repeat(2,1fr);}}
+/* 商品分頁 */
+.pg-nav{display:flex;align-items:center;justify-content:center;gap:6px;margin-top:16px;flex-wrap:wrap;}
+.pg-btn{min-width:34px;height:34px;padding:0 10px;border-radius:10px;border:1.5px solid var(--BD);background:#fff;font-size:13px;font-weight:600;color:var(--T);cursor:pointer;transition:all .15s;}
+.pg-btn:hover{border-color:var(--P);color:var(--P);}
+.pg-btn.on{background:var(--P);color:#fff;border-color:var(--P);}
+.pg-btn:disabled{opacity:.35;cursor:default;}
+.pg-info{font-size:12px;color:var(--M);padding:0 4px;}
 </style>
 
 <!-- Firebase SDKs -->
@@ -798,6 +805,7 @@ document.addEventListener('DOMContentLoaded', function() {
     </div>
   </div>
   <div class="pg" id="PROD_G"></div>
+  <div class="pg-nav" id="PROD_PAGER"></div>
 </div>
 <div class="sec" id="sec-ord">
   <div class="pg-t">📋 訂單管理</div>
@@ -1095,13 +1103,17 @@ function renderRevT(data){
 }
 
 // PRODUCTS
-G('PS_Q').addEventListener('input',renderProds);
-G('PS_F').addEventListener('change',renderProds);
+G('PS_Q').addEventListener('input',function(){prodPage=1;renderProds();});
+G('PS_F').addEventListener('change',function(){prodPage=1;renderProds();});
   document.addEventListener('DOMContentLoaded', function(){
   var psSort = G('PS_SORT');
-  if(psSort) psSort.addEventListener('change', renderProds);
+  if(psSort) psSort.addEventListener('change',function(){prodPage=1;renderProds();});
 });
 G('ADD_P').addEventListener('click',function(){editPId=null;npD={type:'stock'};npImgs=[];pStep=1;G('MO_PROD_T').textContent='新增商品';renderPS();G('MO_PROD').classList.add('on');});
+
+
+ var prodPage = 1;
+var PRODS_PER_PAGE = 20;
 
 function renderProds(){
   var q=G('PS_Q').value.toLowerCase(),f=G('PS_F').value;
@@ -1111,19 +1123,79 @@ function renderProds(){
   else if(f==='off')list=list.filter(function(p){return p.active===false;});
   else if(f==='preorder')list=list.filter(function(p){return p.type==='preorder';});
   else if(f==='stock')list=list.filter(function(p){return p.type==='stock';});
-  var sort = G('PS_SORT') ? G('PS_SORT').value : 'newest';
-list = list.slice(); // 複製陣列，不動原始資料
-if(sort === 'price_asc') {
-  list.sort(function(a,b){ return Number(a.price) - Number(b.price); });
-} else if(sort === 'price_desc') {
-  list.sort(function(a,b){ return Number(b.price) - Number(a.price); });
-} else {
-  // 最新上架：依 createdAt 排序
-  list.sort(function(a,b){
-    var ta = a.createdAt || a.id || '';
-    var tb = b.createdAt || b.id || '';
-    return ta > tb ? -1 : ta < tb ? 1 : 0;
+  var sort=G('PS_SORT')?G('PS_SORT').value:'newest';
+  list=list.slice();
+  if(sort==='price_asc'){list.sort(function(a,b){return Number(a.price)-Number(b.price);});}
+  else if(sort==='price_desc'){list.sort(function(a,b){return Number(b.price)-Number(a.price);});}
+  else{list.sort(function(a,b){var ta=a.createdAt||a.id||'';var tb=b.createdAt||b.id||'';return ta>tb?-1:ta<tb?1:0;});}
+
+  var totalPages=Math.max(1,Math.ceil(list.length/PRODS_PER_PAGE));
+  if(prodPage>totalPages)prodPage=totalPages;
+  if(prodPage<1)prodPage=1;
+  var pageList=list.slice((prodPage-1)*PRODS_PER_PAGE,prodPage*PRODS_PER_PAGE);
+
+  var g=G('PROD_G');g.innerHTML='';
+  if(!list.length){g.innerHTML='<div style="color:var(--M);padding:30px;">無商品</div>';renderProdPager(0,1,1);return;}
+
+  pageList.forEach(function(p){
+    var off=p.active===false;
+    var d=document.createElement('div');d.className='pc';d.style.opacity=off?'.6':'1';
+    var img=p.images&&p.images[0]?'<img src="'+p.images[0]+'" alt="" loading="lazy">':'<div class="pci-ph">無圖片</div>';
+    d.innerHTML='<div class="pci">'+img+'<div class="pcbdgs"><span class="bdg '+(p.type==='stock'?'stk':'pre')+'">'+(p.type==='stock'?'現貨':'預購')+'</span>'+(p.isNew?'<span class="bdg nw">新品</span>':'')+(p.isHot?'<span class="bdg hot">熱銷</span>':'')+(p.isSale?'<span class="bdg" style="background:#e53e3e;">特價</span>':'')+(p.isKids?'<span class="bdg" style="background:#7c3aed;">童裝</span>':'')+(p.isWomen?'<span class="bdg" style="background:#db2777;">女裝</span>':'')+(off?'<span class="bdg off">下架</span>':'')+'</div></div><div class="pcb"><div class="pct">'+p.title+'</div><div class="pcid">'+p.id+'</div><div class="pcp">NT$ '+Number(p.price).toLocaleString()+'</div><div class="pcacts"><button class="btn bo bxs ed-btn">編輯</button><button class="btn bxs '+(off?'bok':'bwa')+' tg-btn">'+(off?'上架':'下架')+'</button><button class="btn bd bxs dl-btn">刪除</button></div></div>';
+    d.querySelector('.ed-btn').addEventListener('click',function(){openEditP(p.id);});
+    d.querySelector('.tg-btn').addEventListener('click',function(){p.active=!p.active;saveLS();renderProds();toast(p.active?'已上架':'已下架');});
+    d.querySelector('.dl-btn').addEventListener('click',(function(pid,imgs){return function(){
+      if(!confirm('確定刪除這個商品？'))return;
+      S.products=S.products.filter(function(x){return x.id!==pid;});
+      (imgs||[]).forEach(function(url){if(typeof window.deleteImageFromStorage==='function')window.deleteImageFromStorage(url);});
+      if(window._deleteProductFromFirebase)window._deleteProductFromFirebase(pid);
+      saveLS();renderProds();toast('已刪除');
+    };})(p.id,p.images||[]));
+    g.appendChild(d);
   });
+
+  renderProdPager(list.length,totalPages,prodPage);
+}
+
+function renderProdPager(total,totalPages,cur){
+  var el=G('PROD_PAGER');if(!el)return;el.innerHTML='';
+  if(totalPages<=1&&total>0){
+    el.innerHTML='<span class="pg-info">共 '+total+' 件商品</span>';return;
+  }
+  if(total===0){el.innerHTML='';return;}
+
+  // 上一頁
+  var prev=document.createElement('button');prev.className='pg-btn';prev.textContent='←';prev.disabled=cur<=1;
+  prev.addEventListener('click',function(){prodPage--;renderProds();G('sec-prod').scrollIntoView({behavior:'smooth',block:'start'});});
+  el.appendChild(prev);
+
+  // 頁碼按鈕（最多顯示7個，中間為當前頁）
+  var pages=[];
+  if(totalPages<=7){for(var i=1;i<=totalPages;i++)pages.push(i);}
+  else{
+    pages=[1];
+    var start=Math.max(2,cur-2),end=Math.min(totalPages-1,cur+2);
+    if(start>2)pages.push('…');
+    for(var j=start;j<=end;j++)pages.push(j);
+    if(end<totalPages-1)pages.push('…');
+    pages.push(totalPages);
+  }
+  pages.forEach(function(p){
+    if(p==='…'){var sp=document.createElement('span');sp.className='pg-info';sp.textContent='…';el.appendChild(sp);return;}
+    var btn=document.createElement('button');btn.className='pg-btn'+(p===cur?' on':'');btn.textContent=p;
+    btn.addEventListener('click',function(){prodPage=p;renderProds();G('sec-prod').scrollIntoView({behavior:'smooth',block:'start'});});
+    el.appendChild(btn);
+  });
+
+  // 下一頁
+  var next=document.createElement('button');next.className='pg-btn';next.textContent='→';next.disabled=cur>=totalPages;
+  next.addEventListener('click',function(){prodPage++;renderProds();G('sec-prod').scrollIntoView({behavior:'smooth',block:'start'});});
+  el.appendChild(next);
+
+  // 商品總數資訊
+  var info=document.createElement('span');info.className='pg-info';
+  info.textContent='第 '+cur+'/'+totalPages+' 頁，共 '+total+' 件';
+  el.appendChild(info);
 }
   var g=G('PROD_G');g.innerHTML='';
      if(!list.length){g.innerHTML='<div style="color:var(--M);padding:30px;">無商品</div>';return;}
