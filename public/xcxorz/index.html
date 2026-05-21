@@ -1153,7 +1153,6 @@ function renderProds(){
     };})(p.id,p.images||[]));
     g.appendChild(d);
   });
-
   renderProdPager(list.length,totalPages,prodPage);
 }
 
@@ -1196,27 +1195,6 @@ function renderProdPager(total,totalPages,cur){
   var info=document.createElement('span');info.className='pg-info';
   info.textContent='第 '+cur+'/'+totalPages+' 頁，共 '+total+' 件';
   el.appendChild(info);
-}
-  var g=G('PROD_G');g.innerHTML='';
-     if(!list.length){g.innerHTML='<div style="color:var(--M);padding:30px;">無商品</div>';return;}
-  list.forEach(function(p){
-    var off=p.active===false;
-    var d=document.createElement('div');d.className='pc';d.style.opacity=off?'.6':'1';
-    var img=p.images&&p.images[0]?'<img src="'+p.images[0]+'" alt="" loading="lazy">':'<div class="pci-ph">無圖片</div>';
-    d.innerHTML='<div class="pci">'+img+'<div class="pcbdgs"><span class="bdg '+(p.type==='stock'?'stk':'pre')+'">'+(p.type==='stock'?'現貨':'預購')+'</span>'+(p.isNew?'<span class="bdg nw">新品</span>':'')+(p.isHot?'<span class="bdg hot">熱銷</span>':'')+(p.isSale?'<span class="bdg" style="background:#e53e3e;">特價</span>':'')+(p.isKids?'<span class="bdg" style="background:#7c3aed;">童裝</span>':'')+(p.isWomen?'<span class="bdg" style="background:#db2777;">女裝</span>':'')+(off?'<span class="bdg off">下架</span>':'')+'</div></div><div class="pcb"><div class="pct">'+p.title+'</div><div class="pcid">'+p.id+'</div><div class="pcp">NT$ '+Number(p.price).toLocaleString()+'</div><div class="pcacts"><button class="btn bo bxs ed-btn">編輯</button><button class="btn bxs '+(off?'bok':'bwa')+' tg-btn">'+(off?'上架':'下架')+'</button><button class="btn bd bxs dl-btn">刪除</button></div></div>';
-    d.querySelector('.ed-btn').addEventListener('click',function(){openEditP(p.id);});
-    d.querySelector('.tg-btn').addEventListener('click',function(){p.active=!p.active;saveLS();renderProds();toast(p.active?'已上架':'已下架');});
-    d.querySelector('.dl-btn').addEventListener('click',(function(pid,imgs){return function(){
-      if(!confirm('確定刪除這個商品？'))return;
-      S.products=S.products.filter(function(x){return x.id!==pid;});
-      // 同步刪除 Storage 圖片
-      (imgs||[]).forEach(function(url){if(typeof window.deleteImageFromStorage==='function')window.deleteImageFromStorage(url);});
-      // 同步刪除 Firestore 子集合
-      if(window._deleteProductFromFirebase) window._deleteProductFromFirebase(pid);
-      saveLS();renderProds();toast('已刪除');
-    };})(p.id,p.images||[]));
-    g.appendChild(d);
-  });
 }
 function openEditP(id){var p=(S.products||[]).find(function(x){return x.id===id;});if(!p)return;editPId=id;npD=JSON.parse(JSON.stringify(p));npImgs=(p.images||[]).map(function(url){return{preview:url,file:null,uploaded:true};});pStep=1;G('MO_PROD_T').textContent='編輯商品';renderPS();G('MO_PROD').classList.add('on');}
 
