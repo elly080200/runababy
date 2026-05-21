@@ -1324,7 +1324,16 @@ function openDetail(id){
   document.getElementById('detailNav').style.display='block';
   // 設定子網址
   var cleanId = String(p.id).toLowerCase();
-history.pushState({page:'product',id:cleanId},'','/products/'+cleanId);
+
+if(location.pathname!=='/products/'+cleanId){
+
+  history.pushState(
+    {page:'product',id:cleanId},
+    '',
+    '/products/'+cleanId
+  );
+
+}
   // Touch 滑動照片
   var slider=document.getElementById('dSlides');
   var touchX=0;
