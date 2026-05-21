@@ -70,7 +70,7 @@ exports.ssrHandler = functions
   .https.onRequest(async (req, res) => {
 
     // 讀取原始 index.html
-    const htmlPath = path.join(__dirname, "index.html");
+    const htmlPath = path.join(__dirname, "../public/index.html");
     let baseHtml;
     try {
       baseHtml = fs.readFileSync(htmlPath, "utf8");
