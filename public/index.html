@@ -336,6 +336,32 @@ body{overflow-x:hidden;}
   .dt-main{width:100%;}
 }
 
+/* 商品列表固定 1:1 */
+.prod-img-wrap{
+  aspect-ratio:1/1 !important;
+  overflow:hidden !important;
+}
+
+.prod-img-wrap img{
+  width:100% !important;
+  height:100% !important;
+  object-fit:cover !important;
+  object-position:center !important;
+}
+
+/* 商品內頁顯示原比例 */
+.detail-overlay .d-slide{
+  aspect-ratio:auto !important;
+  height:auto !important;
+  max-height:none !important;
+}
+
+.detail-overlay .d-slide img{
+  width:100% !important;
+  height:auto !important;
+  max-height:none !important;
+  object-fit:contain !important;
+}
 </style>
 
 <script type="module">
