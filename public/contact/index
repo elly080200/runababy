@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>聯絡我們 — Runababy</title>
+<meta name="description" content="Runababy 聯絡方式">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --primary:#B87070;
+  --nav-bg:#FFD2D2;
+  --bg:#FFF9F9;
+  --white:#fff;
+  --text:#2d2d2d;
+  --muted:#888;
+  --border:#f0d8d8;
+  --shadow:0 2px 12px rgba(184,112,112,.10);
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{background:#f0e0e0;}
+body{font-family:'Noto Sans TC',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;max-width:500px;margin:0 auto;box-shadow:0 0 40px rgba(0,0,0,.12);}
+a{color:var(--primary);text-decoration:none;}
+.page-bar{position:sticky;top:0;z-index:50;background:var(--white);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px;padding:10px 14px;}
+.back-btn{width:34px;height:34px;border:none;background:var(--bg);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;text-decoration:none;}
+.back-btn svg{width:18px;height:18px;stroke:var(--text);fill:none;stroke-width:2;}
+.page-bar-title{font-size:14px;font-weight:700;}
+.content{padding:20px 16px 60px;max-width:500px;margin:0 auto;}
+.content h2{font-size:16px;font-weight:700;margin:0 0 6px;color:var(--primary);display:flex;align-items:center;gap:8px;}
+.subtitle{font-size:13px;color:var(--muted);margin-bottom:20px;line-height:1.7;}
+/* 聯絡卡片 */
+.contact-card{background:var(--white);border-radius:14px;border:1px solid var(--border);box-shadow:var(--shadow);margin-bottom:12px;overflow:hidden;}
+.contact-link{display:flex;align-items:center;gap:14px;padding:16px 18px;text-decoration:none;color:var(--text);transition:background .15s;}
+.contact-link:hover,.contact-link:active{background:var(--bg);}
+.contact-icon{width:42px;height:42px;border-radius:50%;background:var(--bg);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.contact-info{flex:1;min-width:0;}
+.contact-label{font-size:12px;color:var(--muted);margin-bottom:2px;}
+.contact-value{font-size:14px;font-weight:600;color:var(--primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.contact-arrow{flex-shrink:0;opacity:.4;}
+.contact-arrow svg{width:16px;height:16px;stroke:var(--text);fill:none;stroke-width:2;}
+/* 客服時間 */
+.hours-card{background:var(--white);border-radius:14px;border:1px solid var(--border);box-shadow:var(--shadow);padding:16px 18px;margin-top:20px;}
+.hours-card h3{font-size:13px;font-weight:700;color:var(--primary);margin-bottom:12px;display:flex;align-items:center;gap:6px;}
+.hours-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border);font-size:13px;}
+.hours-row:last-child{border-bottom:none;padding-bottom:0;}
+.hours-day{color:var(--muted);}
+.hours-time{font-weight:600;}
+.notice{background:#fff8f8;border-left:3px solid var(--primary);border-radius:0 10px 10px 0;padding:10px 14px;margin-top:14px;font-size:12px;color:var(--muted);line-height:1.8;}
+@media(min-width:500px){body{max-width:500px;}}
+</style>
+</head>
+<body>
+
+<div class="page-bar">
+  <a class="back-btn" href="/" aria-label="返回">
+    <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+  </a>
+  <span class="page-bar-title">聯絡我們</span>
+</div>
+
+<div class="content">
+  <h2>
+    <svg viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" width="18" height="18"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    聯絡我們
+  </h2>
+  <p class="subtitle">有任何問題歡迎透過以下方式聯繫，我們會盡快回覆！</p>
+
+  <!-- Instagram -->
+  <div class="contact-card">
+    <a class="contact-link" href="https://www.instagram.com/runababy_kr?igsh=MXhlZ2o4dTBsNWk3cw%3D%3D&utm_source=qr" target="_blank" rel="noopener">
+      <div class="contact-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" width="20" height="20"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      </div>
+      <div class="contact-info">
+        <div class="contact-label">Instagram</div>
+        <div class="contact-value">@runababy_kr</div>
+      </div>
+      <div class="contact-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+    </a>
+  </div>
+
+  <!-- LINE -->
+  <div class="contact-card">
+    <a class="contact-link" href="https://lin.ee/QPmeyRd" target="_blank" rel="noopener">
+      <div class="contact-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" width="20" height="20"><path d="M21 11.5C21 6.8 17 3 12 3S3 6.8 3 11.5c0 4.2 3.3 7.7 7.8 8.4.3.1.7.2.8.5.1.2.1.5 0 .8l-.1.8c0 .2-.2.9.8.5 1-.4 5.4-3.2 7.4-5.4A7.6 7.6 0 0 0 21 11.5z"/></svg>
+      </div>
+      <div class="contact-info">
+        <div class="contact-label">LINE 官方帳號</div>
+        <div class="contact-value">點此加入 LINE</div>
+      </div>
+      <div class="contact-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+    </a>
+  </div>
+
+  <!-- Facebook -->
+  <div class="contact-card">
+    <a class="contact-link" href="https://www.facebook.com/groups/runababy" target="_blank" rel="noopener">
+      <div class="contact-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" width="20" height="20"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+      </div>
+      <div class="contact-info">
+        <div class="contact-label">Facebook 社團</div>
+        <div class="contact-value">Runababy 韓國選品社團</div>
+      </div>
+      <div class="contact-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+    </a>
+  </div>
+
+  <!-- Email -->
+  <div class="contact-card">
+    <a class="contact-link" href="mailto:runababy0813@outlook.com">
+      <div class="contact-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" width="20" height="20"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      </div>
+      <div class="contact-info">
+        <div class="contact-label">電子郵件</div>
+        <div class="contact-value">runababykr@gmail.com</div>
+      </div>
+      <div class="contact-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+    </a>
+  </div>
+
+  <!-- 客服時間 -->
+  <div class="hours-card">
+    <h3>
+      <svg viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" width="15" height="15"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      客服時間
+    </h3>
+    <div class="hours-row">
+      <span class="hours-day">週一 ～ 週五</span>
+      <span class="hours-time">09:00 – 17:00</span>
+    </div>
+    <div class="hours-row">
+      <span class="hours-day">國定假日</span>
+      <span class="hours-time">有時間就會盡快回復</span>
+    </div>
+    <div class="notice">非客服時間收到的訊息，將於下一個客服時段盡快回覆，感謝您的耐心等候 🙏</div>
+  </div>
+</div>
+
+</body>
+</html>
