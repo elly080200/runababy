@@ -1150,14 +1150,14 @@ var cart=[];var profile={};var orders=[];var currentProd=null;var slideIdx=0;var
 function defaultCategoryTree(){
   return [
     {id:'women',label:'女裝',children:[
-      {id:'women-pre',label:'預購',children:[{id:'w-pre-jan',label:'1月預購',children:[]},{id:'w-pre-feb',label:'2月預購',children:[]}]},
-      {id:'women-stock',label:'現貨',children:[{id:'w-stk-jan',label:'1月現貨',children:[]},{id:'w-stk-feb',label:'2月現貨',children:[]}]}
+      {id:'women-pre',label:'預購',children:[{id:'w-pre-jan',label:'連線預購',children:[]},{id:'w-pre-feb',label:'品牌預購',children:[]}]},
+      {id:'women-stock',label:'現貨',children:[{id:'w-stk-jan',label:'連線現貨',children:[]},{id:'w-stk-feb',label:'品牌現貨',children:[]}]}
     ]},
     {id:'kids',label:'童裝',children:[
-      {id:'kids-pre',label:'預購',children:[{id:'k-pre-jan',label:'1月預購',children:[]},{id:'k-pre-feb',label:'2月預購',children:[]}]},
-      {id:'kids-stock',label:'現貨',children:[{id:'k-stk-jan',label:'1月現貨',children:[]},{id:'k-stk-feb',label:'2月現貨',children:[]}]}
+      {id:'kids-pre',label:'預購',children:[{id:'k-pre-jan',label:'連線預購',children:[]},{id:'k-pre-feb',label:'品牌預購',children:[]}]},
+      {id:'kids-stock',label:'現貨',children:[{id:'k-stk-jan',label:'連線現貨',children:[]},{id:'k-stk-feb',label:'品牌現貨',children:[]}]}
     ]},
-    {id:'baby',label:'母嬰商品',children:[{id:'baby',label:'母嬰品牌',children:[]}]}
+    {id:'baby',label:'母嬰商品',children:[{id:'baby',label:'母嬰品牌預購',children:[]}]}
   ];
 }
 function ensureTreeNode(node){
@@ -1269,6 +1269,9 @@ function renderCategoryMenus(){
       +'<div class="dm-item" onclick="toggleDM(\'dm-about\',this)"><span>關於我們</span><span class="dm-arrow"><svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:var(--muted);fill:none;stroke-width:2.5;"><polyline points="9 18 15 12 9 6"/></svg></span></div>'
       +'<div class="dm-sub" id="dm-about">'
       +'<div class="dm-sub-item" onclick="window.location.href=\'/privacy\';closeDrawer();">隱私權及服務條款</div>'
+      +'<div class="dm-sub-item" onclick="window.location.href=\'/buying-guide\';closeDrawer();">購買須知</div>'
+      +'<div class="dm-sub-item" onclick="window.location.href=\'/return-policy\';closeDrawer();">退換貨須知</div>'
+      +'<div class="dm-sub-item" onclick="window.location.href=\'/contact\';closeDrawer();">聯絡我們</div>'
       +'</div>';
   }
   if(side){
@@ -1285,7 +1288,10 @@ function renderCategoryMenus(){
       +'<div style="height:1px;background:var(--border);margin:4px 0;"></div>'
       +'<div class="dm-item" onclick="toggleDM(\'dt-about\',this)"><span>關於我們</span><span class="dm-arrow"><svg viewBox="0 0 24 24" style="width:12px;height:12px;stroke:var(--muted);fill:none;stroke-width:2.5;"><polyline points="9 18 15 12 9 6"/></svg></span></div>'
       +'<div class="dm-sub" id="dt-about">'
-      +'<div class="dm-sub-item" onclick="window.location.href=\'/privacy\' ;">隱私權及服務條款</div>'
+      +'<div class="dm-sub-item" onclick="window.location.href=\'/privacy\';">隱私權及服務條款</div>'
+      +'<div class="dm-sub-item" onclick="window.location.href=\'/buying-guide\';">購買須知</div>'
+      +'<div class="dm-sub-item" onclick="window.location.href=\'/return-policy\';">退換貨須知</div>'
+      +'<div class="dm-sub-item" onclick="window.location.href=\'/contact\';">聯絡我們</div>'
       +'</div>';
   }
 }
