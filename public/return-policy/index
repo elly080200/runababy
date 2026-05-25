@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>退換貨須知 — Runababy</title>
+<meta name="description" content="Runababy 退換貨須知">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --primary:#B87070;
+  --nav-bg:#FFD2D2;
+  --bg:#FFF9F9;
+  --white:#fff;
+  --text:#2d2d2d;
+  --muted:#888;
+  --border:#f0d8d8;
+  --shadow:0 2px 12px rgba(184,112,112,.10);
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{background:#f0e0e0;}
+body{font-family:'Noto Sans TC',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;max-width:500px;margin:0 auto;box-shadow:0 0 40px rgba(0,0,0,.12);}
+a{color:var(--primary);text-decoration:none;}
+.page-bar{position:sticky;top:0;z-index:50;background:var(--white);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px;padding:10px 14px;}
+.back-btn{width:34px;height:34px;border:none;background:var(--bg);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;text-decoration:none;}
+.back-btn svg{width:18px;height:18px;stroke:var(--text);fill:none;stroke-width:2;}
+.page-bar-title{font-size:14px;font-weight:700;}
+.content{padding:20px 16px 60px;max-width:500px;margin:0 auto;font-size:13px;line-height:1.9;color:var(--text);}
+.content h2{font-size:16px;font-weight:700;margin:0 0 16px;color:var(--primary);display:flex;align-items:center;gap:8px;}
+.section{background:var(--white);border-radius:14px;border:1px solid var(--border);padding:16px 18px;margin-bottom:14px;box-shadow:var(--shadow);}
+.section h3{font-size:13px;font-weight:700;color:var(--primary);margin-bottom:8px;display:flex;align-items:center;gap:6px;}
+.section p{font-size:13px;line-height:1.9;color:var(--text);}
+.section ul{margin-left:18px;line-height:2;}
+.section ul li{font-size:13px;}
+.notice{background:#fff8f8;border-left:3px solid var(--primary);border-radius:0 10px 10px 0;padding:12px 14px;margin-top:10px;font-size:12px;color:var(--muted);line-height:1.8;}
+.steps{counter-reset:step;margin-top:4px;}
+.step{display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--border);}
+.step:last-child{border-bottom:none;}
+.step-num{width:24px;height:24px;border-radius:50%;background:var(--primary);color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+.step-text{font-size:13px;line-height:1.8;}
+@media(min-width:500px){body{max-width:500px;}}
+</style>
+</head>
+<body>
+
+<div class="page-bar">
+  <a class="back-btn" href="/" aria-label="返回">
+    <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+  </a>
+  <span class="page-bar-title">退換貨須知</span>
+</div>
+
+<div class="content">
+  <h2>
+    <svg viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" width="18" height="18"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.51"/></svg>
+    退換貨須知
+  </h2>
+
+  <div class="section">
+    <h3>🔄 退換貨原則</h3>
+    <p>韓國代購商品因涉及跨國採購成本，原則上<strong>不接受退換貨</strong>，請下單前確認清楚商品規格與尺寸。</p>
+  </div>
+
+  <div class="section">
+    <h3>✅ 可申請退換貨的情況</h3>
+    <p>以下情形可在<strong>收到商品 24 小時內</strong>聯繫客服申請：</p>
+    <ul style="margin-top:8px;">
+      <li>商品有明顯瑕疵（破損、污漬、車縫問題）</li>
+      <li>收到商品與訂單規格不符（顏色或尺寸錯誤）</li>
+      <li>商品有遺漏（少件）</li>
+      <li>購買現貨商品（不喜歡、尺寸不合）</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h3>❌ 不受理退換貨的情況</h3>
+    <ul>
+      <li>（購買現貨商品適用）商品已超過 24 小時未回報</li>
+      <li>（購買現貨商品適用）已穿著、洗滌或剪去吊牌</li>
+      <li> ※預購商品購買後因屬客製化皆無法退換貨</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h3>📋 申請步驟</h3>
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><div class="step-text">收到商品 <strong>24 小時內</strong>，私訊 Instagram 或 LINE</div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-text">提供<strong>訂單編號</strong>與<strong>問題照片</strong></div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-text">待客服確認後，依指示辦理後續流程</div></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h3>💡 溫馨提醒</h3>
+    <p>韓國尺寸每個品牌的尺寸都不太一樣，建議下單前詳閱商品頁面的尺寸表，或私訊詢問我們協助選尺寸。</p>
+    <div class="notice">如有任何疑問，歡迎在下單前先透過 Instagram 或 LINE 與我們確認。</div>
+  </div>
+</div>
+
+</body>
+</html>
