@@ -54,7 +54,7 @@ tr:hover td{background:#fdf5f5;}
 .pci-ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:var(--M);font-size:12px;}
 .pcbdgs{position:absolute;top:7px;left:7px;display:flex;flex-direction:column;gap:3px;}
 .bdg{font-size:9px;padding:2px 7px;border-radius:8px;font-weight:700;color:#fff;display:inline-block;}
-.bdg.stk{background:#B87070;}.bdg.pre{background:#9B7BB0;}.bdg.nw{background:#E8A838;}.bdg.off{background:#888;}.bdg.hot{background:#e53935;}
+.bdg.stk{background:#B87070;}.bdg.pre{background:#9B7BB0;}.bdg.nw{background:#E8A838;}.bdg.off{background:#888;}.bdg.sch{background:#7c3aed;}.bdg.schoff{background:#0891b2;}.bdg.hot{background:#e53935;}
 .pcb{padding:10px;}
 .pct{font-size:12px;font-weight:700;margin-bottom:2px;}.pcid{font-size:10px;color:var(--M);margin-bottom:3px;}
 .pcp{font-size:13px;color:var(--P);font-weight:700;margin-bottom:5px;}
@@ -610,6 +610,8 @@ window._onLoginSuccess = function() {
   if (typeof loadLS === 'function') loadLS();
   // ✅ 登入後才啟動所有 onSnapshot（確保有權限讀寫 Firestore）
   if (typeof window._startRealtimeListeners === 'function') window._startRealtimeListeners();
+  // ⏰ 啟動定時上下架排程檢查器
+  setTimeout(function(){ if(typeof startScheduleChecker==='function') startScheduleChecker(); }, 1000);
   setTimeout(() => {
     if (typeof window.loadLSFromFirebase === 'function') window.loadLSFromFirebase();
   }, 300);
@@ -1141,7 +1143,7 @@ function renderProds(){
     var off=p.active===false;
     var d=document.createElement('div');d.className='pc';d.style.opacity=off?'.6':'1';
     var img=p.images&&p.images[0]?'<img src="'+p.images[0]+'" alt="" loading="lazy">':'<div class="pci-ph">無圖片</div>';
-    d.innerHTML='<div class="pci">'+img+'<div class="pcbdgs"><span class="bdg '+(p.type==='stock'?'stk':'pre')+'">'+(p.type==='stock'?'現貨':'預購')+'</span>'+(p.isNew?'<span class="bdg nw">新品</span>':'')+(p.isHot?'<span class="bdg hot">熱銷</span>':'')+(p.isSale?'<span class="bdg" style="background:#e53e3e;">特價</span>':'')+(p.isKids?'<span class="bdg" style="background:#7c3aed;">童裝</span>':'')+(p.isWomen?'<span class="bdg" style="background:#db2777;">女裝</span>':'')+(off?'<span class="bdg off">下架</span>':'')+'</div></div><div class="pcb"><div class="pct">'+p.title+'</div><div class="pcid">'+p.id+'</div><div class="pcp">NT$ '+Number(p.price).toLocaleString()+'</div><div class="pcacts"><button class="btn bo bxs ed-btn">編輯</button><button class="btn bxs '+(off?'bok':'bwa')+' tg-btn">'+(off?'上架':'下架')+'</button><button class="btn bd bxs dl-btn">刪除</button></div></div>';
+    d.innerHTML='<div class="pci">'+img+'<div class="pcbdgs"><span class="bdg '+(p.type==='stock'?'stk':'pre')+'">'+(p.type==='stock'?'現貨':'預購')+'</span>'+(p.isNew?'<span class="bdg nw">新品</span>':'')+(p.isHot?'<span class="bdg hot">熱銷</span>':'')+(p.isSale?'<span class="bdg" style="background:#e53e3e;">特價</span>':'')+(p.isKids?'<span class="bdg" style="background:#7c3aed;">童裝</span>':'')+(p.isWomen?'<span class="bdg" style="background:#db2777;">女裝</span>':'')+(off?'<span class="bdg off">下架</span>':'')+(p.scheduleAt&&p.active===false?'<span class="bdg sch">⏰排程上架</span>':'')+(p.scheduleOffAt&&p.active!==false?'<span class="bdg schoff">⏰排程下架</span>':'')+'</div></div><div class="pcb"><div class="pct">'+p.title+'</div><div class="pcid">'+p.id+'</div><div class="pcp">NT$ '+Number(p.price).toLocaleString()+'</div><div class="pcacts"><button class="btn bo bxs ed-btn">編輯</button><button class="btn bxs '+(off?'bok':'bwa')+' tg-btn">'+(off?'上架':'下架')+'</button><button class="btn bd bxs dl-btn">刪除</button></div></div>';
     d.querySelector('.ed-btn').addEventListener('click',function(){openEditP(p.id);});
     d.querySelector('.tg-btn').addEventListener('click',function(){p.active=!p.active;saveLS();renderProds();toast(p.active?'已上架':'已下架');});
     d.querySelector('.dl-btn').addEventListener('click',(function(pid,imgs){return function(){
@@ -1269,7 +1271,8 @@ function renderPS(){
       +'<label style="display:flex;align-items:center;gap:5px;font-size:12px;cursor:pointer;"><input type="checkbox" id="NP_KIDS" '+(npD.isKids?'checked':'')+' style="width:15px;height:15px;accent-color:var(--P);">童裝</label>'
       +'<label style="display:flex;align-items:center;gap:5px;font-size:12px;cursor:pointer;"><input type="checkbox" id="NP_WOMEN" '+(npD.isWomen?'checked':'')+' style="width:15px;height:15px;accent-color:var(--P);">女裝</label>'
       +'</div>'
-      +'<div style="display:flex;justify-content:flex-end;gap:8px;"><button class="btn bo" id="PS_CNL">取消</button><button class="btn bp" id="PS_N1">下一步 →</button></div>';
+      +getScheduleHtml()
+   +'<div style="display:flex;justify-content:flex-end;gap:8px;"><button class="btn bo" id="PS_CNL">取消</button><button class="btn bp" id="PS_N1">下一步 →</button></div>';
     G('TP_PRE').addEventListener('click',function(){npD.type='preorder';G('TP_PRE').className='btn bsm bp';G('TP_STK').className='btn bsm bo';});
     G('TP_STK').addEventListener('click',function(){npD.type='stock';G('TP_STK').className='btn bsm bp';G('TP_PRE').className='btn bsm bo';});
     G('PS_CNL').addEventListener('click',function(){G('MO_PROD').classList.remove('on');});
@@ -1290,8 +1293,9 @@ function renderPS(){
         npD.slug=slug+'-'+Date.now().toString(36).slice(-4);
         npD.id=npD.slug;
       }
-      pStep=2;renderPS();
+      readScheduleInputs();pStep=2;renderPS();
     });
+    setTimeout(function(){bindScheduleEvents();},0);
 
   } else if(pStep===2){
     // 圖片上傳步驟：獨立拖曳元件，選圖後先壓縮 WebP，再直接上傳 Firebase Storage
@@ -1386,7 +1390,11 @@ async function publishProduct(){
     }else{
       npD.id=npD.id||(npD.slug||('P'+Date.now().toString().slice(-6)));
 npD.slug=npD.slug||npD.id;
-npD.active=true;
+if(npD.scheduleAt){
+  npD.active = new Date(npD.scheduleAt) <= new Date();
+} else {
+  npD.active = true;
+}
 npD.createdAt=new Date().toISOString(); 
 S.products.unshift(JSON.parse(JSON.stringify(npD)));
       toast('商品已新增：'+npD.title);
@@ -2017,6 +2025,132 @@ function renderQAEd(){
 
 function openSB(){var sb=document.getElementById('MAIN_SB');var ov=G('SB_OVERLAY');if(sb)sb.classList.add('open');if(ov)ov.classList.add('open');}
 function closeSB(){var sb=document.getElementById('MAIN_SB');var ov=G('SB_OVERLAY');if(sb)sb.classList.remove('open');if(ov)ov.classList.remove('open');}
+
+// ═══════════════════════════════════════════════════════════════════
+// ⏰ 定時上下架功能（Schedule Patch）
+// ═══════════════════════════════════════════════════════════════════
+
+function getScheduleHtml() {
+  var hasOn  = !!(npD.scheduleAt);
+  var hasOff = !!(npD.scheduleOffAt);
+  var onVal  = npD.scheduleAt    ? npD.scheduleAt.slice(0,16)    : '';
+  var offVal = npD.scheduleOffAt ? npD.scheduleOffAt.slice(0,16) : '';
+  return '<div style="border:1.5px solid #f0d8d8;border-radius:9px;padding:13px;margin-bottom:12px;background:#fffaf8;">'
+    +'<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">'
+    +'<span style="font-size:12px;font-weight:700;">⏰ 定時上下架設定</span>'
+    +'<label style="display:flex;align-items:center;gap:5px;font-size:11px;color:#888;cursor:pointer;">'
+    +'<input type="checkbox" id="SCH_ENABLE"'+(hasOn||hasOff?' checked':'')+' style="width:14px;height:14px;accent-color:#B87070;">啟用排程</label></div>'
+    +'<div id="SCH_FIELDS" style="display:'+(hasOn||hasOff?'block':'none')+';">'
+    +'<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:8px;">'
+    +'<div>'
+    +'<div style="font-size:11px;color:#888;margin-bottom:3px;">📅 自動上架時間（選填）</div>'
+    +'<input type="datetime-local" id="SCH_ON" value="'+onVal+'" style="width:100%;padding:7px 10px;border:1.5px solid #f0d8d8;border-radius:7px;font-size:12px;outline:none;color-scheme:light;">'
+    +'<div style="font-size:10px;color:#aaa;margin-top:3px;">到達此時間後自動上架</div>'
+    +'</div>'
+    +'<div>'
+    +'<div style="font-size:11px;color:#888;margin-bottom:3px;">📅 自動下架時間（選填）</div>'
+    +'<input type="datetime-local" id="SCH_OFF" value="'+offVal+'" style="width:100%;padding:7px 10px;border:1.5px solid #f0d8d8;border-radius:7px;font-size:12px;outline:none;color-scheme:light;">'
+    +'<div style="font-size:10px;color:#aaa;margin-top:3px;">到達此時間後自動下架</div>'
+    +'</div>'
+    +'</div>'
+    +'<div id="SCH_PREVIEW" style="display:none;font-size:11px;background:#fff8e1;border-radius:6px;padding:7px 10px;color:#7c5c2a;line-height:1.8;"></div>'
+    +'</div>'
+    +'</div>';
+}
+
+function bindScheduleEvents() {
+  var cb     = document.getElementById('SCH_ENABLE');
+  var fields = document.getElementById('SCH_FIELDS');
+  if (!cb || !fields) return;
+  cb.addEventListener('change', function() {
+    fields.style.display = this.checked ? 'block' : 'none';
+    if (!this.checked) {
+      var onI  = document.getElementById('SCH_ON');
+      var offI = document.getElementById('SCH_OFF');
+      if (onI)  onI.value  = '';
+      if (offI) offI.value = '';
+      updateSchPreview();
+    }
+  });
+  ['SCH_ON','SCH_OFF'].forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) el.addEventListener('input', updateSchPreview);
+  });
+  updateSchPreview();
+}
+
+function updateSchPreview() {
+  var pv = document.getElementById('SCH_PREVIEW');
+  if (!pv) return;
+  var onV  = (document.getElementById('SCH_ON')  || {}).value;
+  var offV = (document.getElementById('SCH_OFF') || {}).value;
+  var lines = [];
+  if (onV) {
+    var d = new Date(onV), diff = d - new Date();
+    lines.push('🟢 上架：' + d.toLocaleString('zh-TW')
+      + (diff > 0 ? '（' + fmtCd(diff) + '後自動上架）' : '　⚡ 時間已過，存檔後立即上架'));
+  }
+  if (offV) {
+    var d2 = new Date(offV), diff2 = d2 - new Date();
+    lines.push('🔴 下架：' + d2.toLocaleString('zh-TW')
+      + (diff2 > 0 ? '（' + fmtCd(diff2) + '後自動下架）' : '　⚠ 時間已過'));
+  }
+  if (lines.length) { pv.innerHTML = lines.join('<br>'); pv.style.display = 'block'; }
+  else pv.style.display = 'none';
+}
+
+function fmtCd(ms) {
+  var d = Math.floor(ms / 86400000);
+  var h = Math.floor((ms % 86400000) / 3600000);
+  var m = Math.floor((ms % 3600000)  / 60000);
+  var p = [];
+  if (d) p.push(d + '天');
+  if (h) p.push(h + '小時');
+  if (m) p.push(m + '分');
+  return p.join(' ') || '不到1分鐘';
+}
+
+function readScheduleInputs() {
+  var cb = document.getElementById('SCH_ENABLE');
+  if (!cb || !cb.checked) { delete npD.scheduleAt; delete npD.scheduleOffAt; return; }
+  var onV  = (document.getElementById('SCH_ON')  || {}).value;
+  var offV = (document.getElementById('SCH_OFF') || {}).value;
+  if (onV)  npD.scheduleAt    = new Date(onV).toISOString(); else delete npD.scheduleAt;
+  if (offV) npD.scheduleOffAt = new Date(offV).toISOString(); else delete npD.scheduleOffAt;
+}
+
+// 排程檢查器：每 10 秒掃描，時間到時上/下架並同步 Firebase
+function startScheduleChecker() {
+  if (window._schTimer) clearInterval(window._schTimer);
+  window._schTimer = setInterval(function() {
+    var now = new Date(), changed = false;
+    (S.products || []).forEach(function(p) {
+      // 自動上架：active===false 且 scheduleAt 已到
+      if (p.active === false && p.scheduleAt && now >= new Date(p.scheduleAt)) {
+        p.active = true;
+        delete p.scheduleAt;
+        changed = true;
+        toast('⏰ 已自動上架：' + p.title);
+        if (window._saveProductToFirebase) window._saveProductToFirebase(p);
+      }
+      // 自動下架：active!==false 且 scheduleOffAt 已到
+      if (p.active !== false && p.scheduleOffAt && now >= new Date(p.scheduleOffAt)) {
+        p.active = false;
+        delete p.scheduleOffAt;
+        changed = true;
+        toast('⏰ 已自動下架：' + p.title);
+        if (window._saveProductToFirebase) window._saveProductToFirebase(p);
+      }
+    });
+    // window._orders 的商品也同步（不影響訂單，只更新商品庫）
+    if (changed) {
+      saveLS();
+      var secProd = document.getElementById('sec-prod');
+      if (secProd && secProd.classList.contains('on')) renderProds();
+    }
+  }, 10000); // 每 10 秒（比之前的 30 秒更即時）
+}
+
 </script>
 </body>
 </html>
