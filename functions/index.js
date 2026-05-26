@@ -164,3 +164,49 @@ ${urls}
   res.set("Content-Type", "application/xml");
   res.send(xml);
 });
+// ── ⏰ 定時上下架排程（每分鐘執行）────────────────────────────────────
+exports.autoScheduleProducts = functions
+  .pubsub.schedule("every 1 minutes")
+  .timeZone("Asia/Taipei")
+  .onRun(async () => {
+    const now = new Date();
+    const storeRef = db.collection("runababy").doc("store");
+    const snap = await storeRef.get();
+
+    if (!snap.exists) {
+      console.log("store document not found");
+      return null;
+    }
+
+    const data = snap.data();
+    const products = data.products || [];
+    let changed = false;
+
+    products.forEach((p) => {
+      if (p.active === false && p.scheduleAt) {
+        if (now >= new Date(p.scheduleAt)) {
+          p.active = true;
+          delete p.scheduleAt;
+          changed = true;
+          console.log(`⏰ 自動上架: ${p.id} - ${p.title}`);
+        }
+      }
+      if (p.active !== false && p.scheduleOffAt) {
+        if (now >= new Date(p.scheduleOffAt)) {
+          p.active = false;
+          delete p.scheduleOffAt;
+          changed = true;
+          console.log(`⏰ 自動下架: ${p.id} - ${p.title}`);
+        }
+      }
+    });
+
+    if (changed) {
+      await storeRef.update({ products });
+      console.log("✅ 商品狀態已更新");
+    } else {
+      console.log("✓ 無需更新");
+    }
+
+    return null;
+  });
