@@ -726,8 +726,8 @@ document.addEventListener('DOMContentLoaded', function(){
     </a>
     <button class="drawer-close" onclick="closeDrawer()">✕</button>
   </div>
-  <div class="dm-item" onclick="goRoute('/');closeDrawer();"><span style="display:flex;align-items:center;gap:8px;"><svg viewBox="0 0 24 24" style="width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;flex-shrink:0;"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>全部商品</span></div>
-  <div class="dm-item" onclick="goRoute('/new');closeDrawer();"><span style="display:flex;align-items:center;gap:8px;"><svg viewBox="0 0 24 24" style="width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;flex-shrink:0;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>新品上市</span></div>
+  <div class="dm-item" onclick="catFilter('all');closeDrawer();"><span style="display:flex;align-items:center;gap:8px;"><svg viewBox="0 0 24 24" style="width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;flex-shrink:0;"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>全部商品</span></div>
+  <div class="dm-item" onclick="catFilter('new');closeDrawer();"><span style="display:flex;align-items:center;gap:8px;"><svg viewBox="0 0 24 24" style="width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;flex-shrink:0;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>新品上市</span></div>
   <div class="dm-item" onclick="toggleDM('dm-women',this)"><span style="display:flex;align-items:center;gap:8px;"><svg viewBox="0 0 24 24" style="width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;flex-shrink:0;"><circle cx="12" cy="8" r="4"/><path d="M12 12v8m-3-3h6"/></svg>女裝</span><span class="dm-arrow"><svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:var(--muted);fill:none;stroke-width:2.5;"><polyline points="9 18 15 12 9 6"/></svg></span></div>
   <div class="dm-sub" id="dm-women">
     <div class="dm-sub-item" onclick="toggleDMsub('dm-w-pre',this)"><span>預購</span><span class="dm-arrow"><svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:var(--muted);fill:none;stroke-width:2.5;"><polyline points="9 18 15 12 9 6"/></svg></span></div>
@@ -1225,25 +1225,29 @@ function goPage(p){
 
 function renderCatTabs(){
   // 只顯示固定分類（移除新品上市/熱銷商品，保留全部/童裝/女裝）
-  var fixed=[
-    {id:'all',label:'全部商品'},
-    {id:'kids',label:'童裝'},
-    {id:'women',label:'女裝'}
-  ];
-
+  var fixed=[{id:'all',label:'全部商品'},{id:'kids',label:'童裝'},{id:'women',label:'女裝'}];
   var tabs=document.getElementById('catTabs');
-
   tabs.innerHTML=fixed.map(function(c){
-
-    var path = c.id==='all' ? '/' : '/'+c.id;
-
-    return '<button class="cat-tab'+
-      (c.id===activeFilter?' active':'')+
-      '" onclick="goRoute(\''+path+'\')">'+
-      c.label+
-      '</button>';
-
+    return '<button class="cat-tab'+(c.id===activeFilter?' active':'')+'" onclick="catFilter(\''+c.id+'\',this)">'+c.label+'</button>';
   }).join('');
+}
+
+function makeCategoryNodeHtml(node,prefix){
+  var branchId=(prefix||'dm')+'-'+node.id.replace(/[^a-zA-Z0-9_-]/g,'');
+  if(node.children&&node.children.length){
+    var subClass=(prefix&&prefix.indexOf('dt-')===0)?'dm-sub':'dm-sub';
+    var childClass=(prefix&&prefix.indexOf('dt-')===0)?'dm-sub-item':'dm-sub-item';
+    return '<div class="dm-item" onclick="toggleDM(\''+branchId+'\',this)"><span>'+node.label+'</span><span class="dm-arrow"><svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:var(--muted);fill:none;stroke-width:2.5;"><polyline points="9 18 15 12 9 6"/></svg></span></div>'
+      +'<div class="'+subClass+'" id="'+branchId+'">'+node.children.map(function(ch){
+        if(ch.children&&ch.children.length){
+          var childId=branchId+'-'+ch.id.replace(/[^a-zA-Z0-9_-]/g,'');
+          return '<div class="'+childClass+'" onclick="toggleDMsub(\''+childId+'\',this)"><span>'+ch.label+'</span><span class="dm-arrow"><svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:var(--muted);fill:none;stroke-width:2.5;"><polyline points="9 18 15 12 9 6"/></svg></span></div>'
+            +'<div class="dm-subsub" id="'+childId+'">'+ch.children.map(function(ss){return '<div class="dm-subsub-item" onclick="catFilter(\''+ss.id+'\');closeDrawer();">'+ss.label+'</div>';}).join('')+'</div>';
+        }
+        return '<div class="'+childClass+'" onclick="catFilter(\''+ch.id+'\');closeDrawer();"><span>'+ch.label+'</span></div>';
+      }).join('')+'</div>';
+  }
+  return '<div class="dm-item" onclick="catFilter(\''+node.id+'\');closeDrawer();"><span>'+node.label+'</span></div>';
 }
 
 function renderCategoryMenus(){
