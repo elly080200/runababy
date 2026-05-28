@@ -560,19 +560,23 @@ window._doRegister = async function(){
     const snap = await getDocs(q);
 
     let oldData = null;
-    let oldId = null;
+let oldIds = [];
 
-    snap.forEach(function(d){
-      const m = d.data();
+snap.forEach(function(d){
 
-      if(
-        m.uid &&
-        String(m.uid).indexOf('admin-') === 0
-      ){
-        oldData = m;
-        oldId = d.id;
-      }
-    });
+  const m = d.data();
+
+  // 不處理自己
+  if(d.id !== cred.user.uid){
+
+    // 合併資料
+    oldData = Object.assign({}, m, oldData || {});
+
+    // 記錄重複會員 id
+    oldIds.push(d.id);
+  }
+
+});
 
     // ── 合併資料 ──
     const finalData = Object.assign({}, oldData || {}, {
@@ -594,11 +598,17 @@ window._doRegister = async function(){
     );
 
     // 刪除舊 admin 會員
-    if(oldId && oldId !== cred.user.uid){
-      await deleteDoc(
-        doc(db,'members',oldId)
-      );
-    }
+   for(const id of oldIds){
+
+  if(id !== cred.user.uid){
+
+    await deleteDoc(
+      doc(db,'members',id)
+    );
+
+  }
+
+}
 
     if(typeof showToast === 'function'){
       showToast('🎉 註冊成功！');
