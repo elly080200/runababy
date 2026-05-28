@@ -1907,12 +1907,52 @@ function submitAddMember(){
     saveLS();G('MO_ADD_MEM').classList.remove('on');renderMembers();toast('已找到現有會員，已補充空白資料 ✓');
     return;
   }
-  // 真的是新會員
-  var mid=String(Math.floor(10000000+Math.random()*90000000));
-  var newM={uid:'admin-'+Date.now(),memberId:mid,name:nm,phone:ph,ig:ig,email:em,createdAt:new Date().toISOString(),source:'後台新增'};
-  if(!window._members)window._members=[];
-  window._members.unshift(newM);members=window._members;
-  saveLS();G('MO_ADD_MEM').classList.remove('on');renderMembers();toast('會員已新增');
+ // 真的是新會員
+var mid=String(Math.floor(10000000+Math.random()*90000000));
+
+var newM={
+  uid:'admin-'+Date.now(),
+  memberId:mid,
+  name:nm,
+  phone:ph,
+  ig:ig,
+  email:em,
+  createdAt:new Date().toISOString(),
+  source:'後台新增'
+};
+
+if(!window._members)window._members=[];
+
+window._members.unshift(newM);
+members=window._members;
+
+// ✅ 寫入 Firestore members collection
+(async function(){
+  try{
+    var {doc:docFn,setDoc:setDocFn}=await import(
+      'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js'
+    );
+
+    await setDocFn(
+      docFn(window._db,'members',newM.uid),
+      newM,
+      {merge:true}
+    );
+
+    console.log('會員已同步到 Firestore');
+
+  }catch(e){
+    console.warn('新增會員失敗:',e);
+  }
+})();
+
+saveLS();
+
+G('MO_ADD_MEM').classList.remove('on');
+
+renderMembers();
+
+toast('會員已新增');
 }
 
 // COUPON MANAGEMENT
