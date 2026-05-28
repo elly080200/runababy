@@ -848,7 +848,7 @@ document.addEventListener('DOMContentLoaded', function(){
 <div id="detailNav" style="display:none;">
   <button class="d-add-btn" onclick="openSpec()">加入購物車</button>
   <nav class="detail-bot-nav">
-    <button onclick="closeDetail();goPage('home')" style="display:flex;flex-direction:column;align-items:center;gap:3px;border:none;background:transparent;color:var(--primary);font-size:11px;font-weight:500;padding:6px 20px;cursor:pointer;touch-action:manipulation;">
+    <button onclick="closeDetail();goRoute('/')" style="display:flex;flex-direction:column;align-items:center;gap:3px;border:none;background:transparent;color:var(--primary);font-size:11px;font-weight:500;padding:6px 20px;cursor:pointer;touch-action:manipulation;">
       <svg viewBox="0 0 24 24" style="width:22px;height:22px;stroke:var(--primary);fill:none;stroke-width:2;"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>賣場首頁
     </button>
     <button onclick="closeDetail();goPage('cart')" style="display:flex;flex-direction:column;align-items:center;gap:3px;border:none;background:transparent;color:var(--primary);font-size:11px;font-weight:500;padding:6px 20px;cursor:pointer;touch-action:manipulation;position:relative;">
@@ -1425,6 +1425,52 @@ function closeDetail(){
   document.getElementById('detailNav').style.display='none';
   history.pushState({page:'home'},'','/');
 }
+
+function routePage(){
+  var path = window.location.pathname;
+
+  var ov = document.getElementById('detailOverlay');
+  if(ov) ov.classList.remove('open');
+
+  if(path === '/'){
+    catFilter('all');
+    return;
+  }
+
+  if(path === '/new'){
+    catFilter('new');
+    return;
+  }
+
+  if(path === '/kids'){
+    catFilter('kids');
+    return;
+  }
+
+  if(path === '/women'){
+    catFilter('women');
+    return;
+  }
+
+  var m = path.match(/^\/products\/(.+)$/);
+
+  if(m){
+    window._pendingProductId = m[1];
+
+    var p = (S.products || []).find(function(x){
+      return x.slug === m[1] || x.id === m[1];
+    });
+
+    if(p){
+      openDetail(p.slug || p.id);
+    }
+  }
+}
+
+function goRoute(path){
+  history.pushState({}, '', path);
+  routePage();
+}
 function slideSet(i){
   slideIdx=i;
   document.getElementById('dSlides').style.transform='translateX(-'+i*100+'%)';
@@ -1949,6 +1995,8 @@ window.onload = function(){
       }
     };
     setTimeout(function(){tryOpen(0);},300);
+  } else {
+    routePage();
   }
 };
 // 按瀏覽器上一頁/下一頁
@@ -1964,6 +2012,7 @@ window.addEventListener('popstate',function(e){
     var el=document.getElementById(e.state.id);if(el)el.classList.add('open');
   } else {
     if(ov)ov.classList.remove('open');
+    routePage();
   }
 });
 function goHome(e){
