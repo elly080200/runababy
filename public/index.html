@@ -388,7 +388,7 @@ body{overflow-x:hidden;}
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
 import {
-  getFirestore, doc, getDoc, setDoc, onSnapshot, collection, getDocs, query, orderBy, where
+  getFirestore, doc, getDoc, setDoc, deleteDoc, onSnapshot, collection, getDocs, query, orderBy, where
 } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 import {
   getAuth,
@@ -514,34 +514,111 @@ function startOrderListener(uid){
 
 // ── 一般註冊 ─────────────────────────────────────────
 window._doRegister = async function(){
+
   const acc = document.getElementById('reg-acc').value.trim();
   const pw  = document.getElementById('reg-pw').value;
+
+  const igVal =
+    document.getElementById('reg-ig')
+    ? document.getElementById('reg-ig').value.trim()
+    : '';
+
+  const phoneVal =
+    document.getElementById('reg-phone')
+    ? document.getElementById('reg-phone').value.trim().replace(/\D/g,'')
+    : '';
+
   const err = document.getElementById('reg-err');
+
   err.textContent = '';
-  if(!acc || !pw){ err.textContent = '請填寫帳號與密碼'; return; }
-  if(pw.length < 6){ err.textContent = '密碼至少需要 6 位數'; return; }
+
+  if(!acc || !pw || !phoneVal){
+    err.textContent = '請填寫 Email、密碼與手機號碼';
+    return;
+  }
+
+  if(!/^09\d{8}$/.test(phoneVal)){
+    err.textContent = '手機號碼格式錯誤';
+    return;
+  }
+
+  if(pw.length < 6){
+    err.textContent = '密碼至少需要 6 位數';
+    return;
+  }
+
   try {
+
     const cred = await createUserWithEmailAndPassword(auth, acc, pw);
-    const mid = genMemberId();
-    const igVal = document.getElementById('reg-ig') ? document.getElementById('reg-ig').value.trim() : '';
-    const memberData = {
+
+    // ── 檢查是否已有後台會員 ──
+    const q = query(
+      collection(db,'members'),
+      where('phone','==',phoneVal)
+    );
+
+    const snap = await getDocs(q);
+
+    let oldData = null;
+    let oldId = null;
+
+    snap.forEach(function(d){
+      const m = d.data();
+
+      if(
+        m.uid &&
+        String(m.uid).indexOf('admin-') === 0
+      ){
+        oldData = m;
+        oldId = d.id;
+      }
+    });
+
+    // ── 合併資料 ──
+    const finalData = Object.assign({}, oldData || {}, {
       uid: cred.user.uid,
       email: acc,
-      displayName: '',
-      memberId: mid,
-      name: '',
-      phone: '',
+      phone: phoneVal,
       ig: igVal,
-      createdAt: new Date().toISOString()
-    };
-    await saveMemberToFirestore(cred.user.uid, memberData);
-    if(typeof showToast === 'function') showToast('🎉 註冊成功！歡迎加入 Runababy');
-    if(typeof closeRegister === 'function') closeRegister();
+      mergedAt: new Date().toISOString()
+    });
+
+    if(!finalData.memberId){
+      finalData.memberId = genMemberId();
+    }
+
+    await setDoc(
+      doc(db,'members',cred.user.uid),
+      finalData,
+      {merge:true}
+    );
+
+    // 刪除舊 admin 會員
+    if(oldId && oldId !== cred.user.uid){
+      await deleteDoc(
+        doc(db,'members',oldId)
+      );
+    }
+
+    if(typeof showToast === 'function'){
+      showToast('🎉 註冊成功！');
+    }
+
+    if(typeof closeRegister === 'function'){
+      closeRegister();
+    }
+
   } catch(e) {
-    const msg = e.code === 'auth/email-already-in-use' ? '此 Email 已被註冊'
-      : e.code === 'auth/invalid-email' ? 'Email 格式不正確'
-      : e.code === 'auth/weak-password' ? '密碼強度不足，請至少 6 位'
+
+    const msg =
+      e.code === 'auth/email-already-in-use'
+      ? '此 Email 已被註冊'
+      : e.code === 'auth/invalid-email'
+      ? 'Email 格式不正確'
+      : e.code === 'auth/weak-password'
+      ? '密碼強度不足，請至少 6 位'
       : '註冊失敗：' + e.message;
+
     err.textContent = msg;
   }
 };
@@ -1092,11 +1169,19 @@ document.addEventListener('DOMContentLoaded', function(){
           <input id="reg-ig" placeholder="@your_ig">
           <p style="font-size:11px;color:var(--muted);margin-top:4px;">📦 供到貨通知使用，請確實填寫。<br>如未填寫，請主動私訊小幫手以利出貨通知。</p>
         </div>
+         <div class="pf-field">
+        <label>手機號碼 <span style="color:var(--danger);">*</span></label>
+        <input id="reg-phone" type="tel" placeholder="0912345678" maxlength="10">
+        <p style="font-size:11px;color:var(--muted);margin-top:4px;">
+          📱 必填，請輸入 09 開頭手機號碼。系統會用手機號碼合併既有會員資料。
+        </p>
+        </div>
 
         <div style="background:#fff8f8;border-radius:10px;padding:10px 12px;margin-bottom:14px;border:1px solid var(--border);font-size:12px;color:var(--muted);">
           🎫 <b style="color:var(--primary);">會員編號</b>將於註冊完成後自動產生<br>
           <span style="font-size:11px;">為純數字格式，可在個人頁面查看</span>
         </div>
+       
 
         <button onclick="doRegister()" style="width:100%;background:var(--primary);color:#fff;border:none;border-radius:28px;padding:13px;font-size:14px;font-weight:700;font-family:'Noto Sans TC',sans-serif;">完成註冊</button>
       </div>
