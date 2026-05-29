@@ -847,7 +847,7 @@ document.addEventListener('DOMContentLoaded', function(){
   </div>
   <div style="height:1px;background:var(--border);margin:4px 0;"></div>
   <div class="dm-ext" onclick="openExt('yeestore')"><svg viewBox="0 0 24 24" style="width:15px;height:15px;stroke:var(--primary);fill:none;stroke-width:2;flex-shrink:0;"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>賣貨便賣場</div>
-  <div class="dm-ext" onclick="openExt('group')"><svg viewBox="0 0 24 24" style="width:15px;height:15px;stroke:var(--primary);fill:none;stroke-width:2;flex-shrink:0;"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>加入我們的社團</div>
+  <div class="dm-ext" onclick="openExt('group')"><svg viewBox="0 0 24 24" style="width:15px;height:15px;stroke:var(--primary);fill:none;stroke-width:2;flex-shrink:0;"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>我要加群組!</div>
   <div class="dm-ext" onclick="openQAModal()"><svg viewBox="0 0 24 24" style="width:15px;height:15px;stroke:var(--primary);fill:none;stroke-width:2;flex-shrink:0;"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>常見問題 Q&amp;A</div>
 </div>
 
@@ -1047,7 +1047,7 @@ document.addEventListener('DOMContentLoaded', function(){
   </div>
   <div style="height:1px;background:var(--border);margin:4px 0;"></div>
   <div class="dm-ext" onclick="openExt('yeestore')"><svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:var(--primary);fill:none;stroke-width:2;"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>賣貨便賣場</div>
-  <div class="dm-ext" onclick="openExt('group')"><svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:var(--primary);fill:none;stroke-width:2;"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>加入社團</div>
+  <div class="dm-ext" onclick="openExt('group')"><svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:var(--primary);fill:none;stroke-width:2;"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>我要加群組!</div>
   <div class="dm-ext" onclick="openQAModal()"><svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:var(--primary);fill:none;stroke-width:2;"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>常見問題</div>
 </div><div class="dt-main">
   <div class="store-header">
@@ -1357,7 +1357,7 @@ function renderCategoryMenus(){
       +(S.categoryTree||[]).map(function(node){return makeCategoryNodeHtml(node,'dm');}).join('')
       +'<div style="height:1px;background:var(--border);margin:4px 0;"></div>'
       +'<div class="dm-ext" onclick="openExt(\'yeestore\')">賣貨便賣場</div>'
-      +'<div class="dm-ext" onclick="openExt(\'group\')">加入我們的社團</div>'
+      +'<div class="dm-ext" onclick="openExt(\'group\')">我要加群組!</div>'
       +((S.extLinks&&S.extLinks.custom&&S.extLinks.custom.length)?S.extLinks.custom.map(function(lk){return '<div class="dm-ext" onclick="window.open(\''+lk.url+'\',\'_blank\');closeDrawer();">'+lk.name+'</div>';}).join(''):'')
       +'<div class="dm-ext" onclick="openQAModal()">常見問題 Q&A</div>'
       +'<div style="height:1px;background:var(--border);margin:4px 0;"></div>'
@@ -1377,7 +1377,7 @@ function renderCategoryMenus(){
       +(S.categoryTree||[]).map(function(node){return makeCategoryNodeHtml(node,'dt');}).join('')
       +'<div style="height:1px;background:var(--border);margin:4px 0;"></div>'
       +'<div class="dm-ext" onclick="openExt(\'yeestore\')">賣貨便賣場</div>'
-      +'<div class="dm-ext" onclick="openExt(\'group\')">加入社團</div>'
+      +'<div class="dm-ext" onclick="openExt(\'group\')">我要加群組!</div>'
       +((S.extLinks&&S.extLinks.custom&&S.extLinks.custom.length)?S.extLinks.custom.map(function(lk){return '<div class="dm-ext" onclick="window.open(\''+lk.url+'\',\'_blank\');">'+lk.name+'</div>';}).join(''):'')
       +'<div class="dm-ext" onclick="openQAModal()">常見問題</div>'
       +'<div style="height:1px;background:var(--border);margin:4px 0;"></div>'
