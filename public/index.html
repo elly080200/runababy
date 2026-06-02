@@ -2124,5 +2124,15 @@ function goHome(e){
 }
 </script>
 
+<script>
+(function(){
+  var url = new URL(window.location.href);
+  if(url.searchParams.has('fbclid')){
+    url.searchParams.delete('fbclid');
+    history.replaceState(null, '', url.pathname + url.search + url.hash);
+  }
+})();
+</script>
+
 </body>
 </html>
