@@ -1399,7 +1399,22 @@ function catFilter(id,btn){
   renderProds();goPage('home');
 }
 
-var prodPage=0;var PAGE_SIZE=20;
+function isNewProduct(p){
+  if(!p.createdAt) return !!p.isNew;
+
+  var created = p.createdAt.seconds
+    ? new Date(p.createdAt.seconds * 1000)
+    : new Date(p.createdAt);
+
+  if(isNaN(created.getTime())) return !!p.isNew;
+
+  var days = (Date.now() - created.getTime()) / (1000 * 60 * 60 * 24);
+
+  return days <= 7;
+}
+
+var prodPage=0;
+var PAGE_SIZE=20;
 function renderProds(search){
   search=search||'';
   var prods=(S.products||[]).filter(function(p){return p.active!==false;});
@@ -1418,7 +1433,7 @@ function renderProds(search){
   }
   if(activeFilter==='preorder')prods=prods.filter(function(p){return p.type==='preorder';});
   else if(activeFilter==='stock')prods=prods.filter(function(p){return p.type==='stock';});
-  else if(activeFilter==='new')prods=prods.filter(function(p){return p.isNew;});
+  else if(activeFilter==='new')prods=prods.filter(function(p){return isNewProduct(p);});
   else if(activeFilter==='hot')prods=prods.filter(function(p){return p.isHot;});
   else if(activeFilter==='kids')prods=prods.filter(function(p){return p.isKids||(p.categoryId&&p.categoryId.indexOf('k-')===0);});
   else if(activeFilter==='women')prods=prods.filter(function(p){return p.isWomen||(p.categoryId&&p.categoryId.indexOf('w-')===0);});
@@ -1450,7 +1465,7 @@ if(!total){
         :'<div class="prod-img-ph">無圖片</div>')
       +'<div class="prod-badges">'
       +'<span class="badge '+(p.type==='stock'?'stock':'preorder')+'">'+(p.type==='stock'?'現貨':'預購')+'</span>'
-      +(p.isNew?'<span class="badge newitem">新品</span>':'')
+      +(isNewProduct(p)?'<span class="badge newitem">新品</span>':'')
       +(p.isHot?'<span class="badge hot">熱銷</span>':'')
       +saleBadge
       +'</div></div>'
@@ -1488,7 +1503,7 @@ function openDetail(id){
   document.getElementById('dDots').innerHTML=imgs.map(function(_,i){
     return '<div class="d-dot'+(i===0?' on':'')+'" onclick="slideSet('+i+')"></div>';
   }).join('');
-  document.getElementById('dBadges').innerHTML='<span class="badge '+(p.type==='stock'?'stock':'preorder')+'">'+(p.type==='stock'?'現貨':'預購')+'</span>'+(p.isNew?'<span class="badge newitem">新品</span>':'')+(p.isHot?'<span class="badge hot">熱銷</span>':'');
+  document.getElementById('dBadges').innerHTML='<span class="badge '+(p.type==='stock'?'stock':'preorder')+'">'+(p.type==='stock'?'現貨':'預購')+'</span>'+(isNewProduct(p)?'<span class="badge newitem">新品</span>':'')+(p.isHot?'<span class="badge hot">熱銷</span>':'');
   document.getElementById('dTitle').textContent=p.title;
   document.getElementById('dPrice').textContent='NT$ '+Number(p.price).toLocaleString();
   document.getElementById('dDesc').textContent=p.description||'';
