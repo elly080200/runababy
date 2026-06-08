@@ -1022,11 +1022,30 @@ function saveLS(){
 var revTabs=[G('RT_MO'),G('RT_WK'),G('RT_DY'),G('RT_CU')];
 revTabs.forEach(function(b){b.addEventListener('click',function(){revView=this.dataset.v;revTabs.forEach(function(x){x.classList.remove('on');});this.classList.add('on');G('CRANGE').style.display=revView==='custom'?'flex':'none';if(revView!=='custom')renderRevT(orders.filter(function(o){return o.status!=='已取消';}));});});
 G('R_APPLY').addEventListener('click',function(){var f=G('D_FROM').value,t=G('D_TO').value;renderRevT(orders.filter(function(o){if(o.status==='已取消')return false;var d=parseOrderTime(o.time);return(!f||d>=new Date(f))&&(!t||d<=new Date(t+'T23:59:59'));}));});
-G('R_CSV').addEventListener('click',function(){var d=orders.filter(function(o){return o.status!=='已取消';});if(!d.length){toast('無資料',true);return;}var csv='訂單編號,姓名,電話,金額,狀態,收件方式,時間\n';d.forEach(function(o){csv+=o.id+','+o.name+','+o.phone+','+o.total+','+o.status+','+(o.shipType||'')+','+o.time+'\n';});var b=new Blob(['\uFEFF'+csv],{type:'text/csv;charset=utf-8;'});var a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='runababy.csv';a.click();toast('已匯出');});
+G('R_CSV').addEventListener('click',function(){var d=orders.filter(function(o){return o.status!=='已取消';});if(!d.length){toast('無資料',true);return;}var csv='訂單編號,姓名,電話,金額,商品成本,商品利潤,狀態,收件方式,時間\n';d.forEach(function(o){csv+=o.id+','+o.name+','+o.phone+','+o.total+','+Math.round(getOrderCost(o))+','+Math.round(getOrderProfit(o))+','+o.status+','+(o.shipType||'')+','+o.time+'\n';});var b=new Blob(['\uFEFF'+csv],{type:'text/csv;charset=utf-8;'});var a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='runababy.csv';a.click();toast('已匯出');});
+function getItemCost(item){
+  if(item&&item.cost!==undefined&&item.cost!==null&&item.cost!=='')return Number(item.cost)||0;
+  var p=(S.products||[]).find(function(x){return item&&x.id===item.id;});
+  return p?Number(p.cost||0):0;
+}
+function getOrderProductTotal(o){
+  return (o.items||[]).reduce(function(s,item){return s+(Number(item.price||0)*Number(item.qty||1));},0);
+}
+function getOrderCost(o){
+  return (o.items||[]).reduce(function(s,item){return s+(getItemCost(item)*Number(item.qty||1));},0);
+}
+function getOrderProfit(o){
+  return (o.items||[]).reduce(function(s,item){
+    var qty=Number(item.qty||1);
+    return s+((Number(item.price||0)-getItemCost(item))*qty);
+  },0);
+}
 function renderRev(){
   var d=orders.filter(function(o){return o.status!=='已取消';});
-  var r=d.reduce(function(s,o){return s+Number(o.total);},0);
-  G('STAT_G').innerHTML='<div class="stat"><div class="stat-l">總營收</div><div class="stat-v">NT$ '+r.toLocaleString()+'</div></div><div class="stat"><div class="stat-l">估計利潤</div><div class="stat-v">NT$ '+Math.round(r*.25).toLocaleString()+'</div></div><div class="stat"><div class="stat-l">總訂單</div><div class="stat-v">'+d.length+' 筆</div></div><div class="stat"><div class="stat-l">總客戶</div><div class="stat-v">'+([...new Set(orders.map(function(o){return o.phone;}))].length)+' 人</div></div>';
+  var r=d.reduce(function(s,o){return s+Number(o.total||0);},0);
+  var c=d.reduce(function(s,o){return s+getOrderCost(o);},0);
+  var pf=d.reduce(function(s,o){return s+getOrderProfit(o);},0);
+  G('STAT_G').innerHTML='<div class="stat"><div class="stat-l">總營收</div><div class="stat-v">NT$ '+r.toLocaleString()+'</div></div><div class="stat"><div class="stat-l">商品成本</div><div class="stat-v">NT$ '+Math.round(c).toLocaleString()+'</div></div><div class="stat"><div class="stat-l">商品利潤</div><div class="stat-v">NT$ '+Math.round(pf).toLocaleString()+'</div></div><div class="stat"><div class="stat-l">總訂單</div><div class="stat-v">'+d.length+' 筆</div></div>';
   renderRevT(d);
 }
 function parseOrderTime(timeStr){
@@ -1079,14 +1098,16 @@ function renderRevT(data){
     }else if(revView==='daily'){
       var hh=d.getHours().toString().padStart(2,'0');k=hh+':00';sortK=d.getHours();
     }else{k='查詢區間';sortK=d.getTime();}
-    if(!g[k]){g[k]={r:0,c:0,sortK:sortK,orders:[]};keyOrder.push(k);}
-    g[k].r+=Number(o.total);g[k].c++;g[k].orders.push(o);
+    if(!g[k]){g[k]={r:0,c:0,cost:0,profit:0,sortK:sortK,orders:[]};keyOrder.push(k);}
+    g[k].r+=Number(o.total||0);g[k].c++;g[k].cost+=getOrderCost(o);g[k].profit+=getOrderProfit(o);g[k].orders.push(o);
   });
   keyOrder.sort(function(a,b){return g[a].sortK-g[b].sortK;});
   var grandTotal=keyOrder.reduce(function(s,k){return s+g[k].r;},0);
+  var grandCost=keyOrder.reduce(function(s,k){return s+g[k].cost;},0);
+  var grandProfit=keyOrder.reduce(function(s,k){return s+g[k].profit;},0);
   var grandCount=keyOrder.reduce(function(s,k){return s+g[k].c;},0);
   var periodLabel=revView==='daily'?'時段':revView==='weekly'?'日期（週）':'日期';
-  G('REV_T').innerHTML='<div class="tblw"><table><thead><tr><th>'+periodLabel+'</th><th>營收</th><th>訂單數</th><th>估利潤</th><th>訂單詳情</th></tr></thead><tbody>'+keyOrder.map(function(k,ki){
+  G('REV_T').innerHTML='<div class="tblw"><table><thead><tr><th>'+periodLabel+'</th><th>營收</th><th>商品成本</th><th>商品利潤</th><th>訂單數</th><th>訂單詳情</th></tr></thead><tbody>'+keyOrder.map(function(k,ki){
     var v=g[k];
     var displayK=k;
     if(revView==='weekly'){var parts=k.split('|');displayK='<div style="font-size:10px;color:var(--M);">'+parts[0]+'</div><b>'+parts[1]+'</b>';}
@@ -1095,12 +1116,13 @@ function renderRevT(data){
     }).join('');
     return '<tr><td>'+displayK+'</td>'
       +'<td style="font-weight:700;color:var(--P);">NT$ '+v.r.toLocaleString()+'</td>'
+      +'<td>NT$ '+Math.round(v.cost).toLocaleString()+'</td>'
+      +'<td>NT$ '+Math.round(v.profit).toLocaleString()+'</td>'
       +'<td>'+v.c+'</td>'
-      +'<td>NT$ '+Math.round(v.r*.25).toLocaleString()+'</td>'
       +'<td><button class="btn bo bxs" onclick="var d=document.getElementById(\'rv'+ki+'\');d.style.display=d.style.display===\'none\'?\'block\':\'none\'">展開</button>'
       +'<div id="rv'+ki+'" style="display:none;margin-top:4px;background:var(--BG);border-radius:6px;padding:6px;">'+ordersHtml+'</div></td></tr>';
   }).join('')
-  +'<tr style="background:#fff0f0;font-weight:700;font-size:13px;"><td>📊 總計</td><td style="color:var(--P);">NT$ '+grandTotal.toLocaleString()+'</td><td>'+grandCount+'</td><td>NT$ '+Math.round(grandTotal*.25).toLocaleString()+'</td><td></td></tr>'
+  +'<tr style="background:#fff0f0;font-weight:700;font-size:13px;"><td>📊 總計</td><td style="color:var(--P);">NT$ '+grandTotal.toLocaleString()+'</td><td>NT$ '+Math.round(grandCost).toLocaleString()+'</td><td>NT$ '+Math.round(grandProfit).toLocaleString()+'</td><td>'+grandCount+'</td><td></td></tr>'
   +'</tbody></table></div>';
 }
 
@@ -1544,7 +1566,7 @@ function openOrdDet(id){
     +'<div style="display:flex;gap:10px;flex-wrap:wrap;">'+(isDone?'<div style="padding:8px;flex:1;font-weight:600;">'+(o.name||'')+'</div><div style="padding:8px;flex:1;">'+(o.phone||'')+'</div>':'<div class="fg" style="flex:1;min-width:130px;"><label>姓名</label><input id="OD_NM" value="'+(o.name||'')+'"></div><div class="fg" style="flex:1;min-width:130px;"><label>電話</label><input id="OD_PH" value="'+(o.phone||'')+'"></div>')+'</div>'
     +(isDone?'<div style="font-size:12px;padding:4px 8px;"><b>Email：</b>'+(o.email||'')+'</div><div style="font-size:12px;padding:4px 8px;"><b>收件：</b>'+(o.shipType||'')+'　'+(o.shipDetail||'')+'</div>':'<div class="fg"><label>Email</label><input id="OD_EM" value="'+(o.email||'')+'"></div><div class="fg"><label>收件方式</label><input id="OD_SH" value="'+(o.shipType||'')+'"></div><div class="fg"><label>收件地址</label><input id="OD_AD" value="'+(o.shipDetail||'')+'"></div>')+'</div>'
     +'<div style="margin-bottom:12px;"><div style="font-weight:700;font-size:13px;margin-bottom:8px;">商品項目</div><div id="OD_IT">'
-    +(o.items||[]).map(function(item,idx){var sp=item.specs?Object.values(item.specs).filter(Boolean).join(' / '):'';var procBadge='';if(item.procStatus==='已到貨')procBadge='<span style="font-size:10px;background:#e8f5e9;color:#2ecc71;border-radius:6px;padding:1px 6px;margin-left:4px;">已到貨</span>';else if(item.procStatus==='缺貨追加中')procBadge='<span style="font-size:10px;background:#fff3e0;color:#e67e22;border-radius:6px;padding:1px 6px;margin-left:4px;">追加中</span>';if(isDone){return '<div class="oir"><div class="oiimg">'+(item.image?'<img src="'+item.image+'" style="width:100%;height:100%;object-fit:cover;">':'')+'</div><div style="flex:1;"><div class="oinm">'+item.title+procBadge+'</div><div class="oisp">'+sp+'</div></div><div style="font-weight:700;">x'+item.qty+'　NT$ '+Number(item.price*item.qty).toLocaleString()+'</div></div>';}return '<div class="oir"><div class="oiimg">'+(item.image?'<img src="'+item.image+'" style="width:100%;height:100%;object-fit:cover;">':'')+'</div><div style="flex:1;"><div class="oinm">'+item.title+procBadge+'</div><div class="oisp">'+sp+'</div></div><div style="display:flex;align-items:center;gap:5px;"><button class="qcb qm" data-i="'+idx+'">−</button><span id="OQ'+idx+'">'+item.qty+'</span><button class="qcb qp" data-i="'+idx+'">+</button></div><input type="number" id="OP'+idx+'" value="'+item.price+'" style="width:80px;padding:4px 7px;border:1.5px solid var(--BD);border-radius:6px;font-size:12px;"><button class="btn bd bxs odl" data-i="'+idx+'">刪除</button></div>';}).join('')
+    +(o.items||[]).map(function(item,idx){var sp=item.specs?Object.values(item.specs).filter(Boolean).join(' / '):'';var procBadge='';var itemCost=getItemCost(item);if(item.cost===undefined||item.cost===null||item.cost==='')item.cost=itemCost;if(item.procStatus==='已到貨')procBadge='<span style="font-size:10px;background:#e8f5e9;color:#2ecc71;border-radius:6px;padding:1px 6px;margin-left:4px;">已到貨</span>';else if(item.procStatus==='缺貨追加中')procBadge='<span style="font-size:10px;background:#fff3e0;color:#e67e22;border-radius:6px;padding:1px 6px;margin-left:4px;">追加中</span>';if(isDone){return '<div class="oir"><div class="oiimg">'+(item.image?'<img src="'+item.image+'" style="width:100%;height:100%;object-fit:cover;">':'')+'</div><div style="flex:1;"><div class="oinm">'+item.title+procBadge+'</div><div class="oisp">'+sp+'</div></div><div style="font-weight:700;">x'+item.qty+'　NT$ '+Number(item.price*item.qty).toLocaleString()+'</div></div>';}return '<div class="oir"><div class="oiimg">'+(item.image?'<img src="'+item.image+'" style="width:100%;height:100%;object-fit:cover;">':'')+'</div><div style="flex:1;"><div class="oinm">'+item.title+procBadge+'</div><div class="oisp">'+sp+'</div></div><div style="display:flex;align-items:center;gap:5px;"><button class="qcb qm" data-i="'+idx+'">−</button><span id="OQ'+idx+'">'+item.qty+'</span><button class="qcb qp" data-i="'+idx+'">+</button></div><div style="display:flex;gap:5px;align-items:center;flex-wrap:wrap;"><label style="font-size:10px;color:var(--M);">售價<input type="number" id="OP'+idx+'" value="'+item.price+'" style="width:78px;padding:4px 7px;border:1.5px solid var(--BD);border-radius:6px;font-size:12px;"></label><label style="font-size:10px;color:var(--M);">成本<input type="number" id="OC'+idx+'" value="'+itemCost+'" style="width:78px;padding:4px 7px;border:1.5px solid var(--BD);border-radius:6px;font-size:12px;"></label></div><button class="btn bd bxs odl" data-i="'+idx+'">刪除</button></div>';}).join('')
     +'</div></div>';
   if(!isDone){
     h+='<div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;"><div class="fg" style="flex:1;margin-bottom:0;"><label>總金額</label><input type="number" id="OD_TOT" value="'+(o.total||0)+'"></div><button class="btn bin bsm" id="OD_CALC" style="margin-top:14px;">自動計算</button></div>'
@@ -1570,6 +1592,7 @@ function openOrdDet(id){
       var row=document.createElement('div');row.style.cssText='display:flex;gap:6px;flex-wrap:wrap;';
       var qtInp=document.createElement('input');qtInp.type='number';qtInp.id='ADD_ITEM_QT';qtInp.value='1';qtInp.min='1';qtInp.style.cssText='width:60px;padding:6px;border:1px solid var(--BD);border-radius:6px;font-size:12px;';
       var pcInp=document.createElement('input');pcInp.type='number';pcInp.id='ADD_ITEM_PC';pcInp.style.cssText='flex:1;padding:6px;border:1px solid var(--BD);border-radius:6px;font-size:12px;';pcInp.placeholder='價格';
+      var costInp=document.createElement('input');costInp.type='number';costInp.id='ADD_ITEM_COST';costInp.style.cssText='flex:1;padding:6px;border:1px solid var(--BD);border-radius:6px;font-size:12px;';costInp.placeholder='成本（前台不顯示）';
       var addBtn=document.createElement('button');addBtn.className='btn bp bxs';addBtn.textContent='加入';
       addBtn.addEventListener('click',function(){
         var pid=G('ADD_ITEM_PR').value;
@@ -1577,6 +1600,7 @@ function openOrdDet(id){
         if(!p){toast('請選商品',true);return;}
         var qt=parseInt(G('ADD_ITEM_QT').value)||1;
         var pc=parseFloat(G('ADD_ITEM_PC').value)||p.price;
+        var cost=parseFloat(G('ADD_ITEM_COST').value);if(isNaN(cost))cost=Number(p.cost||0);
         var sp={};
         var clEl=document.getElementById('ADD_SP_CL'),szEl=document.getElementById('ADD_SP_SZ'),stEl=document.getElementById('ADD_SP_ST');
         if(clEl&&clEl.value)sp.color=clEl.value;
@@ -1584,7 +1608,15 @@ function openOrdDet(id){
         if(stEl&&stEl.value)sp.style=stEl.value;
         var o3=orders.find(function(x){return x.id===curOId;});
         if(!o3)return;
-        o3.items.push({id:p.id,title:p.title,price:pc,image:(p.images&&p.images[0])||'',specs:sp,qty:qt});
+        o3.items.push({
+        id:p.id,
+        title:p.title,
+        price:pc,
+        cost:cost,
+        image:(p.images&&p.images[0])||'',
+        specs:sp,
+        qty:qt
+        });
         openOrdDet(curOId);
       });
       sel.addEventListener('change',function(){
@@ -1592,6 +1624,7 @@ function openOrdDet(id){
         specsWrap.innerHTML='';
         if(p){
           pcInp.value=p.price;
+          costInp.value=Number(p.cost||0);
           var sh='<div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:4px;">';
           var hasSpec=false;
           if(p.colors&&p.colors.length){hasSpec=true;sh+='<div style="flex:1;min-width:80px;"><div style="font-size:10px;color:var(--M);margin-bottom:2px;">顏色</div><select id="ADD_SP_CL" style="width:100%;padding:5px;border:1px solid var(--BD);border-radius:6px;font-size:12px;"><option value="">-</option>'+p.colors.map(function(c){return '<option>'+c+'</option>';}).join('')+'</select></div>';}
@@ -1599,9 +1632,9 @@ function openOrdDet(id){
           if(p.styles&&p.styles.length){hasSpec=true;sh+='<div style="flex:1;min-width:80px;"><div style="font-size:10px;color:var(--M);margin-bottom:2px;">款式</div><select id="ADD_SP_ST" style="width:100%;padding:5px;border:1px solid var(--BD);border-radius:6px;font-size:12px;"><option value="">-</option>'+p.styles.map(function(s){return '<option>'+s+'</option>';}).join('')+'</select></div>';}
           sh+='</div>';
           if(hasSpec)specsWrap.innerHTML=sh;
-        }else{pcInp.value='';}
+        }else{pcInp.value='';costInp.value='';}
       });
-      row.appendChild(qtInp);row.appendChild(pcInp);row.appendChild(addBtn);
+      row.appendChild(qtInp);row.appendChild(pcInp);row.appendChild(costInp);row.appendChild(addBtn);
       panel.appendChild(sel);panel.appendChild(specsWrap);panel.appendChild(row);
       this.replaceWith(panel);
     });
@@ -1616,7 +1649,7 @@ function saveOrd(){
   o.shipType=G('OD_SH').value;o.shipDetail=G('OD_AD').value;
   o.status=G('OD_ST').value;o.note=G('OD_NOTE').value;
   o.total=parseFloat(G('OD_TOT').value)||o.total;
-  o.items.forEach(function(item,idx){var pe=G('OP'+idx);if(pe)item.price=parseFloat(pe.value)||item.price;});
+  o.items.forEach(function(item,idx){var pe=G('OP'+idx),ce=G('OC'+idx);if(pe)item.price=parseFloat(pe.value)||item.price;if(ce)item.cost=parseFloat(ce.value)||0;});
   // ✅ 直接寫 Firestore，不透過 saveLS（避免觸發 store onSnapshot 把狀態蓋回來）
   if(window._saveOrderToFirebase)window._saveOrderToFirebase(o);
   G('MO_ORD').classList.remove('on');renderOrds();toast('訂單已儲存');
@@ -1630,7 +1663,7 @@ function openAddO(){
     +'<div class="fg"><label>選擇商品 *</label><select id="AO_PR"><option value="">請選擇</option>'+ps.map(function(p){return '<option value="'+p.id+'">'+p.title+' (NT$'+p.price+')</option>';}).join('')+'</select></div>'
     +'<div id="AO_SPECS_WRAP"></div>'
     +'<div class="fg"><label>數量</label><input type="number" id="AO_QT" value="1" min="1"></div>'
-    +'<div class="fg"><label>價格</label><input type="number" id="AO_PC"></div>'
+    +'<div style="display:flex;gap:10px;flex-wrap:wrap;"><div class="fg" style="flex:1;min-width:120px;"><label>價格</label><input type="number" id="AO_PC"></div><div class="fg" style="flex:1;min-width:120px;"><label>成本（前台不顯示）</label><input type="number" id="AO_COST"></div></div>'
     +'<div class="fg"><label>收件方式</label><input id="AO_SH" placeholder="7-11/郵局/全家"></div>'
     +'<div class="fg"><label>地址/門市</label><input id="AO_AD"></div>'
     +'<div class="fg"><label>備註</label><textarea id="AO_NT" rows="2"></textarea></div>';
@@ -1650,8 +1683,8 @@ function openAddO(){
   G('AO_PR').addEventListener('change',function(){
     var p=ps.find(function(x){return x.id===this.value;}.bind(this));
     var wrap=G('AO_SPECS_WRAP');wrap.innerHTML='';
-    if(!p){G('AO_PC').value='';return;}
-    G('AO_PC').value=p.price;
+    if(!p){G('AO_PC').value='';G('AO_COST').value='';return;}
+    G('AO_PC').value=p.price;G('AO_COST').value=Number(p.cost||0);
     var specsHtml='<div style="display:flex;gap:10px;flex-wrap:wrap;">';
     var hasSpec=false;
     if(p.colors&&p.colors.length){
@@ -1676,7 +1709,7 @@ function submitAO(){
   var nm=G('AO_NM').value.trim(),ph=G('AO_PH').value.trim(),pid=G('AO_PR').value;
   if(!nm||!ph||!pid){toast('請填必填欄位',true);return;}
   var p=S.products.find(function(x){return x.id===pid;});if(!p)return;
-  var qt=parseInt(G('AO_QT').value)||1,pc=parseFloat(G('AO_PC').value)||p.price;
+  var qt=parseInt(G('AO_QT').value)||1,pc=parseFloat(G('AO_PC').value)||p.price,cost=parseFloat(G('AO_COST').value);if(isNaN(cost))cost=Number(p.cost||0);
   var sp={};
   var clEl=G('AO_CL'),szEl=G('AO_SZ'),stEl=G('AO_ST');
   var c=clEl?(clEl.tagName==='SELECT'?clEl.options[clEl.selectedIndex].value:clEl.value):'';
@@ -1689,7 +1722,7 @@ function submitAO(){
   var ord={id:'RB'+Date.now().toString().slice(-10)+Math.floor(Math.random()*9000+1000),name:nm,phone:ph,email:selMem?selMem.email:'',
     memberId:selMem?selMem.memberId:'',uid:selMem?selMem.uid:'',ig:selMem?selMem.ig:'',
     shipType:G('AO_SH').value,shipDetail:G('AO_AD').value,note:G('AO_NT').value,
-    items:[{id:p.id,title:p.title,price:pc,image:(p.images&&p.images[0])||'',specs:sp,qty:qt}],
+    items:[{id:p.id,title:p.title,price:pc,cost:cost,image:(p.images&&p.images[0])||'',specs:sp,qty:qt}],
     total:pc*qt,status:'尚未接受訂單',time:new Date().toLocaleString('zh-TW')};
   orders.unshift(ord);if(!selMem&&!customers.find(function(c){return c.phone===ph;}))customers.push({name:nm,phone:ph,email:'',blacklist:false});
   // ── 補寫會員 phone/ig 到 Firestore（不重複建立會員）──
