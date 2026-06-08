@@ -1418,7 +1418,7 @@ function renderProds(search){
   }
   if(activeFilter==='preorder')prods=prods.filter(function(p){return p.type==='preorder';});
   else if(activeFilter==='stock')prods=prods.filter(function(p){return p.type==='stock';});
-  else if(activeFilter==='new')prods=prods.filter(function(p){return isNewProduct(p);});
+  else if(activeFilter==='new')prods=prods.filter(function(p){return p.isNew;});
   else if(activeFilter==='hot')prods=prods.filter(function(p){return p.isHot;});
   else if(activeFilter==='kids')prods=prods.filter(function(p){return p.isKids||(p.categoryId&&p.categoryId.indexOf('k-')===0);});
   else if(activeFilter==='women')prods=prods.filter(function(p){return p.isWomen||(p.categoryId&&p.categoryId.indexOf('w-')===0);});
@@ -1450,7 +1450,7 @@ if(!total){
         :'<div class="prod-img-ph">無圖片</div>')
       +'<div class="prod-badges">'
       +'<span class="badge '+(p.type==='stock'?'stock':'preorder')+'">'+(p.type==='stock'?'現貨':'預購')+'</span>'
-      +(isNewProduct(p)?'<span class="badge newitem">新品</span>':'')
+      +(p.isNew?'<span class="badge newitem">新品</span>':'')
       +(p.isHot?'<span class="badge hot">熱銷</span>':'')
       +saleBadge
       +'</div></div>'
@@ -1488,7 +1488,7 @@ function openDetail(id){
   document.getElementById('dDots').innerHTML=imgs.map(function(_,i){
     return '<div class="d-dot'+(i===0?' on':'')+'" onclick="slideSet('+i+')"></div>';
   }).join('');
-  document.getElementById('dBadges').innerHTML='<span class="badge '+(p.type==='stock'?'stock':'preorder')+'">'+(p.type==='stock'?'現貨':'預購')+'</span>'+(isNewProduct(p)?'<span class="badge newitem">新品</span>':'')+(p.isHot?'<span class="badge hot">熱銷</span>':'');
+  document.getElementById('dBadges').innerHTML='<span class="badge '+(p.type==='stock'?'stock':'preorder')+'">'+(p.type==='stock'?'現貨':'預購')+'</span>'+(p.isNew?'<span class="badge newitem">新品</span>':'')+(p.isHot?'<span class="badge hot">熱銷</span>':'');
   document.getElementById('dTitle').textContent=p.title;
   document.getElementById('dPrice').textContent='NT$ '+Number(p.price).toLocaleString();
   document.getElementById('dDesc').textContent=p.description||'';
